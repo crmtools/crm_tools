@@ -1,0 +1,265 @@
+{# src/OC/PlatformBundle/Resources/views/Monitoring/graphPerformance.html.twig #}
+
+{% extends "CRMToolsBundle::layout.html.twig" %}
+
+{% block title %}
+     Graphs performance - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container containerPage">
+        <h1 class="titleGraph">Graphs Performance</h1>
+        <!-- Begin of datepicker form -->
+        <div class="bootstrap-iso">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Form code begins -->
+                        <form action="{{ path('crm_tools_graph') }}" method="POST" {{ form_enctype(form) }}>
+                                <div class="form-group col-md-2"> <!-- Date input -->
+                                    {{ form_label(form.startDate) }}
+                                    {{ form_widget(form.startDate) }}
+                                    {{ form_widget(form.startDate) }}
+                                </div>
+
+                            <div class="form-group col-md-2"> <!-- Date input -->
+                                {{ form_label(form.endDate) }}
+                                {{ form_widget(form.endDate) }}
+                                {{ form_widget(form.endDate) }}
+                            </div>
+
+                            {#<div class="bouton" style="margin-left: 186px;">#}
+                                {#<input type="submit" value="{{ 'Envoyer'|trans }}" />#}
+                            {#</div>#}
+
+                            <div class="form-group"> <!-- Submit button -->
+                                <button class="btn btn-primary buttonDatePicker" name="submit" type="submit">Afficher</button>
+                            </div>
+                        </form>
+                        <!-- Form code ends -->
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- end of datepicker form -->
+
+
+        <!-- Begin of datepicker form -->
+        {#<div class="bootstrap-iso">#}
+            {#<div class="container-fluid">#}
+                {#<div class="row">#}
+                    {#<div class="col-md-12">#}
+                        {#<!-- Form code begins -->#}
+                        {#<form action="{{path("crm_tools_graph")}}" method="GET">#}
+                            {#<div class="form-group col-md-2"> <!-- Date input -->#}
+                                {#<label class="control-label" for="date">Date debut</label>#}
+                                {#<input class="form-control" id="date" name="date" placeholder="{{ startDate|date("d/m/Y") }}" type="text"/>#}
+                            {#</div>#}
+                            {#<div class="form-group col-md-2"> <!-- Date input -->#}
+                                {#<label class="control-label" for="date">Date fin</label>#}
+                                {#<input class="form-control" id="date" name="date" placeholder="{{ endDate|date("d/m/Y") }}" type="text"/>#}
+                            {#</div>#}
+                            {#<div class="form-group"> <!-- Submit button -->#}
+                                {#<button class="btn btn-primary buttonDatePicker" name="submit" type="submit">Afficher</button>#}
+                            {#</div>#}
+                        {#</form>#}
+                        {#<!-- Form code ends -->#}
+
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div><!-- end of datepicker form -->#}
+
+        <!-- begin of displaying the graph average -->
+        <div class="bs-example col-md-12" data-example-id="simple-responsive-table" >
+            <div class="table-responsive">
+                <table class="table table-bordered greyColorTh">
+                    <thead >
+                        <tr >
+                            <th class="row">Nom du fichier</th>
+                            {% for date in date_array %}
+                                <th>{{ date | date("d-m-Y") }}</th>
+                            {% endfor %}
+                            <th class="middleText">Moyenne Semaine </br> Du '{{ startDate | date("d-m-Y") }}'</br> Au '{{ endDate | date("d-m-Y") }}'</th>
+
+                            {% for key,dates in week_array %}
+                                {#{{ dump(key) }}#}
+                                {% if key == 0 %}
+                                    <th class="middleText">Moyenne Semaine -1 </br> '{{ dates['0'] | date("d-m-Y") }}' </br> Au '{{ dates['1'] | date("d-m-Y") }}'</th>
+                                {% elseif key == 1 %}
+                                    <th class="middleText">Moyenne mois </br> '{{ dates['0'] | date("d-m-Y") }}' </br> Au '{{ dates['1'] | date("d-m-Y") }}'</th>
+                                {% elseif key == 2 %}
+                                    <th class="middleText">Moyenne mois -1</br> '{{ dates['0'] | date("d-m-Y") }}' </br> Au '{{ dates['1'] | date("d-m-Y") }}'</th>
+                                {% endif %}
+                            {% endfor %}
+
+                        </tr>
+                    </thead>
+
+                    {% for graph in result_graph_avg %}
+                    {{ dump(graph) }}
+                        <tbody>
+                            <tr class="blueHover">
+                                <th >{{ graph['graph_name'] }}</th>
+                                {% for current_date in date_array %}
+
+                                    {#{{ dump(graph['duration_'~current_date]) }}#}
+                                    {% if (graph['duration_'~current_date] / graph['average_graph_duration']) < 1.5 %}
+
+                                        <td class="greenCase">{{ graph[current_date] }}</td>
+
+                                    {% elseif (graph['duration_'~current_date] / graph['average_graph_duration']) < 5 %}
+                                        <td class="orangeCase">{{ graph[current_date] }}</td>
+
+                                    {% else %}
+                                        <td class="redCase">{{ graph[current_date] }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                                <td class="middleText"> {{ graph["AVG_duration_week"] }} </td>
+                                <td class="middleText"> {{ graph["AVG_duration_week_1"] }} </td>
+                                <td class="middleText"> {{ graph["AVG_duration_month"] }} </td>
+                                <td class="middleText"> {{ graph["AVG_duration_month_1"] }} </td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td class="LineBreak">&nbsp;</td>
+                            </tr>
+                            <!-- NB Contacts -->
+                            <tr class="blueHover">
+                                <th>Nombre Contacts</th>
+                                {% for contact in result_nb_contacts %}
+                                    {% for current_date in date_array %}
+                                        <td class="middleText"> {{ contact[current_date] }} </td>
+                                    {% endfor %}
+                                    <td class="middleText"> {{ contact["AVG_Client_week"] }} </td>
+                                    <td class="middleText"> {{ contact["AVG_Client_week_1"] }} </td>
+                                    <td class="middleText"> {{ contact["AVG_Client_month"] }} </td>
+                                    <td class="middleText"> {{ contact["AVG_Client_month_1"] }} </td>
+                                {% endfor %}
+                            </tr>
+                            <!-- NB Contact / Min -->
+                            <tr class="blueHover">
+                                <th>Nombre Contacts / Min</th>
+                                {% for contact in result_nb_contacts_min %}
+                                    {% for current_date in date_array %}
+                                        <td class="middleText"> {{ contact[current_date] }} </td>
+                                    {% endfor %}
+                                    <td class="middleText"> {{ contact["AVG_Client_week"] }} </td>
+                                    <td class="middleText"> {{ contact["AVG_Client_week_1"] }} </td>
+                                    <td class="middleText"> {{ contact["AVG_Client_month"] }} </td>
+                                    <td class="middleText"> {{ contact["AVG_Client_month_1"] }} </td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td class="LineBreak">&nbsp;</td>
+                            </tr>
+                            <!-- NB Events -->
+                            <tr class="blueHover">
+                                <th>Nombre Events</th>
+                                {% for event in result_nb_events %}
+                                    {% for current_date in date_array %}
+                                        <td class="middleText"> {{ event[current_date] }} </td>
+                                    {% endfor %}
+                                    <td class="middleText"> {{ event["AVG_Event_week"] }} </td>
+                                    <td class="middleText"> {{ event["AVG_Event_week_1"] }} </td>
+                                    <td class="middleText"> {{ event["AVG_Event_month"] }} </td>
+                                    <td class="middleText"> {{ event["AVG_Event_month_1"] }} </td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td class="LineBreak">&nbsp;</td>
+                            </tr>
+                            <!-- NB Booking Midas -->
+                            <tr class="blueHover">
+                                <th>Nombre Bookings Midas</th>
+                                {% for booking in result_nb_booking_midas %}
+                                    {% for current_date in date_array %}
+                                        <td class="middleText"> {{ booking[current_date] }} </td>
+                                    {% endfor %}
+                                    <td class="middleText"> {{ booking["AVG_booking_week"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_week_1"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_month"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_month_1"] }} </td>
+                                {% endfor %}
+                            </tr>
+                            <!-- NB Booking Midas / Min-->
+                            <tr class="blueHover">
+                                <th>Nombre Bookings Midas / Min</th>
+                                {% for booking in result_nb_booking_midas_min %}
+                                    {% for current_date in date_array %}
+                                        <td class="middleText"> {{ booking[current_date] }} </td>
+                                    {% endfor %}
+                                    <td class="middleText"> {{ booking["AVG_booking_week"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_week_1"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_month"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_month_1"] }} </td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td class="LineBreak">&nbsp;</td>
+                            </tr>
+                            <!-- NB Booking AP -->
+                            <tr class="blueHover">
+                                <th>Nombre Bookings AP</th>
+                                {% for booking in result_nb_booking_ap %}
+                                    {% for current_date in date_array %}
+                                        <td class="middleText"> {{ booking[current_date] }} </td>
+                                    {% endfor %}
+                                    <td class="middleText"> {{ booking["AVG_booking_week"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_week_1"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_month"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_month_1"] }} </td>
+                                {% endfor %}
+                            </tr>
+                            <!-- NB Booking AP / Min -->
+                            <tr class="blueHover">
+                                <th>Nombre Bookings AP / Min</th>
+                                {% for booking in result_nb_booking_ap_min %}
+                                    {% for current_date in date_array %}
+                                        <td class="middleText"> {{ booking[current_date] }} </td>
+                                    {% endfor %}
+                                    <td class="middleText"> {{ booking["AVG_booking_week"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_week_1"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_month"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_month_1"] }} </td>
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td class="LineBreak">&nbsp;</td>
+                            </tr>
+                            <!-- NB Booking BBOSS -->
+                            <tr class="blueHover">
+                                <th>Nombre Bookings BBOSS</th>
+                                {% for booking in result_nb_booking_bboss %}
+                                    {% for current_date in date_array %}
+                                        <td class="middleText"> {{ booking[current_date] }} </td>
+                                    {% endfor %}
+                                    <td class="middleText"> {{ booking["AVG_booking_week"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_week_1"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_month"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_month_1"] }} </td>
+                                {% endfor %}
+                            </tr>
+                            <!-- NB Booking BBOSS / Min -->
+                            <tr class="blueHover">
+                                <th>Nombre Bookings BBOSS / Min</th>
+                                {% for booking in result_nb_booking_bboss_min %}
+                                    {% for current_date in date_array %}
+                                        <td class="middleText"> {{ booking[current_date] }} </td>
+                                    {% endfor %}
+                                    <td class="middleText"> {{ booking["AVG_booking_week"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_week_1"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_month"] }} </td>
+                                    <td class="middleText"> {{ booking["AVG_booking_month_1"] }} </td>
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+
+                </table>
+            </div>
+        </div><!-- end of displaying the graph average -->
+    </div>
+
+{% endblock %}

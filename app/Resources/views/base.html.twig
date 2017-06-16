@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}CRM Tools{% endblock %}</title>
+        <link rel="shortcut icon" href="CRMToolsBundle/Resources/public/img/favicon.ico">
+
+        {% stylesheets filter='?yui_css, cssrewrite'
+            '@CRMToolsBundle/Resources/public/css/style.css'
+            '@CRMToolsBundle/Resources/public/css/monitoring.css'
+            '@CRMToolsBundle/Resources/public/css/menu_nav_bar.css'
+            '@CRMToolsBundle/Resources/public/css/data_quality.css'
+            'css/bootstrap.css'
+            'css/bootstrap.min.css'
+            'css/bootstrap-theme.css'
+            'css/bootstrap-theme.min.css'
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+        {% endstylesheets %}
+
+
+
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+        {% endblock %}
+
+
+        {% javascripts
+        'js/jquery.js'
+        'js/bootstrap.js'
+        'js/bootstrap.min.js'
+        '@CRMToolsBundle/Resources/public/js/main.js'
+
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+        {% endjavascripts %}
+    </body>
+</html>
+<!-- Bootstrap Date-Picker Plugin -->

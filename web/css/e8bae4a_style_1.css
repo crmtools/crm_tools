@@ -1,0 +1,48 @@
+.test{
+
+    border: 1px solid red;
+    color: green;
+}
+
+body {
+    width: 95%;
+    display: block;
+    margin: auto !important;
+}
+
+.thLarger{
+    /*    border: 1px solid red !important;*/
+    width: 250px !important;
+}
+
+.greenCase{
+    background-color: #5bb024;
+    color: #fff;
+    text-align: center;
+}
+
+.orangeCase{
+    background-color: #ff9c15;
+    color: #fff;
+    text-align: center;
+}
+
+.table th{
+    background-color: #edf1f0;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    /*    text-align: center;*/
+    font-size: 13.4px;
+    vertical-align: middle !important;
+
+    /*    border: 1px solid red !important;*/
+}
+
+.table-bordered td:hover{
+    background-color: #37519f;
+    color: #fff;
+    /*    border: 1px solid red !important;*/
+}
+
+.middleText{
+    text-align: center;
+}

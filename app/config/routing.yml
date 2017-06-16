@@ -1,0 +1,3 @@
+crm_tools:
+    resource: "@CRMToolsBundle/Resources/config/routing.yml"
+    prefix:   /

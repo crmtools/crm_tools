@@ -1,0 +1,81 @@
+{# src/CRM/ToolsBundle/Resources/views/layout.html.twig #}
+
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+    {% block body %}
+        <!-- Begin of menu nav div -->
+        <div class="container containerMenuNav">
+            <nav class="navbar navbar-default menuNavBar">
+                <div class="container-fluid">
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav firsTitleMenu">
+                            {#<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>#}
+                            <li class="colorHomeIcon"><a href="{{ path('crm_tools_homepage') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                            <li class="dropdown secondTitleMenu">
+                                {#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Monitoring <span class="caret"></span></a>#}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">MONITORING<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('crm_tools_graph') }}">Graphs Perfomance</a></li>
+                                    <li><a href="#">Log Error</a></li>
+                                    <li><a href="#">CRM Weather</a></li>
+                                    {#<li role="separator" class="divider"></li>#}
+                                </ul>
+                            </li>
+                            <li class="dropdown secondTitleMenu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">UCR SEARCH ENGINE<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Equipe RC Contact et booking</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown secondTitleMenu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">DATA QUALITY<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('crm_errors_analysis') }}">Errors' analysis</a></li>
+                                    <li><a href="#">Customer consent by brand</a></li>
+                                    <li><a href="#">Daily number of optin at null</a></li>
+                                    <li><a href="#">Metrics</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown secondTitleMenu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">TOOL BOX<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Qualité UCR</a></li>
+                                    <li><a href="#">Qualité Propriétaire</a></li>
+                                    <li><a href="#">Qualité Anonymisation</a></li>
+                                    <li><a href="#">Qualité PV</a></li>
+                                    <li><a href="#">Qualité Référence</a></li>
+                                    <li><a href="#">Qualité Midas</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown secondTitleMenu ">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">INTEGRATION FILES<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">File Upload</a></li>
+                                    <li><a href="#">Business View</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        {#<ul class="nav navbar-nav navbar-right">#}
+                        {#<li class="dropdown titleMenuNav ">#}
+                        {#<a href="#" class="dropdown-toggle" data-toggle="dropdown">Intégration Fichiers<span class="caret"></span></a>#}
+                        {#<ul class="dropdown-menu">#}
+                        {#<li><a href="#">File Upload</a></li>#}
+                        {#<li><a href="#">Business View</a></li>#}
+                        {#</ul>#}
+                        {#</li>#}
+                        {#</ul>#}
+
+
+                    </div>
+                </div>
+            </nav>
+        </div><!-- end of menu nav -->
+    {% endblock %}
+
+

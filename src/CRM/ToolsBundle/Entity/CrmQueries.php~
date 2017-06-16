@@ -1,0 +1,221 @@
+<?php
+
+namespace CRM\ToolsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CrmQueries
+ *
+ * @ORM\Table(name="crm_queries")
+ * @ORM\Entity(repositoryClass="CRM\ToolsBundle\Repository\CrmQueriesRepository")
+ */
+class CrmQueries
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="queryName", type="string", length=255)
+     */
+    private $queryName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="queryText", type="string", length=255)
+     */
+    private $queryText;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="groupName", type="string", length=255)
+     */
+    private $groupName;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="enableDisplay", type="integer")
+     */
+    private $enableDisplay;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pageName", type="string", length=255)
+     */
+    private $pageName;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="enableHistory", type="boolean")
+     */
+    private $enableHistory;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="connexion", type="string", length=255, nullable=true)
+     */
+    private $connexion;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set queryName
+     *
+     * @param string $queryName
+     * @return CrmQueries
+     */
+    public function setQueryName($queryName)
+    {
+        $this->queryName = $queryName;
+
+        return $this;
+    }
+
+    /**
+     * Get queryName
+     *
+     * @return string 
+     */
+    public function getQueryName()
+    {
+        return $this->queryName;
+    }
+
+    /**
+     * Set queryText
+     *
+     * @param string $queryText
+     * @return CrmQueries
+     */
+    public function setQueryText($queryText)
+    {
+        $this->queryText = $queryText;
+
+        return $this;
+    }
+
+    /**
+     * Get queryText
+     *
+     * @return string 
+     */
+    public function getQueryText()
+    {
+        return $this->queryText;
+    }
+
+    /**
+     * Set enableDisplay
+     *
+     * @param integer $enableDisplay
+     * @return CrmQueries
+     */
+    public function setEnableDisplay($enableDisplay)
+    {
+        $this->enableDisplay = $enableDisplay;
+
+        return $this;
+    }
+
+    /**
+     * Get enableDisplay
+     *
+     * @return integer 
+     */
+    public function getEnableDisplay()
+    {
+        return $this->enableDisplay;
+    }
+
+    /**
+     * Set pageName
+     *
+     * @param string $pageName
+     * @return CrmQueries
+     */
+    public function setPageName($pageName)
+    {
+        $this->pageName = $pageName;
+
+        return $this;
+    }
+
+    /**
+     * Get pageName
+     *
+     * @return string 
+     */
+    public function getPageName()
+    {
+        return $this->pageName;
+    }
+
+    /**
+     * Set enableHistory
+     *
+     * @param boolean $enableHistory
+     * @return CrmQueries
+     */
+    public function setEnableHistory($enableHistory)
+    {
+        $this->enableHistory = $enableHistory;
+
+        return $this;
+    }
+
+    /**
+     * Get enableHistory
+     *
+     * @return boolean 
+     */
+    public function getEnableHistory()
+    {
+        return $this->enableHistory;
+    }
+
+    /**
+     * Set connexion
+     *
+     * @param string $connexion
+     * @return CrmQueries
+     */
+    public function setConnexion($connexion)
+    {
+        $this->connexion = $connexion;
+
+        return $this;
+    }
+
+    /**
+     * Get connexion
+     *
+     * @return string 
+     */
+    public function getConnexion()
+    {
+        return $this->connexion;
+    }
+}

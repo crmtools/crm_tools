@@ -1,0 +1,27 @@
+crm_tools_homepage:
+    path:     /
+    defaults: { _controller: CRMToolsBundle:Default:index }
+
+crm_tools_graph:
+    path:     /graphs_performance
+    defaults: { _controller: CRMToolsBundle:Monitoring:graph }
+
+crm_logs_view:
+    path:     /logs_view
+    defaults: { _controller: CRMToolsBundle:Monitoring:contact }
+
+crm_errors_analysis:
+    path:     /errors_analysis
+    defaults: { _controller: CRMToolsBundle:DataQuality:errorsAnalysis}
+
+crm_tools_display:
+    path:     /display
+    defaults: { _controller: CRMToolsBundle:DataQuality:useProcess }
+
+crm_reload_request:
+    path:     /reload_request/{query_id}
+    defaults: { _controller: CRMToolsBundle:DataQuality:reloadRequest }
+
+
+
+

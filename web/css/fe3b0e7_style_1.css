@@ -1,0 +1,126 @@
+body {
+    width: 80%;
+    display: block;
+    margin: auto !important;
+    font-family: "Terminal Dosis",Arial,Helvetica,sans-serif !important;
+}
+
+/*********************************************CSS FROM HOME PAGE****************************************************/
+
+.containerHomePage{
+    margin-top: 50px;
+    /*border: 1px solid orangered;*/
+    width: 100% !important;
+    /*padding-left: 0px !important;*/
+    /*padding-right: 0px !important;*/
+}
+.homePage{
+    width: 75%;
+    /*display: block;*/
+    margin: auto !important;
+    margin-top: 180px !important;
+}
+
+.colonneMenu{
+    box-shadow: 3px 3px 5px #888888;
+    /*border: 1px solid red;*/
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    margin-right: 15px;
+}
+
+.menuHomePage .headMenu{
+    background-color: #00008B;
+    border: 1px solid #00008B;
+}
+
+.menuHomePage .headMenu p{
+    text-align: center;
+    /*font-weight: normal;*/
+    margin-top: 10px;
+    font-size: 19px;
+    color: #fff;
+}
+
+.menuHomePage .bodyMenu{
+    background-color: #E8E8E8;
+    border: 1px solid #00008B;
+    height: 370px;
+}
+
+.menuHomePage .bodyMenu ul li, .menuHomePage .bodyMenu ul li a{
+    color: #00008B;
+    margin: 20px 0px;
+    font-size: 18px;
+    margin-right: 3px !important;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    margin-right: 2px;
+    /*border: 1px solid red;*/
+}
+
+.menuHomePage .bodyMenu ul li a:hover, .menuHomePage .bodyMenu ul li a:focus{
+    color: #0099FF;
+}
+
+/***********************************************END HOME PAGE*****************************************************/
+
+
+/**************************************CSS FROM GRAPH PERFORMANCE PAGE*********************************************/
+
+.thLarger{
+    /*    border: 1px solid red !important;*/
+    width: 250px !important;
+}
+
+.greenCase{
+    background-color: #5bb024;
+    color: #fff;
+    text-align: center;
+}
+
+.orangeCase{
+    background-color: #ff9c15;
+    color: #fff;
+    text-align: center;
+}
+
+.table th{
+    background-color: #edf1f0;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    /*    text-align: center;*/
+    font-size: 13.4px;
+    vertical-align: middle !important;
+
+    /*    border: 1px solid red !important;*/
+}
+
+.table-bordered td:hover{
+    background-color: #37519f;
+    color: #fff;
+    /*    border: 1px solid red !important;*/
+}
+
+.middleText{
+    text-align: center;
+}
+
+.buttonDatePicker{
+    margin-top: 23px;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    background: #37519f !important;
+
+}
+
+.datepicker .datepicker-dropdown .dropdown-menu .datepicker-orient-left .datepicker-orient-bottom{
+    top: 62px !important;
+    left: 47px !important;
+    display: block !important;
+}
+
+.test{
+    width: 64% !important;
+}
+
+
