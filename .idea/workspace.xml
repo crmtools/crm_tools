@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56d79571-531d-40ad-9fda-2cf8d75da8ca" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DataQualityController.php" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DataQualityController.php" />
-    </list>
+    <list default="true" id="56d79571-531d-40ad-9fda-2cf8d75da8ca" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,8 +27,8 @@
       <file leaf-file-name="DataQualityController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DataQualityController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state relative-caret-position="559">
+              <caret line="52" column="27" lean-forward="true" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
               <folding>
                 <element signature="e#46#103#0#PHP" expanded="true" />
                 <element signature="e#1561#1670#0#PHP" expanded="false" />
@@ -671,12 +669,12 @@
       <workItem from="1497623470993" duration="836000" />
       <workItem from="1497624328936" duration="32000" />
       <workItem from="1497624385883" duration="2763000" />
-      <workItem from="1497859445560" duration="8080000" />
+      <workItem from="1497859445560" duration="8192000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="412813000" />
+    <option name="totallyTimeSpent" value="412925000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1057,8 +1055,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DataQualityController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="559">
+          <caret line="52" column="27" lean-forward="true" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
           <folding>
             <element signature="e#46#103#0#PHP" expanded="true" />
             <element signature="e#1561#1670#0#PHP" expanded="false" />
