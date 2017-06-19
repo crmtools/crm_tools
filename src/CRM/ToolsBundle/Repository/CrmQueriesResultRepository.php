@@ -45,12 +45,9 @@ class CrmQueriesResultRepository extends EntityRepository
             $query->execute();
             $result = $query->fetchAll();
             $groupName= $group['groupName'];
-//            var_dump($groupName);die;
             $dataQualities[$groupName]= $result;
 
-//             array_push($dataQualities, $result);
         }
-//        var_dump($dataQualities);die;
         return $dataQualities;
     }
 
@@ -70,12 +67,11 @@ class CrmQueriesResultRepository extends EntityRepository
         $query->execute();
         $queryTextArray = $query->fetchAll();
         $queryText = $queryTextArray[0]['queryText'];
-//        var_dump($queryText);die;
         return $queryText;
     }
 
     public function getResultFromUcr($queryText){
-//        var_dump('test');die;
+
 //        $sql= $queryText;
 //        echo $sql;die;
 //        var_dump($queryText);die;

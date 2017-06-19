@@ -38,9 +38,6 @@ class DataQualityController extends Controller
             'groupsName'   => $groupsName,
             'date_array'    => $date_array
         ));
-
-//        var_dump($test);die;
-
     }
 
     public function reloadRequestAction($query_id){

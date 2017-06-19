@@ -1,6 +1,6 @@
 <?php
 
-include_once 'C:\wamp\www\crm_tools\config.php';
+include_once 'C:\wamp64\www\crm_tools\config.php';
 ini_set('max_execution_time', 3000); 
 
 function isDate($date, $format)

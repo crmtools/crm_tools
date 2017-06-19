@@ -1,6 +1,6 @@
 <?php
 //var_dump('pouette');die;
-include_once 'C:\wamp\www\crm_tools\utility.php';
+include_once 'C:\wamp64\www\crm_tools\utility.php';
 
 $query_id = null;
 //var_dump($query_id);die;
