@@ -31,7 +31,6 @@ class DataQualityController extends Controller
         $em = $this->getDoctrine()->getManager();
         $dataQualities = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
             ->getDataQualityTable($groupsName, $date_array);
-//        var_dump($dataQualities);die;
 
         return $this->render('CRMToolsBundle:DataQuality:errorsAnalysis.html.twig',array(
             'dataQualities' => $dataQualities,

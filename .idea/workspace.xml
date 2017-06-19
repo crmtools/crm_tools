@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56d79571-531d-40ad-9fda-2cf8d75da8ca" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/homePage.html.twig" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Default/homePage.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DataQualityController.php" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DataQualityController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmQueriesResultRepository.php" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmQueriesResultRepository.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,22 +29,22 @@
       <file leaf-file-name="DataQualityController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DataQualityController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="81" column="38" lean-forward="true" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="38" />
+            <state relative-caret-position="141">
+              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="e#46#103#0#PHP" expanded="true" />
-                <element signature="e#1601#1710#0#PHP" expanded="false" />
-                <element signature="e#1863#1959#0#PHP" expanded="false" />
-                <element signature="e#3481#3511#0#PHP" expanded="false" />
-                <element signature="e#3635#3646#0#PHP" expanded="false" />
-                <element signature="e#4406#6031#0#PHP" expanded="false" />
-                <element signature="e#4790#5215#0#PHP" expanded="false" />
-                <element signature="e#5056#5215#0#PHP" expanded="false" />
-                <element signature="e#5354#5482#0#PHP" expanded="false" />
-                <element signature="e#5541#6021#0#PHP" expanded="false" />
-                <element signature="e#5632#5983#0#PHP" expanded="false" />
-                <marker date="1497875624286" expanded="false" signature="4195:4262" ph="SELECT Q FRO... CRMToolsBundle" />
-                <marker date="1497875624286" expanded="false" signature="5717:5833" ph="INSERT INTO result_quality... " />
+                <element signature="e#1561#1670#0#PHP" expanded="false" />
+                <element signature="e#1823#1919#0#PHP" expanded="false" />
+                <element signature="e#3441#3471#0#PHP" expanded="false" />
+                <element signature="e#3595#3606#0#PHP" expanded="false" />
+                <element signature="e#4366#5991#0#PHP" expanded="false" />
+                <element signature="e#4750#5175#0#PHP" expanded="false" />
+                <element signature="e#5016#5175#0#PHP" expanded="false" />
+                <element signature="e#5314#5442#0#PHP" expanded="false" />
+                <element signature="e#5501#5981#0#PHP" expanded="false" />
+                <element signature="e#5592#5943#0#PHP" expanded="false" />
+                <marker date="1497882238607" expanded="false" signature="4155:4222" ph="SELECT Q FRO... CRMToolsBundle" />
+                <marker date="1497882238607" expanded="false" signature="5677:5793" ph="INSERT INTO result_quality... " />
               </folding>
             </state>
           </provider>
@@ -58,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmQueriesResultRepository.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1532">
-              <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding>
                 <element signature="e#46#80#0#PHP" expanded="true" />
                 <marker date="1497876329171" expanded="true" signature="2081:2131" ph="DELETE FROM " />
@@ -236,8 +232,8 @@
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Monitoring/homePage.html.twig" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/DataQuality/errorsAnalysis.html.twig" />
-        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DataQualityController.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmQueriesResultRepository.php" />
+        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DataQualityController.php" />
       </list>
     </option>
   </component>
@@ -675,12 +671,12 @@
       <workItem from="1497623470993" duration="836000" />
       <workItem from="1497624328936" duration="32000" />
       <workItem from="1497624385883" duration="2763000" />
-      <workItem from="1497859445560" duration="7474000" />
+      <workItem from="1497859445560" duration="8080000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="412207000" />
+    <option name="totallyTimeSpent" value="412813000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1045,7 +1041,7 @@
     <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmQueriesResultRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1532">
-          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding>
             <element signature="e#46#80#0#PHP" expanded="true" />
             <marker date="1497876329171" expanded="true" signature="2081:2131" ph="DELETE FROM " />
@@ -1061,22 +1057,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/DataQualityController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="81" column="38" lean-forward="true" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="38" />
+        <state relative-caret-position="141">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#46#103#0#PHP" expanded="true" />
-            <element signature="e#1601#1710#0#PHP" expanded="false" />
-            <element signature="e#1863#1959#0#PHP" expanded="false" />
-            <element signature="e#3481#3511#0#PHP" expanded="false" />
-            <element signature="e#3635#3646#0#PHP" expanded="false" />
-            <element signature="e#4406#6031#0#PHP" expanded="false" />
-            <element signature="e#4790#5215#0#PHP" expanded="false" />
-            <element signature="e#5056#5215#0#PHP" expanded="false" />
-            <element signature="e#5354#5482#0#PHP" expanded="false" />
-            <element signature="e#5541#6021#0#PHP" expanded="false" />
-            <element signature="e#5632#5983#0#PHP" expanded="false" />
-            <marker date="1497875624286" expanded="false" signature="4195:4262" ph="SELECT Q FRO... CRMToolsBundle" />
-            <marker date="1497875624286" expanded="false" signature="5717:5833" ph="INSERT INTO result_quality... " />
+            <element signature="e#1561#1670#0#PHP" expanded="false" />
+            <element signature="e#1823#1919#0#PHP" expanded="false" />
+            <element signature="e#3441#3471#0#PHP" expanded="false" />
+            <element signature="e#3595#3606#0#PHP" expanded="false" />
+            <element signature="e#4366#5991#0#PHP" expanded="false" />
+            <element signature="e#4750#5175#0#PHP" expanded="false" />
+            <element signature="e#5016#5175#0#PHP" expanded="false" />
+            <element signature="e#5314#5442#0#PHP" expanded="false" />
+            <element signature="e#5501#5981#0#PHP" expanded="false" />
+            <element signature="e#5592#5943#0#PHP" expanded="false" />
+            <marker date="1497882238607" expanded="false" signature="4155:4222" ph="SELECT Q FRO... CRMToolsBundle" />
+            <marker date="1497882238607" expanded="false" signature="5677:5793" ph="INSERT INTO result_quality... " />
           </folding>
         </state>
       </provider>
