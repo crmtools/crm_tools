@@ -26,6 +26,7 @@ class DataQualityController extends Controller
         $em = $this->getDoctrine()->getManager();
         $groupsName = $em->getRepository('CRMToolsBundle:CrmQueries')
             ->getGroupsName();
+//        var_dump($groupsName);die;
 
         $em = $this->getDoctrine()->getManager();
         $dataQualities = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
@@ -80,7 +81,7 @@ class DataQualityController extends Controller
 //        var_dump($builder);die;
 
 //        echo '$queryId = null;'; //;die;
-        $php_file= 'C:\wamp\www\crm_tools\load.php';
+        $php_file= 'C:\wamp64\www\crm_tools\load.php';
 //        $php_file= 'C:\wamp\www\load.php';
         $php_script=  file_get_contents($php_file);
 //        $php_script = str_replace('$query_id = null;', $query_id ,$php_script);

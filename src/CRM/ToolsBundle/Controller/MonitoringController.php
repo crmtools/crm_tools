@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use CRM\ToolsBundle\Entity\GraphName;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class MonitoringController extends Controller
 {
@@ -48,6 +49,10 @@ class MonitoringController extends Controller
 
             $end_date = $date_picker->getEndDate();
             $end_date_picker = $end_date->format('Y-m-d');
+            if($start_date_picker > $end_date_picker){
+                throw new NotFoundHttpException('La "date début" doit être supèrieur à la "date fin"');
+
+            }
 
             $data_array_perf = $this->getDataPerformance($start_date, $end_date, $start_date_picker, $end_date_picker);
 
