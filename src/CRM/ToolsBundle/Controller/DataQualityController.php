@@ -31,7 +31,7 @@ class DataQualityController extends Controller
         $em = $this->getDoctrine()->getManager();
         $dataQualities = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
             ->getDataQualityTable($groupsName, $date_array);
-
+//        var_dump($dataQualities);die;
         return $this->render('CRMToolsBundle:DataQuality:errorsAnalysis.html.twig',array(
             'dataQualities' => $dataQualities,
             'groupsName'   => $groupsName,
@@ -40,21 +40,34 @@ class DataQualityController extends Controller
     }
 
     public function reloadRequestAction($query_id){
+//        var_dump($query_id);die;
+        $php_file= 'C:\wamp64\www\crm_tools\load_crm_queries_result.php';
+        $php_script=  file_get_contents($php_file);
+        $php_script = str_replace('$query_id = null;','$query_id = ' . $query_id . ";",$php_script);
 
-        $current_date= new \DateTime();
-        $current_date= $current_date->format('Y-m-d');
-
-        $em = $this->getDoctrine()->getManager();
-        $queryText = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
-            ->getOneQueryText($query_id, $current_date);
-//            ->reloadRequestOneQuery($query_id, $current_date);
-
-        $em = $this->getDoctrine()->getManager('customer');
-        $dataQualities = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
-            ->getResultFromUcr($queryText);
-//        var_dump($dataQualities);die;
+//        var_dump($php_script);die;
+        $process = new PhpProcess($php_script);
+//        var_dump($process);die;
+        $process->run();
+        $output = $process->getOutput();
+        echo $output;die;
 
         return $this->redirect( $this->generateUrl('crm_errors_analysis'));
+
+//        $current_date= new \DateTime();
+//        $current_date= $current_date->format('Y-m-d');
+//
+//        $em = $this->getDoctrine()->getManager();
+//        $queryText = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
+//            ->getOneQueryText($query_id, $current_date);
+////            ->reloadRequestOneQuery($query_id, $current_date);
+////        echo($queryText);die;
+//        $em = $this->getDoctrine()->getManager('customer');
+//        $dataQualities = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
+//            ->getResultFromUcr($queryText);
+//        var_dump($dataQualities);die;
+//
+//        return $this->redirect( $this->generateUrl('crm_errors_analysis'));
 
     }
 
@@ -63,7 +76,6 @@ class DataQualityController extends Controller
 //      phpinfo();die;
 
         $query_id= 159;
-
 
 //        $builder = new ProcessBuilder();
 //        $php_file= 'C:\wamp\www\load.php';
@@ -77,7 +89,7 @@ class DataQualityController extends Controller
 //        var_dump($builder);die;
 
 //        echo '$queryId = null;'; //;die;
-        $php_file= 'C:\wamp64\www\crm_tools\load.php';
+        $php_file= 'C:\wamp64\www\crm_tools\load_crm_queries_result.php';
 //        $php_file= 'C:\wamp\www\load.php';
         $php_script=  file_get_contents($php_file);
 //        $php_script = str_replace('$query_id = null;', $query_id ,$php_script);
