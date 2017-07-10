@@ -14,7 +14,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('CRMToolsBundle:Default:homepage.html.twig');
+        return $this->render('CRMToolsBundle:Default:index.html.twig');
     }
 
     public function logsViewAction()

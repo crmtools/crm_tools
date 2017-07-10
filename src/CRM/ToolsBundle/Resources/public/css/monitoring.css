@@ -58,13 +58,3 @@
     border: none !important;
 
 }
-
-.titleGraph{
-    text-align: center;
-    font-weight: bolder;
-    /*border: 1px solid red;*/
-    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
-    margin-bottom: 50px;
-    color: #37519f;
-}
-

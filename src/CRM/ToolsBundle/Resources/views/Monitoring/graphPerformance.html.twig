@@ -10,7 +10,7 @@
     {{ parent() }}
 
     <div class="container containerPage">
-        <h1 class="titleGraph">Graphs Performance</h1>
+        <h1 class="titlePage">Graphs Performance</h1>
         <!-- Begin of datepicker form -->
         <div class="bootstrap-iso">
             <div class="container-fluid">
@@ -44,33 +44,6 @@
                 </div>
             </div>
         </div><!-- end of datepicker form -->
-
-
-        <!-- Begin of datepicker form -->
-        {#<div class="bootstrap-iso">#}
-            {#<div class="container-fluid">#}
-                {#<div class="row">#}
-                    {#<div class="col-md-12">#}
-                        {#<!-- Form code begins -->#}
-                        {#<form action="{{path("crm_tools_graph")}}" method="GET">#}
-                            {#<div class="form-group col-md-2"> <!-- Date input -->#}
-                                {#<label class="control-label" for="date">Date debut</label>#}
-                                {#<input class="form-control" id="date" name="date" placeholder="{{ startDate|date("d/m/Y") }}" type="text"/>#}
-                            {#</div>#}
-                            {#<div class="form-group col-md-2"> <!-- Date input -->#}
-                                {#<label class="control-label" for="date">Date fin</label>#}
-                                {#<input class="form-control" id="date" name="date" placeholder="{{ endDate|date("d/m/Y") }}" type="text"/>#}
-                            {#</div>#}
-                            {#<div class="form-group"> <!-- Submit button -->#}
-                                {#<button class="btn btn-primary buttonDatePicker" name="submit" type="submit">Afficher</button>#}
-                            {#</div>#}
-                        {#</form>#}
-                        {#<!-- Form code ends -->#}
-
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div><!-- end of datepicker form -->#}
 
         <!-- begin of displaying the graph average -->
         <div class="bs-example col-md-12" data-example-id="simple-responsive-table" >

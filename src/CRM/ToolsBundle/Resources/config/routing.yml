@@ -22,6 +22,9 @@ crm_reload_request:
     path:     /reload_request/{query_id}
     defaults: { _controller: CRMToolsBundle:DataQuality:reloadRequest }
 
+crm_file_upload:
+    path:     /file_upload
+    defaults: { _controller: CRMToolsBundle:FileIntegration:fileUpload }
 
 
 
