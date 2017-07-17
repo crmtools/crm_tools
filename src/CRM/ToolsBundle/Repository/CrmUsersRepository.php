@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class CrmUsersRepository extends EntityRepository
 {
+    public function getCurrentUser($currentHostname)
+    {
+        $sql = "SELECT * FROM crm_users WHERE hostName='" .$currentHostname."';";
+
+//        echo $sql;die;
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
 }

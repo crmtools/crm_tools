@@ -1,0 +1,11 @@
+/**************************************CSS FROM FILE UPLOAD PAGE*********************************************/
+.FileImportTable{
+    margin-top: 20px;
+    /*border: 1px solid red;*/
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+}
+
+.FileImportTable th{
+    background: #0073e6;
+    color: #fff;
+}

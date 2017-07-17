@@ -7,3 +7,8 @@ services:
     #service_name:
     #    class: AppBundle\Directory\ClassName
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+
+    utility_class:
+        class: CRM\ToolsBundle\Service\utility
+    check_file_class:
+            class: CRM\ToolsBundle\Service\checkFile

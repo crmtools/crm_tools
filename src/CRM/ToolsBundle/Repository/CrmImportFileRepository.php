@@ -12,4 +12,43 @@ use Doctrine\ORM\EntityRepository;
  */
 class CrmImportFileRepository extends EntityRepository
 {
+    public function displayFilesImport(){
+//        $sqlGrpName = "SELECT DISTINCT groupName from crm_queries WHERE pageName = 'error_analysis'";
+        $sql = "SELECT
+                    fileName as file_name,
+                    username,
+                    hostname,
+                    nbrLine as 'Row Count',
+                    importDate,
+                    crm_import_file.processDate,
+                    tmp.to_be_processed as 'Total', 
+                    isAdmin
+                FROM crm_import_file
+                LEFT JOIN crm_users on crm_users.id= crm_import_file.user_id
+                LEFT JOIN 
+                (
+                  SELECT
+                  fileType AS file_type,
+                  processDate,
+                  SUM(nbrLine) AS to_be_processed
+                  FROM crm_import_file
+                  group by fileType, processDate
+                ) 
+                tmp ON tmp.file_type = crm_import_file.fileType AND tmp.processDate = crm_import_file.processDate
+                WHERE crm_import_file.processDate >= now()";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+    public function getFileImport($fileName){
+        $sql= "SELECT 1 from crm_import_file where fileName = '".$fileName."';";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
 }

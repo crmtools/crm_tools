@@ -36,11 +36,9 @@ class MonitoringController extends Controller
         /*Creat the date form*/
         $logsView = new LogsView();
         $form = $this->createForm (new LogsViewType(), $logsView);
+
         $request = $this->getRequest();
-
-
         if($request->isMethod('POST')) {
-
             $form->handleRequest($request);
             $date_picker = $form->getData();
 
@@ -51,7 +49,6 @@ class MonitoringController extends Controller
             $end_date_picker = $end_date->format('Y-m-d');
             if($start_date_picker > $end_date_picker){
                 throw new NotFoundHttpException('La "date début" doit être supèrieur à la "date fin"');
-
             }
 
             $data_array_perf = $this->getDataPerformance($start_date, $end_date, $start_date_picker, $end_date_picker);

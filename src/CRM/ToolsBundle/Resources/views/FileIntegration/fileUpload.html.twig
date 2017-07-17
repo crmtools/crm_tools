@@ -10,20 +10,49 @@
     {{ parent() }}
 
     <div class="container containerPage">
-        <h1 class="titlePage">File Upload</h1>
+        <h1 class="titlePage">File Import</h1>
         <!-- Begin of Upload form -->
-        <div class="bootstrap-iso">
-                    <div class="col-md-12">
-                        <form>
-                            <div class="col-md-3" class="form-group">
-                                {#<label for="exampleInputFile">File input</label>#}
-                                <input  type="file"  id="exampleInputFile">
-                            </div>
-                            <button type="submit" class="btn btn-default btn-xs">Upload</button>
-                        </form>
+        <form action="{{ path('crm_file_upload') }}" method="POST" {{ form_enctype(form) }}>
+            <div class="form-group col-md-3"> <!-- Date input -->
+                {{ form_widget(form.fileName) }}
+                {{ form_widget(form.fileName) }}
+            </div>
+            <button class="btn btn-default btn-xs" name="submit" type="submit">Upload</button>
+        </form>
 
-                    </div>
-        </div><!-- end of Upload form -->
+        <!-- Begin of File Import -->
+        <div class="FileImportTable">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Username</th>
+                        <th>Hostname</th>
+                        <th>Row Count</th>
+                        <th>Import date</th>
+                        <th>Process date</th>
+                        <th>Total</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for file in displayFilesImport %}
+                            <tr>
+                                <td>{{ file["file_name"] }}</td>
+                                <td>{{ file["username"] }}</td>
+                                <td>{{ file["hostname"] }}</td>
+                                <td>{{ file["Row Count"] }}</td>
+                                <td>{{ file["importDate"] }}</td>
+                                <td>{{ file["processDate"] }}</td>
+                                <td>{{ file["Total"] }}</td>
+                                    {% if currentUser[0]["isAdmin"] == 1  %}
+                                        <td><button type="button" class="btn btn-default btn-xs">Delete</button></td>
+                                    {% endif %}
+                            </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
 {% endblock %}

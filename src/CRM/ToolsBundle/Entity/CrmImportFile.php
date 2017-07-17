@@ -15,7 +15,7 @@ class CrmImportFile
 
     /**
      * @ORM\ManyToOne(targetEntity="CRM\ToolsBundle\Entity\CrmUsers")
-     * @ORM\JoinColumn(name="users_id",  nullable=false)
+     * @ORM\JoinColumn(name="user_id",  nullable=false)
      */
     private $crmUsers;
 
