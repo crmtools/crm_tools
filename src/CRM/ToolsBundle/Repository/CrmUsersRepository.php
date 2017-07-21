@@ -23,4 +23,16 @@ class CrmUsersRepository extends EntityRepository
         $result = $query->fetchAll();
         return $result;
     }
+
+    public function getUserId($currentHostname){
+        $sql = "SELECT id FROM crm_users WHERE hostName='" .$currentHostname."';";
+
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+
 }

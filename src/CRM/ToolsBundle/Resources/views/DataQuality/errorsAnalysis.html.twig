@@ -29,7 +29,7 @@
                                 <tr class="blueHover">
                                     <th>
                                         {#<input class="btn btn-primary btn-block buttonQueryName" type="button"  >#}
-                                        <a class="btn btn-primary btn-block buttonQueryName"href="{{ path('crm_reload_request', { 'query_id': data['id'] })  }}">{{ data['queryName'] }}</a>
+                                        <a class="btn btn-primary btn-block buttonQueryName" href="{{ path('crm_reload_request', { 'query_id': data['id'] }) }}">{{ data['queryName'] }}</a>
                                     </th>
                                     {#, { 'id': query_id }#}
                                     {% for current_date in date_array %}

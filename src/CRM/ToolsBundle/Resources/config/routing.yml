@@ -26,6 +26,11 @@ crm_file_upload:
     path:     /file_upload
     defaults: { _controller: CRMToolsBundle:FileIntegration:fileUpload }
 
+crm_file_delete:
+    path:     /file_delete/{file_id}/{file_name}
+    defaults: { _controller: CRMToolsBundle:FileIntegration:deleteFile }
+
+
 
 
 

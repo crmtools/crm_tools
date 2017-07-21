@@ -1,7 +1,7 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/service_container.html
 parameters:
-    #parameter_name: value
+    parameter_name: value
 
 services:
     #service_name:
@@ -11,4 +11,4 @@ services:
     utility_class:
         class: CRM\ToolsBundle\Service\utility
     check_file_class:
-            class: CRM\ToolsBundle\Service\checkFile
+        class: CRM\ToolsBundle\Service\checkFile

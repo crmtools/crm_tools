@@ -20,6 +20,108 @@
             <button class="btn btn-default btn-xs" name="submit" type="submit">Upload</button>
         </form>
 
+        {% if error_message is defined %}
+            <p class="col-md-12 errorMessage">{{ error_message }} </p>
+        {% endif %}
+
+        {% if errors_array is defined %}
+            <div class="FileImportTable">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>{{ fileName }}</th>
+                    </tr>
+                    <tr>
+                        <th>Error</th>
+                        <th>Number of error</th>
+                        <th>Percentage</th>
+                        <th>Critical</th>
+                    </thead>
+                    <tbody class="borderBodyTable">
+                    {% for error_name, error_count in errors_array %}
+                        {#{{ dump(config) }}#}
+                        <tr>
+                            {% if 'JEU_' in fileName %}
+
+                                <td>{{ config['game_config']['errors'][error_name]['label'] }}</td>
+                                <td>{{ error_count }}</td>
+                                {% if error_count == 0 %}
+                                    <td> 0 </td>
+                                {% else %}
+                                    {% set percentage = '%.2f'|format(100 * error_count /(nb_lines -1)) %}
+                                    <td>{{ percentage }}</td>
+                                {% endif %}
+                                {% if error_count > 0 %}
+                                    {% if config['game_config']['errors'][error_name]['critical'] == 1 %}
+                                        <td style="background-color: #F00000;"> &nbsp;</td>
+                                    {% else %}
+                                        {% for color_array in config['color_config'] %}
+                                            {% if color_array['min_value'] <= percentage and percentage <= color_array['max_value'] %}
+                                                <td style="background-color: {{ color_array['color_value'] }};">&nbsp;</td>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    {% endif %}
+                                {% else %}
+                                    <td style="background-color: #5bb024;">&nbsp;</td>
+                                {% endif %}
+
+                            {% elseif 'UPDATE_SUBSCRIPTION' in fileName %}
+
+                                <td>{{ config['update_subscription_config']['errors'][error_name]['label'] }}</td>
+                                <td>{{ error_count }}</td>
+                                {% if error_count == 0 %}
+                                    <td> 0 </td>
+                                {% else %}
+                                    {% set percentage = '%.2f'|format(100 * error_count /(nb_lines -1)) %}
+                                    <td>{{ percentage }}</td>
+                                {% endif %}
+                                {% if error_count > 0 %}
+                                    {% if config['update_subscription_config']['errors'][error_name]['critical'] == 1 %}
+                                        <td style="background-color: #F00000;"> &nbsp;</td>
+                                    {% else %}
+                                        {% for color_array in config['color_config'] %}
+                                            {% if color_array['min_value'] <= percentage and percentage <= color_array['max_value'] %}
+                                                <td style="background-color: {{ color_array['color_value'] }};">&nbsp;</td>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    {% endif %}
+                                {% else %}
+                                    <td style="background-color: #5bb024;">&nbsp;</td>
+                                {% endif %}
+
+                            {% elseif 'UPDATE_ADDRESS' in fileName %}
+
+                                <td>{{ config['update_address_config']['errors'][error_name]['label'] }}</td>
+                                <td>{{ error_count }}</td>
+                                {% if error_count == 0 %}
+                                    <td> 0 </td>
+                                {% else %}
+                                    {% set percentage = '%.2f'|format(100 * error_count /(nb_lines -1)) %}
+                                    <td>{{ percentage }}</td>
+                                {% endif %}
+                                {% if error_count > 0 %}
+                                    {% if config['update_address_config']['errors'][error_name]['critical'] == 1 %}
+                                        <td style="background-color: #F00000;"> &nbsp;</td>
+                                    {% else %}
+                                        {% for color_array in config['color_config'] %}
+                                            {% if color_array['min_value'] <= percentage and percentage <= color_array['max_value'] %}
+                                                <td style="background-color: {{ color_array['color_value'] }};">&nbsp;</td>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    {% endif %}
+                                {% else %}
+                                    <td style="background-color: #5bb024;">&nbsp;</td>
+                                {% endif %}
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
         <!-- Begin of File Import -->
         <div class="FileImportTable">
             <table class="table table-striped">
@@ -35,7 +137,7 @@
                         <th>Delete</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="borderBodyTable">
                     {% for file in displayFilesImport %}
                             <tr>
                                 <td>{{ file["file_name"] }}</td>
@@ -45,14 +147,16 @@
                                 <td>{{ file["importDate"] }}</td>
                                 <td>{{ file["processDate"] }}</td>
                                 <td>{{ file["Total"] }}</td>
-                                    {% if currentUser[0]["isAdmin"] == 1  %}
-                                        <td><button type="button" class="btn btn-default btn-xs">Delete</button></td>
+                                    {% if currentUser[0]["isAdmin"] == 1 or currentUser[0]["id"] == file["user_id"]   %}
+                                        <td><a class="btn btn-primary btn-sm buttonQueryName"    href="{{ path('crm_file_delete', {'file_id': file["id"], 'file_name': file["file_name"] }) }}">Delete</a></td>
+                                            {#<a class="btn btn-primary btn-block buttonQueryName" href="{{ path('crm_reload_request', { 'query_id': data['id'] }) }}">{{ data['queryName'] }}</a>#}
                                     {% endif %}
                             </tr>
                     {% endfor %}
                 </tbody>
             </table>
-        </div>
+        </div> <!-- end of File Import -->
     </div>
+
 
 {% endblock %}

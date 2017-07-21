@@ -8,8 +8,20 @@
  */
 namespace CRM\ToolsBundle\Service;
 
-class utility
-{
+use Doctrine\ORM\EntityManager;
+use CRM\ToolsBundle\Entity\CrmImportFile;
+
+class utility{
+
+    function getEntityManager(){
+
+        $entityManager = $this->get('get_entity_manager');
+
+        return $entityManager;
+    }
+
+
+
     function isDate($date, $format)
     {
         $d = DateTime::createFromFormat($format, $date);
@@ -123,40 +135,27 @@ class utility
         return false;
     }
 
-    function isCurrentUserAdmin($bdd)
-    {
-
-        $hostname = getUserHostname();
-        $result = $bdd->query("SELECT * FROM crm_users where hostname = '$hostname'");
-        foreach($result as $row)
-        {
-            if($row['is_admin'])
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     function getAge($date)
     {
         return $date->diff(new \DateTime("now"))->format('%y');
     }
 
-    public function startsWith($haystack, $needle)
+
+    public function startsWith($file_name, $beg_name_file)
     {
-        $length = strlen($needle);
-        return (substr($haystack, 0, $length) === $needle);
+
+        $length = strlen($beg_name_file);
+        return (substr($file_name, 0, $length) === $beg_name_file);
     }
 
-    function endsWith($haystack, $needle)
+    function endsWith($file_name, $end_name_file)
     {
-        $length = strlen($needle);
+        $length = strlen($end_name_file);
         if ($length == 0) {
             return true;
         }
 
-        return (substr($haystack, -$length) === $needle);
+        return (substr($file_name, -$length) === $end_name_file);
     }
 
 
@@ -182,9 +181,6 @@ class utility
         return $d && $d->format($format) == $date;
     }
 
-
-
-
     function generate_days($start_date,$end_date)
     {
         $date_array = array();
@@ -203,63 +199,6 @@ class utility
         }
         array_push($date_array,$start_date->format('Y-m-d'));
         return ($date_array);
-    }
-
-    function connexion_base_mysql()
-    {
-        global $config;
-        $bdd = new PDO($config['database_string_mysql'],$config['database_user_mysql'],$config['database_password_mysql']);
-        $bdd->exec('SET NAMES utf8');
-        $bdd->beginTransaction();
-        return($bdd);
-    }
-
-    function connexion_base_mysql_new()
-    {
-        global $config;
-        $bdd = new PDO($config['database_string_mysql'],$config['database_user_mysql'],$config['database_password_mysql']);
-        $bdd->exec('SET NAMES utf8');
-        //$bdd->beginTransaction();
-        return($bdd);
-    }
-
-    function get_id_connexion($env)
-    {
-        $bdd = connexion_base_mysql();
-        $query = "select * from crm_connexion where Name = '$env'";
-        $result_query = $bdd->query($query);
-        foreach($result_query as $row_connexion)
-        {
-            $tab = array(	1 => $row_connexion['Connection_String'],
-                2 => $row_connexion['UserName'],
-                3 => $row_connexion['PassWord']);
-        }
-        return ($tab);
-    }
-
-    function connexion_base_oracle($env)
-    {
-        $tab = get_id_connexion($env);
-        $bdd = oci_connect($tab[2], $tab[3], $tab[1]);
-        if (!$bdd)
-        {
-            $e = oci_error();
-            trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-        }
-        $prepared_statement = oci_parse($bdd, "ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD HH24:MI:SS'");
-        oci_execute($prepared_statement);
-
-        //$prepared_statement = oci_parse($bdd_oracle, $oracle_query_string);
-        //$bdd->exec("ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD HH24:MI:SS'");
-        return($bdd);
-    }
-
-
-    function get_connexion($bdd_mysql, $connexion)
-    {
-        $query = "select * from crm_connexion where Name = '$connexion'";
-        $result_query = $bdd_mysql->query($query);
-        return ($result_query);
     }
 
     function generate_array_abscissa($days)
