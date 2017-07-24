@@ -87,6 +87,11 @@ class FileIntegrationController extends Controller
 
         return $this->redirect($this->generateUrl('crm_file_upload'));
     }
+
+    public function businessViewAction(){
+
+        return $this->render('CRMToolsBundle:FileIntegration:businessView.html.twig');
+    }
 }
 
 

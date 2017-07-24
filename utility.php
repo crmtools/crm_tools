@@ -242,7 +242,6 @@ function connexion_base_oracle($env)
 {
 	
 	$tab = get_id_connexion($env);
-//    var_dump($tab);die;
 	$bdd = oci_connect($tab[2], $tab[3], $tab[1]);
 	if (!$bdd) 
 	{

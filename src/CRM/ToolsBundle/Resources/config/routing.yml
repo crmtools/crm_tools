@@ -30,6 +30,9 @@ crm_file_delete:
     path:     /file_delete/{file_id}/{file_name}
     defaults: { _controller: CRMToolsBundle:FileIntegration:deleteFile }
 
+crm_business_view:
+    path:     /business_view
+    defaults: { _controller: CRMToolsBundle:FileIntegration:businessView }
 
 
 
