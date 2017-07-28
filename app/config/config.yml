@@ -98,12 +98,21 @@ doctrine:
                 user:     '%database_user%'
                 password: '%database_password%'
                 charset:  UTF8
-            customer:
+            oracle_dev:
                 driver:   pdo_oci
                 host:     eceisexam-scan.pvcp.intra
                 port:     1521
                 service:  true
                 dbname:   CRMRC1.PVCP.ACC
+                user:     zkissarli[CRM_TEAM]
+                password: zkissarli
+                charset:  UTF8
+            oracle_prod:
+                driver:   pdo_oci
+                host:     eceisexpe-scan.pvcp.intra
+                port:     1521
+                service:  true
+                dbname:   CRMRC1.PVCP.PRD
                 user:     zkissarli[CRM_TEAM]
                 password: zkissarli
                 charset:  UTF8
@@ -115,7 +124,11 @@ doctrine:
                 connection: default
                 mappings:
                     CRMToolsBundle: ~
-            customer:
-                connection: customer
+            oracle_dev:
+                connection: oracle_dev
+                mappings:
+                    CRMToolsBundle: ~
+            oracle_prod:
+                connection: oracle_prod
                 mappings:
                     CRMToolsBundle: ~

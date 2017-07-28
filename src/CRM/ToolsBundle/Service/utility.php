@@ -135,6 +135,21 @@ class utility{
         return false;
     }
 
+    function isCurrentUserAdmin($bdd)
+    {
+
+        $hostname = getUserHostname();
+        $result = $bdd->query("SELECT * FROM crm_users where hostname = '$hostname'");
+        foreach($result as $row)
+        {
+            if($row['is_admin'])
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     function getAge($date)
     {
         return $date->diff(new \DateTime("now"))->format('%y');
@@ -158,46 +173,21 @@ class utility{
         return (substr($file_name, -$length) === $end_name_file);
     }
 
-
-    function connexion($table)
-    {
-        $bdd = connexion_base_mysql();
-
-        $date = date('Y-m-d');
-        $hostname = substr(gethostbyaddr($_SERVER['REMOTE_ADDR']),0,-11);
-
-        /*  echo $date  . '<br>';
-         echo $hostname; */
-        $query_delete = "delete from connexion_of_people where id_connexion = '$hostname' and equipe = '$table' and date_connexion = str_to_date('$date','%Y-%m-%d')";
-        $bdd->exec($query_delete);
-        $query_insert = "insert into connexion_of_people(id_connexion,date_connexion,equipe) values('$hostname', str_to_date('$date','%Y-%m-%d'),'$table')";
-        $bdd->exec($query_insert);
-        $bdd->commit();
-    }
-
     function isValiDate($date, $format)
     {
         $d = \DateTime::createFromFormat($format, $date);
         return $d && $d->format($format) == $date;
     }
 
-    function generate_days($start_date,$end_date)
+    function generate_days($start_date, $end_date)
     {
         $date_array = array();
-        $start_date = date("d-m-Y", strtotime($start_date));
-        $end_date = date("d-m-Y", strtotime($end_date));
-        /* if(!isValiDate($start_date) || !isValiDate($end_date) || $end_date < $start_date) {
-            die('One of the dates is not in the valid format(DD-MM-YYYY) Or last date is before first date');
-        } */
-        $start_date = DateTime::createFromFormat('!d-m-Y', $start_date);
-        $start_date_tmp = $start_date;
-        $end_date = DateTime::createFromFormat('!d-m-Y', $end_date);
-        while ($start_date<$end_date)
-        {
-            array_push($date_array,$start_date->format('Y-m-d'));
+
+        while ($start_date <= $end_date) {
+            array_push($date_array, $start_date->format('Y-m-d'));
             $start_date->modify('+1 day');
         }
-        array_push($date_array,$start_date->format('Y-m-d'));
+
         return ($date_array);
     }
 
@@ -467,35 +457,6 @@ class utility{
             echo '</tr>';
         }
         echo '</table>';
-    }
-
-    function get_user()
-    {
-        $bdd = connexion_base_mysql();
-
-        $date = date('Y-m-d');
-        $hostname = getUserHostname();
-
-        $query_insert = "SELECT username FROM crm_users where hostname = '$hostname'";
-
-        $select = $bdd->query($query_insert);
-        $count_column = $select->columnCount();
-        foreach($select as $row)
-        {
-            for($i=0;$i<$count_column;$i++)// = $i + 2)
-            {
-                $name = $row[$i];
-            }
-        }
-        if ($name != '')
-        {
-            echo "Welcome " . $name . " ,Have a good day :)";
-        }
-        else
-        {
-            echo "Salut inconnu,Bienvenue :)";
-        }
-        $bdd->commit();
     }
 
     function autorized_user($indice)

@@ -313,18 +313,22 @@ class checkFile extends utility{
             $this->check_file_array['errors_array']= $errors_array;
             $this->check_file_array['nb_lines']= $nb_lines;
 
-            foreach($errors_array as $error ){
-                if ($error > 0) {
-                    $critical_error_found = 1;
+            foreach($errors_array as $error_name => $error_count ) {
+                $critical = $this->config['game_config']['errors'][$error_name]['critical'];
+                if ($error_count > 0){
+                    if ($critical > 0) {
+                        $critical_error_found = 1;
+                    }
                 }
             }
+
         }else if($this->startsWith($file_name,'UPDATE_SUBSCRIPTION') && sizeof(explode('_',$file_name)) >= 5 ){
             $file_type = "UPDATE_SUBSCRIPTION";
             $file_date = explode('_',$file_name)[sizeof(explode('_',$file_name)) - 2];
 
             move_uploaded_file($tmp_file, $file_path);
             $file_lines = file($file_path);
-            $nominal_line_size = sizeof(explode('|', $this->config['game_config']['header']));
+            $nominal_line_size = sizeof(explode('|', $this->config['update_subscription_config']['header']));
 
             // fill errors array with 0 values
             $errors_array = array
@@ -375,6 +379,8 @@ class checkFile extends utility{
 
             foreach ($file_lines as $line){
                 $nb_lines += 1;
+                $row_invalid = false;
+
                 if ($nb_lines == 1) {
                     $bom = pack("CCC", 0xef, 0xbb, 0xbf);
                     if (0 === strncmp($line, $bom, 3)) {
@@ -414,10 +420,10 @@ class checkFile extends utility{
                         $errors_array['email_validity'] += 1;
                         $row_invalid = true;
                     }
-                    if(!validateDate($columns[6],'d/m/Y')){
+                    if(!$this->isValiDate($columns[6],'d/m/Y')){
                         $errors_array['registration_date_validity_1'] += 1;
                         $row_invalid = true;
-                    }else if((DateTime::createFromFormat('d/m/Y', $columns[6])> new DateTime("now") )){
+                    }else if((\DateTime::createFromFormat('d/m/Y', $columns[6])> new \DateTime("now") )){
                         $errors_array['registration_date_validity_2'] += 1;
                         $row_invalid = true;
                     }
@@ -436,9 +442,12 @@ class checkFile extends utility{
             $this->check_file_array['errors_array']= $errors_array;
             $this->check_file_array['nb_lines']= $nb_lines;
 
-            foreach($errors_array as $error ){
-                if ($error > 0) {
-                    $critical_error_found = 1;
+            foreach($errors_array as $error_name => $error_count ) {
+                $critical = $this->config['update_subscription_config']['errors'][$error_name]['critical'];
+                if ($error_count > 0){
+                    if ($critical > 0) {
+                        $critical_error_found = 1;
+                    }
                 }
             }
 
@@ -550,9 +559,9 @@ class checkFile extends utility{
                         $errors_array['country_validity_1'] += 1;
                         $row_invalid = true;
                     }
-                    if($columns[13] != null && !in_array($columns[13],$this->config['countries']))
-                    {$errors_array['country_validity_2'] += 1;
-                    $row_invalid = true;
+                    if($columns[13] != null && !in_array($columns[13],$this->config['countries'])) {
+                        $errors_array['country_validity_2'] += 1;
+                        $row_invalid = true;
                     }
 
                     if($row_invalid) {
@@ -566,9 +575,12 @@ class checkFile extends utility{
             $this->check_file_array['errors_array']= $errors_array;
             $this->check_file_array['nb_lines']= $nb_lines;
 
-            foreach($errors_array as $error ){
-                if ($error > 0) {
-                    $critical_error_found = 1;
+            foreach($errors_array as $error_name => $error_count ) {
+                $critical = $this->config['update_address_config']['errors'][$error_name]['critical'];
+                if ($error_count > 0){
+                    if ($critical > 0) {
+                        $critical_error_found = 1;
+                    }
                 }
             }
 
@@ -592,16 +604,6 @@ class checkFile extends utility{
         }
 
         return $this->check_file_array;
-
-//        if($critical_error_found == 0 ){
-//            $this->insert_upload_file($file_name, $file_date, $file_type, $em, $nbr_limit, $user_id);
-//            exec('move C:\wamp64\www\buff_upload\* C:\wamp64\www\tmp_file_import\ ');
-//        }else{
-//            unlink($this->config['uploaded_files_tmp_directory'] . $file_name);
-//        }
-//
-//        return $this->check_file_array;
-
     }
 
     public function insert_upload_file($file_name, $file_date, $file_type, $em, $nbr_limit, $user_id){

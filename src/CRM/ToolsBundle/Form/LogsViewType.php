@@ -22,8 +22,9 @@ class LogsViewType extends AbstractType
         $start_date->modify('-7 day');
         $start_date= $start_date->format('d-m-Y');
 
-        $builder->add('startDate', DateType::class, array(
-                    'label'     =>'Date debut',
+//        $builder->add('startDate', DateType::class, array(    // avec DateType::class
+        $builder->add('startDate', 'date', array(
+                    'label'     =>'Start date',
                     'widget'    => 'single_text',
                     'format'    => 'dd-MM-yyyy',
                     'html5'     => false,
@@ -32,8 +33,8 @@ class LogsViewType extends AbstractType
                                       'name'        => 'date',
                                       'placeholder' => $start_date]
                 ))
-                ->add('endDate', DateType::class, array(
-                    'label'     =>'Date fin',
+                ->add('endDate', 'date', array(
+                    'label'     => 'End date',
                     'widget'    => 'single_text',
                     'html5'     => false,
                     'format'    => 'dd-MM-yyyy',
@@ -42,41 +43,6 @@ class LogsViewType extends AbstractType
                                       'name'        => 'date',
                                       'placeholder' => $end_date]
                 ));
-
-       //encien formulaire
-//        $builder->add('startDate',
-//            'date',array(
-//                'label'     => 'Date début formulaire',
-//                'widget'    => 'single_text',
-//                'format'    => 'dd-MM-yyyy',
-//                'attr' => ['id' => 'date'],
-//                'attr' => ['name' => 'date'],
-//                'attr' => ['class' => 'js-datepicker'],
-//            ))
-//            ->add('endDate',
-//                'date',array(
-//                    'label'     => 'Date Fin formulaire',
-//                    'widget'    => 'single_text',
-//                    'format'    => 'dd-MM-yyyy',
-//                    'attr'      => array(
-//                        'class' => 'datepicker')
-//                ));
-
-//        $builder->add('fileName', TextType::class);
-//                ->add('id')
-//                ->add('fileNameRoot')
-//                ->add('fileDate', DateType::class)
-//                ->add('startDate')
-//                ->add('endDate')
-//                ->add('duration')
-//                ->add('iteration')
-//                ->add('nbrClient')
-//                ->add('nbrEvent')
-//                ->add('nbrBooking')
-//                ->add('fileDate')
-//                ->add('graphName')
-//                ->add('averageDurationJob')
-//                ->add('durationString');
     }
 
     /**

@@ -14,7 +14,8 @@ class CrmImportFileType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('fileName', FileType::class);
+        $builder->add('fileName', 'file');
+//        $builder->add('fileName', FileType::class); // avec la class FileType::class
     }
     
     /**

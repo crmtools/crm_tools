@@ -8,10 +8,91 @@
 
 {% block body %}
     {{ parent() }}
-
     <div class="container containerPage">
         <h1 class="titlePage">Business View</h1>
-    </div>
 
+        <!-- Begin of datepicker form -->
+        <div class="bootstrap-iso">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Form code begins -->
+                        <form action="{{ path('crm_business_view') }}" method="POST">
+                            {{ form_start(form) }}
+
+                            <div class="form-group col-md-2">
+                                {{ form_label(form.startDate) }}
+                                {{ form_errors(form.startDate) }}
+                                {{ form_widget(form.startDate, {'attr': {'placeholder':  start_date_display  }}) }}
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                {{ form_label(form.endDate) }}
+                                {{ form_errors(form.endDate)}}
+                                {{ form_widget(form.endDate, {'attr': {'placeholder':  end_date_display  }}) }}
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                {{ form_label(form.find) }}
+                                {{ form_errors(form.find, {'attr': {'class': 'form-control js-datepicker'}}) }}
+                                {{ form_widget(form.find) }}
+                            </div>
+
+                            <div class="form-group"> <!-- Submit button -->
+                                <button class="btn btn-primary buttonDatePicker" name="submit" type="submit">Display</button>
+                            </div>
+                            {{ form_end(form) }}
+                        </form>
+                        <!-- Form code ends -->
+                    </div>
+                </div>
+            </div>
+        </div><!-- end of datepicker form -->
+
+        <!-- Begin of processed files data -->
+        <div class="fileIntegrationTable containerPage">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tbody>
+                        {% for currentDate, files_data in processed_files_array %}
+                            {% if files_data!= NULL  %}
+                                <tbody class="borderFileTable">
+                                    <tr class="greenBackground">
+                                        <th>{{ currentDate }}</th>
+                                    </tr>
+                                    <tr class="borderRighTable">
+                                        <th>File Name</th>
+                                        <th>File Type</th>
+                                        <th>Date Processed</th>
+                                        <th>Total</th>
+                                        <th>Insert</th>
+                                        <th>Update</th>
+                                        <th>Rejects</th>
+                                        <th>Error List</th>
+                                    </tr>
+                                    {% for file in files_data %}
+                                        <tr class="borderRighTable">
+                                            <td>{{ file["FILE_NAME"] }}</td>
+                                            <td>{{ file["GAME_NAME"] }}</td>
+                                            <td>{{ file["DATE_TRAITEMENT"] }}</td>
+                                            <td>{{ file["TOTAL"] }}</td>
+                                            <td>{{ file["INSERT"] }}</td>
+                                            <td>{{ file["UPDATE"] }}</td>
+                                            <td>{{ file["REJECT"] }}</td>
+                                            <td>{{ file["ERROR_LIST"] }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tr>
+                                    <td class="lineBreak">&nbsp;</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      <!-- end of processed files data -->
+    </div>
 
 {% endblock %}

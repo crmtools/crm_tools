@@ -1,14 +1,15 @@
-/**************************************CSS FROM FILE UPLOAD PAGE*********************************************/
-.FileImportTable{
+/**************************************CSS FROM FILE INTEGRATION PAGES*********************************************/
+.fileIntegrationTable{
     margin-top: 20px;
     /*border: 1px solid red;*/
     font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
 }
 
-.FileImportTable th{
+.fileIntegrationTable th{
     background: #0073e6;
     color: #fff;
 }
+
 .borderBodyTable{
     border: 1.5px solid #ddd;
 }
@@ -20,3 +21,14 @@
     font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
     margin: 15px 0px;
 }
+
+/**************************************CSS FROM BUSINESS VIEW PAGE*********************************************/
+
+.greenBackground th{
+    background: #5bb024;
+}
+
+.borderFileTable{
+    border: 2px solid #ddd;
+}
+

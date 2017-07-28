@@ -40,28 +40,20 @@ class DataQualityController extends Controller
     }
 
     public function reloadRequestAction($query_id){
-//        var_dump($query_id);die;
+
         $php_file= 'C:\wamp64\www\crm_tools\load_crm_queries_result.php';
         $php_script=  file_get_contents($php_file);
         $php_script = str_replace('$query_id = null;','$query_id = ' . $query_id . ";",$php_script);
 
-//        var_dump($php_script);die;
         $process = new PhpProcess($php_script);
-//        var_dump($process);die;
+
         $process->run();
         $output = $process->getOutput();
         echo $output;die;
 
         return $this->redirect( $this->generateUrl('crm_errors_analysis'));
 
-//        $current_date= new \DateTime();
-//        $current_date= $current_date->format('Y-m-d');
-//
-//        $em = $this->getDoctrine()->getManager();
-//        $queryText = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
-//            ->getOneQueryText($query_id, $current_date);
-////            ->reloadRequestOneQuery($query_id, $current_date);
-////        echo($queryText);die;
+
 //        $em = $this->getDoctrine()->getManager('customer');
 //        $dataQualities = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
 //            ->getResultFromUcr($queryText);
@@ -73,7 +65,6 @@ class DataQualityController extends Controller
 
 
     public function useProcessAction(){
-//      phpinfo();die;
 
         $query_id= 159;
 

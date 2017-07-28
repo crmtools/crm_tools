@@ -3,6 +3,7 @@
 namespace CRM\ToolsBundle\Controller;
 
 use CRM\ToolsBundle\Service\getEntityManager;
+use Doctrine\DBAL\VersionAwarePlatformDriver;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,6 +11,9 @@ use Symfony\Component\HttpFoundation\Request;
 use CRM\ToolsBundle\Entity\CrmImportFile;
 use CRM\ToolsBundle\Form\CrmImportFileType;
 use CRM\ToolsBundle\Service\checkFile;
+use CRM\ToolsBundle\Entity\CLI_DATA_IMPORTS;
+use CRM\ToolsBundle\Form\CLI_DATA_IMPORTSType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class FileIntegrationController extends Controller
 {
@@ -88,9 +92,76 @@ class FileIntegrationController extends Controller
         return $this->redirect($this->generateUrl('crm_file_upload'));
     }
 
-    public function businessViewAction(){
+    public function businessViewAction(Request $request){
 
-        return $this->render('CRMToolsBundle:FileIntegration:businessView.html.twig');
+        $end_date = new \DateTime();
+        $start_date = new \DateTime();
+        $start_date->modify('-7 day');
+
+        $start_date_display = $start_date->format('d-m-Y');
+        $end_date_display = $end_date->format('d-m-Y');
+
+        $date_array = $this->get('check_file_class')->generate_days($start_date, $end_date);
+        $file_name_pattern = NULL;
+
+        /*Creat the form*/
+        $cliDataImports = new CLI_DATA_IMPORTS();
+        $form = $this->createForm (CLI_DATA_IMPORTSType::class, $cliDataImports);
+
+        ;
+        if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
+
+            $start_date  = $form->get("startDate")->getData();
+            $end_date = $form->get("endDate")->getData();
+
+            if (($start_date && $end_date) && $start_date > $end_date){
+                return $this->redirect($this->generateUrl('crm_business_view'));
+            }
+
+            if($start_date && $end_date== NULL ){
+                echo 'la date début est renseigné et NON la date FIN';
+                $end_date = $end_date = new \DateTime();
+            }else if($end_date && $start_date== NULL){
+                echo 'la date fin est renseigné et NON la date DEBUT';
+                $start_date = new \DateTime();
+                $start_date->modify('-7 day');
+            }else if ($start_date == NULL && $end_date == NULL){
+                $end_date = new \DateTime();
+                $start_date = new \DateTime();
+                $start_date->modify('-7 day');
+            }
+
+            $file_name_pattern = $form->get("find")->getData();
+            if($file_name_pattern){
+                $file_name_pattern = " and upper(FILE_NAME) LIKE upper('%$file_name_pattern%')";
+            }
+
+            $date_array = $this->get('check_file_class')->generate_days($start_date, $end_date);
+        }
+
+        try{
+            rsort($date_array);
+
+            if ($file_name_pattern)
+            {
+                $em = $this->getDoctrine()->getManager('oracle_prod');
+                $processed_files_array= $em->getRepository('CRMToolsBundle:CLI_DATA_IMPORTS')->getProcessedFilesData($date_array, $file_name_pattern);
+            }else{
+                $em = $this->getDoctrine()->getManager('oracle_prod');
+                $processed_files_array= $em->getRepository('CRMToolsBundle:CLI_DATA_IMPORTS')->getProcessedFilesData($date_array);
+            }
+
+        }catch (Exception $e){
+            echo $e->getMessage();
+        }
+
+        return $this->render('CRMToolsBundle:FileIntegration:businessView.html.twig', array(
+            'form'                             => $form->createView(),
+            'date_array'                       => $date_array,
+            'start_date_display'               => $start_date_display,
+            'end_date_display'                 => $end_date_display,
+            'processed_files_array'            => $processed_files_array
+        ));
     }
 }
 

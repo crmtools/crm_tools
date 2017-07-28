@@ -17,12 +17,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Form code begins -->
-                        <form action="{{ path('crm_tools_graph') }}" method="POST" {{ form_enctype(form) }}>
-                                <div class="form-group col-md-2"> <!-- Date input -->
-                                    {{ form_label(form.startDate) }}
-                                    {{ form_widget(form.startDate) }}
-                                    {{ form_widget(form.startDate) }}
-                                </div>
+                        <form action="{{ path('crm_tools_graph') }}" method="POST" {{ form_start(form) }}
+                            <div class="form-group col-md-2"> <!-- Date input -->
+                                {{ form_label(form.startDate) }}
+                                {{ form_widget(form.startDate) }}
+                                {{ form_widget(form.startDate) }}
+                            </div>
 
                             <div class="form-group col-md-2"> <!-- Date input -->
                                 {{ form_label(form.endDate) }}
@@ -30,23 +30,18 @@
                                 {{ form_widget(form.endDate) }}
                             </div>
 
-                            {#<div class="bouton" style="margin-left: 186px;">#}
-                                {#<input type="submit" value="{{ 'Envoyer'|trans }}" />#}
-                            {#</div>#}
-
                             <div class="form-group"> <!-- Submit button -->
-                                <button class="btn btn-primary buttonDatePicker" name="submit" type="submit">Afficher</button>
+                                <button class="btn btn-primary buttonDatePicker" name="submit" type="submit">Display</button>
                             </div>
                         </form>
                         <!-- Form code ends -->
-
                     </div>
                 </div>
             </div>
         </div><!-- end of datepicker form -->
 
         <!-- begin of displaying the graph average -->
-        <div class="bs-example col-md-12" data-example-id="simple-responsive-table" >
+        <div class="bs-example col-md-12 containerPage" data-example-id="simple-responsive-table" >
             <div class="table-responsive">
                 <table class="table table-bordered greyColorTh">
                     <thead >
