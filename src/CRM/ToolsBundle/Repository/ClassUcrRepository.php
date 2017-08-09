@@ -15,7 +15,7 @@ class ClassUcrRepository extends EntityRepository{
     public function getQueryResulTotalCompaigns($queryContent){
         $queryResult= array();
         $sql= $queryContent['queryText'];
-//        echo $sql;die;
+
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
@@ -25,13 +25,13 @@ class ClassUcrRepository extends EntityRepository{
     }
 
     public function getQueryResult($queryContent, $start_date_param = null , $end_date_param = null ){
-        var_dump($queryContent['queryText']);die;
         $queryResult= array();
         $sql= $queryContent['queryText'];
+        
         if($start_date_param!=null && $end_date_param!=null){
-            $query= $queryContent['queryText'];
             $sql= str_replace("> SYSDATE - 35", "BETWEEN to_date('".$start_date_param."','DD-MM-YYYY') AND to_date('".$end_date_param."','DD-MM-YYYY')", $sql);
         }
+
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
