@@ -1,0 +1,75 @@
+{% extends "CRMToolsBundle::layout.html.twig" %}
+
+{% block title %}
+    Game Integration - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container containerPage">
+        <h1 class="titlePage">Game Integration</h1>
+
+        <!-- Begin of datepicker form -->
+        <div class="bootstrap-iso">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Form code begins -->
+                        <form action="{{ path('crm_game_integration') }}" method="POST">
+                            {{ form_start(form) }}
+
+                            <div class="form-group col-md-2">
+                                {{ form_label(form.startDate) }}
+                                {{ form_errors(form.startDate) }}
+                                {{ form_widget(form.startDate, {'attr': {'placeholder':  start_date  }}) }}
+                            </div>
+
+                            <div class="form-group col-md-2">
+                                {{ form_label(form.endDate) }}
+                                {{ form_errors(form.endDate)}}
+                                {{ form_widget(form.endDate, {'attr': {'placeholder':  end_date  }}) }}
+                            </div>
+
+                            <div class="form-group"> <!-- Submit button -->
+                                <button class="btn btn-primary buttonDatePicker" name="submit" type="submit">Display</button>
+                            </div>
+                            {{ form_end(form) }}
+                        </form>
+                        <!-- Form code ends -->
+                    </div>
+                </div>
+            </div>
+        </div><!-- end of datepicker form -->
+
+        <div class="tableHeadCss containerPage">
+            <table class="table table-striped">
+                <tr>
+                    <th>{{ queryName }}</th>
+                </tr>
+            </table>
+            <div class="contactCreationTable containerPage">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            {% for column_name in column_names %}
+                                <th> {{ column_name }}</th>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                        <tbody class="blueHoverLine">
+                        {% for results in array_content %}
+                            <tr>
+                                {% for result in results %}
+                                    <td>{{ result }} </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

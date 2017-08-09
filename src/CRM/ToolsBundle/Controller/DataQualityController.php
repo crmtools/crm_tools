@@ -12,7 +12,6 @@ class DataQualityController extends Controller
 {
 
     public function errorsAnalysisAction(){
-//        phpinfo();
         $end_date = new \DateTime();
         $start_date = new \DateTime();
         $start_date->modify('-10 day');
@@ -26,12 +25,11 @@ class DataQualityController extends Controller
         $em = $this->getDoctrine()->getManager();
         $groupsName = $em->getRepository('CRMToolsBundle:CrmQueries')
             ->getGroupsName();
-//        var_dump($groupsName);die;
 
         $em = $this->getDoctrine()->getManager();
         $dataQualities = $em->getRepository('CRMToolsBundle:CrmQueriesResult')
             ->getDataQualityTable($groupsName, $date_array);
-//        var_dump($dataQualities);die;
+
         return $this->render('CRMToolsBundle:DataQuality:errorsAnalysis.html.twig',array(
             'dataQualities' => $dataQualities,
             'groupsName'   => $groupsName,

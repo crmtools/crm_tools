@@ -14,13 +14,28 @@ class CrmQueriesRepository extends EntityRepository
 {
 
     public function getGroupsName(){
-
         $sqlGrpName = "SELECT DISTINCT groupName from crm_queries WHERE pageName = 'error_analysis'";
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sqlGrpName);
         $query->execute();
         $groupsName = $query->fetchAll();
         return $groupsName;
+    }
+
+    public function getQueryFromCrmWheather($nbr){
+
+        $queriesCrmWeather= array();
+        $sql= "SELECT queryName, queryText FROM crm_queries where pageName='crm_weather'";
+
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $queries = $query->fetchAll();
+
+        $queryTotalCompaigns['queryName'] = $queries[$nbr]['queryName'];
+        $queryTotalCompaigns['queryText'] = $queries[$nbr]['queryText'];
+
+        return $queryTotalCompaigns;
     }
 
 }

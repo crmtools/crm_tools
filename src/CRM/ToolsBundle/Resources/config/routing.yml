@@ -34,7 +34,21 @@ crm_business_view:
     path:     /business_view
     defaults: { _controller: CRMToolsBundle:FileIntegration:businessView }
 
+crm_total_campaigns:
+    path:     /total_compaigns
+    defaults: { _controller: CRMToolsBundle:CrmWeather:totalCompaigns }
 
+crm_contact_creation:
+    path:     /contact_creation
+    defaults: { _controller: CRMToolsBundle:CrmWeather:contactCreation }
+
+crm_retargeting_monitoring:
+    path:     /retargeting_monitoring
+    defaults: { _controller: CRMToolsBundle:CrmWeather:retargetingMonitoring }
+
+crm_game_integration:
+    path:     /game_integration
+    defaults: { _controller: CRMToolsBundle:CrmWeather:gameIntegration }
 
 
 

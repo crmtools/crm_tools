@@ -108,7 +108,6 @@ class FileIntegrationController extends Controller
         $cliDataImports = new CLI_DATA_IMPORTS();
         $form = $this->createForm (CLI_DATA_IMPORTSType::class, $cliDataImports);
 
-        ;
         if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
 
             $start_date  = $form->get("startDate")->getData();
@@ -119,10 +118,8 @@ class FileIntegrationController extends Controller
             }
 
             if($start_date && $end_date== NULL ){
-                echo 'la date début est renseigné et NON la date FIN';
                 $end_date = $end_date = new \DateTime();
             }else if($end_date && $start_date== NULL){
-                echo 'la date fin est renseigné et NON la date DEBUT';
                 $start_date = new \DateTime();
                 $start_date->modify('-7 day');
             }else if ($start_date == NULL && $end_date == NULL){

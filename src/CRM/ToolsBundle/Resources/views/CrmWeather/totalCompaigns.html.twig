@@ -1,0 +1,37 @@
+{% extends "CRMToolsBundle::layout.html.twig" %}
+
+{% block title %}
+    Total Campaigns - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container containerPage">
+        <h1 class="titlePage">Total Campaigns</h1>
+        <div class="crmWeatherTable containerPage">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class = "greenBackground">
+                            <th>{{ queryName }}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="blueHoverLine">
+                        <tr>
+                            <th> CAMPAIGN </th>
+                            <th> TOTAL </th>
+                        </tr>
+                        {% for compaign in queryResult %}
+                            <tr>
+                                <td>{{ compaign['CAMPAIGN'] }}</td>
+                                <td>{{ compaign['TOTAL'] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
