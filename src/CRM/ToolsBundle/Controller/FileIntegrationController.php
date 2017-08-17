@@ -34,17 +34,18 @@ class FileIntegrationController extends Controller
 
         if ($request->isMethod('POST')){
             $data = $form->getData();
+
             $file_name = $data->getFileName()->getClientOriginalName();
             $tmp_file = $data->getFileName()->getPathName();
             $tmp_dir = $this->container->getParameter('CRMToolsBundle.uploaded_files_tmp_directory');
+            $tmp_dir = $_SERVER['DOCUMENT_ROOT']. $tmp_dir;
 
             $file_import = $em->getRepository('CRMToolsBundle:CrmImportFile')->getFileImport($file_name);
 
-            $check_file_array = $this->get('check_file_class')->check_file_uploaded($tmp_file, $tmp_dir.$file_name, $file_name, $currentHostname, $file_import, $em, $user_id);
-//            var_dump($check_file_array);die;
+            $check_file_array = $this->get('check_file_class')->check_file_uploaded($tmp_file, $tmp_dir.$file_name, $file_name, $currentHostname, $file_import, $em, $user_id, $tmp_dir);
+
             if(isset($check_file_array['error_message'])){
                 $error_message = $check_file_array['error_message'];
-//                var_dump($error_message);die;
 
                 return $this->render('CRMToolsBundle:FileIntegration:fileUpload.html.twig', array(
                     'displayFilesImport' => $displayFilesImport,

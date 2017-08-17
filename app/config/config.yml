@@ -98,15 +98,6 @@ doctrine:
                 user:     '%database_user%'
                 password: '%database_password%'
                 charset:  UTF8
-            oracle_dev:
-                driver:   pdo_oci
-                host:     eceisexam-scan.pvcp.intra
-                port:     1521
-                service:  true
-                dbname:   CRMRC1.PVCP.ACC
-                user:     zkissarli[CRM_TEAM]
-                password: zkissarli
-                charset:  UTF8
             oracle_prod:
                 driver:   pdo_oci
                 host:     eceisexpe-scan.pvcp.intra
@@ -116,6 +107,33 @@ doctrine:
                 user:     zkissarli[CRM_TEAM]
                 password: zkissarli
                 charset:  UTF8
+            oracle_Q5:
+                driver:   pdo_oci
+                host:     eceisexam-scan.pvcp.intra
+                port:     1521
+                service:  true
+                dbname:   CRMRC1.PVCP.ACC
+                user:     zkissarli[CRM_TEAM]
+                password: zkissarli
+                charset:  UTF8
+            oracle_Q4:
+                driver:   pdo_oci
+                host:     eceisexam-scan.pvcp.intra
+                port:     1521
+                service:  true
+                dbname:   CRMRC1.PVCP.REC
+                user:     TEAM_CRM
+                password: wfUhgqjOpWVRXewC7ZJd
+                charset:  UTF8
+            oracle_Q3:
+                driver:   pdo_oci
+                host:     eceisexam-scan.pvcp.intra
+                port:     1521
+                service:  true
+                dbname:   CRMRC1.PVCP.DEV
+                user:     TEAM_CRM
+                password: wfUhgqjOpWVRXewC7ZJd
+                charset:  UTF8
 
     orm:
         default_entity_manager: default
@@ -124,11 +142,19 @@ doctrine:
                 connection: default
                 mappings:
                     CRMToolsBundle: ~
-            oracle_dev:
-                connection: oracle_dev
-                mappings:
-                    CRMToolsBundle: ~
             oracle_prod:
                 connection: oracle_prod
+                mappings:
+                    CRMToolsBundle: ~
+            oracle_Q5:
+                connection: oracle_Q5
+                mappings:
+                    CRMToolsBundle: ~
+            oracle_Q4:
+                connection: oracle_Q4
+                mappings:
+                    CRMToolsBundle: ~
+            oracle_Q3:
+                connection: oracle_Q3
                 mappings:
                     CRMToolsBundle: ~

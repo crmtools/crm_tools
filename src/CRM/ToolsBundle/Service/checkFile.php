@@ -131,7 +131,7 @@ class checkFile extends utility{
    private $check_file_array = array();
 
 
-    public function check_file_uploaded($tmp_file, $file_path, $file_name, $currentHostname, $file_import, $em, $user_id){
+    public function check_file_uploaded($tmp_file, $file_path, $file_name, $currentHostname, $file_import, $em, $user_id, $tmp_dir){
 
         $critical_error_found = 0;
         $file_type = NULL;
@@ -595,6 +595,8 @@ class checkFile extends utility{
         if($critical_error_found == 0 ){
             $is_insert= $this->insert_upload_file($file_name, $file_date, $file_type, $em, $nbr_limit, $user_id);
             if($is_insert){
+                var_dump('move '.$tmp_dir.'*');die;
+                
                 exec('move C:\wamp64\www\buff_upload\* C:\wamp64\www\tmp_file_import\ ');
             }else{
                 unlink($this->config['uploaded_files_tmp_directory'] . $file_name);

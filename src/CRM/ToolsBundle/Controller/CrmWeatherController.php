@@ -17,7 +17,7 @@ class CrmWeatherController extends Controller
         $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
         $queryName = $queryContent['queryName'];
 
-        $em = $this->getDoctrine()->getManager('oracle_dev');
+        $em = $this->getDoctrine()->getManager('oracle_Q5');
         $queryResult =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResulTotalCompaigns($queryContent);
 
         return $this->render('CRMToolsBundle:CrmWeather:totalCompaigns.html.twig', array(
@@ -35,16 +35,6 @@ class CrmWeatherController extends Controller
         $start_date->modify('-35 day');
         $start_date = $start_date->format('d-m-Y');
 
-        $nbr= 0;
-        $em = $this->getDoctrine()->getManager();
-        $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
-        $queryName = $queryContent['queryName'];
-
-        $em = $this->getDoctrine()->getManager('oracle_prod');
-        $queryResult =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent);
-        $column_names   = $queryResult[0];
-        $array_content  = $queryResult[1];
-
         /*Creat the form*/
         $classUcr = new ClassUcr();
         $form = $this->createForm (ClassUcrType::class, $classUcr);
@@ -56,11 +46,28 @@ class CrmWeatherController extends Controller
             $end_date = $form->get("endDate")->getData();
             $end_date = $end_date->format('d-m-Y');
 
-            if($start_date && $end_date){
+            if($start_date > $end_date){
+                return $this->redirect( $this->generateUrl('crm_retargeting_monitoring'));
+            }else{
+                $nbr= 0;
+                $em = $this->getDoctrine()->getManager();
+                $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
+                $queryName = $queryContent['queryName'];
+                $em = $this->getDoctrine()->getManager('oracle_prod');
                 $queryResult    =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent, $start_date, $end_date);
                 $column_names   = $queryResult[0];
                 $array_content  = $queryResult[1];
             }
+        }else{
+            $nbr= 0;
+            $em = $this->getDoctrine()->getManager();
+            $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
+            $queryName = $queryContent['queryName'];
+
+            $em = $this->getDoctrine()->getManager('oracle_prod');
+            $queryResult =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent);
+            $column_names   = $queryResult[0];
+            $array_content  = $queryResult[1];
         }
 
         return $this->render('CRMToolsBundle:CrmWeather:contactCreation.html.twig', array(
@@ -82,16 +89,6 @@ class CrmWeatherController extends Controller
         $start_date->modify('-15 day');
         $start_date = $start_date->format('d-m-Y');
 
-        $nbr= 1;
-        $em = $this->getDoctrine()->getManager();
-        $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
-        $queryName = $queryContent['queryName'];
-
-        $em = $this->getDoctrine()->getManager('oracle_prod');
-        $queryResult    =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent);
-        $column_names   = $queryResult[0];
-        $array_content  = $queryResult[1];
-
         /*Creat the form*/
         $classUcr = new ClassUcr();
         $form = $this->createForm (ClassUcrType::class, $classUcr);
@@ -103,11 +100,28 @@ class CrmWeatherController extends Controller
             $end_date = $form->get("endDate")->getData();
             $end_date = $end_date->format('d-m-Y');
 
-            if($start_date && $end_date){
+            if($start_date > $end_date){
+                return $this->redirect($this->generateUrl('crm_retargeting_monitoring'));
+            }else{
+                $nbr= 1;
+                $em = $this->getDoctrine()->getManager();
+                $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
+                $queryName = $queryContent['queryName'];
+                $em = $this->getDoctrine()->getManager('oracle_prod');
                 $queryResult    =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent, $start_date, $end_date);
                 $column_names   = $queryResult[0];
                 $array_content  = $queryResult[1];
             }
+        }else{
+            $nbr= 1;
+            $em = $this->getDoctrine()->getManager();
+            $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
+            $queryName = $queryContent['queryName'];
+
+            $em = $this->getDoctrine()->getManager('oracle_prod');
+            $queryResult    =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent);
+            $column_names   = $queryResult[0];
+            $array_content  = $queryResult[1];
         }
 
         return $this->render('CRMToolsBundle:CrmWeather:retargetingMonitoring.html.twig', array(
@@ -129,16 +143,6 @@ class CrmWeatherController extends Controller
         $start_date->modify('-35 day');
         $start_date = $start_date->format('d-m-Y');
 
-        $nbr= 2;
-        $em = $this->getDoctrine()->getManager();
-        $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
-        $queryName = $queryContent['queryName'];
-
-        $em = $this->getDoctrine()->getManager('oracle_prod');
-        $queryResult    =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent);
-        $column_names   = $queryResult[0];
-        $array_content  = $queryResult[1];
-
         /*Creat the form*/
         $classUcr = new ClassUcr();
         $form = $this->createForm (ClassUcrType::class, $classUcr);
@@ -150,11 +154,28 @@ class CrmWeatherController extends Controller
             $end_date = $form->get("endDate")->getData();
             $end_date = $end_date->format('d-m-Y');
 
-            if($start_date && $end_date){
+            if($start_date > $end_date){
+                return $this->redirect($this->generateUrl('crm_retargeting_monitoring'));
+            }else{
+                $nbr= 2;
+                $em = $this->getDoctrine()->getManager();
+                $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
+                $queryName = $queryContent['queryName'];
+                $em = $this->getDoctrine()->getManager('oracle_prod');
                 $queryResult    =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent, $start_date, $end_date);
                 $column_names   = $queryResult[0];
                 $array_content  = $queryResult[1];
             }
+        }else{
+            $nbr= 2;
+            $em = $this->getDoctrine()->getManager();
+            $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
+            $queryName = $queryContent['queryName'];
+
+            $em = $this->getDoctrine()->getManager('oracle_prod');
+            $queryResult    =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent);
+            $column_names   = $queryResult[0];
+            $array_content  = $queryResult[1];
         }
 
         return $this->render('CRMToolsBundle:CrmWeather:gameIntegration.html.twig', array(

@@ -27,9 +27,13 @@ class ClassUcrRepository extends EntityRepository{
     public function getQueryResult($queryContent, $start_date_param = null , $end_date_param = null ){
         $queryResult= array();
         $sql= $queryContent['queryText'];
-        
+
         if($start_date_param!=null && $end_date_param!=null){
-            $sql= str_replace("> SYSDATE - 35", "BETWEEN to_date('".$start_date_param."','DD-MM-YYYY') AND to_date('".$end_date_param."','DD-MM-YYYY')", $sql);
+            if (preg_match("/ > SYSDATE - 35/i", $sql)){
+                $sql= str_replace("> SYSDATE - 35", "BETWEEN to_date('".$start_date_param."','DD-MM-YYYY') AND to_date('".$end_date_param."','DD-MM-YYYY')", $sql);
+            }else{
+                $sql = str_replace(" > SYSDATE - 15"," BETWEEN to_date('".$start_date_param."','DD-MM-YYYY') AND to_date('".$end_date_param."','DD-MM-YYYY')", $sql);
+            }
         }
 
         $em = $this->getEntityManager();
@@ -38,14 +42,9 @@ class ClassUcrRepository extends EntityRepository{
         $results = $query->fetchAll();
 
         $column_names=  array_keys($results[0]);
-//        foreach($column_names as $column_id => $column_name) {
-//            $queryResult[$column_name] = $results[$column_id];
-//        }
         $queryResult[]= $column_names;
         $queryResult[]= $results;
 
         return $queryResult;
     }
-
-
 }

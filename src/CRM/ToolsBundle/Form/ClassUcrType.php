@@ -24,7 +24,7 @@ class ClassUcrType extends AbstractType
             'attr'      => ['class'         => 'form-control js-datepicker',
                 'id'            => 'date',
                 'name'          => 'date'],
-        ))
+            ))
             ->add('endDate', 'date', array(
                 'mapped'    => false,
                 'label'     =>'End date',
