@@ -47,7 +47,7 @@ class CrmWeatherController extends Controller
             $end_date = $end_date->format('d-m-Y');
 
             if($start_date > $end_date){
-                return $this->redirect( $this->generateUrl('crm_retargeting_monitoring'));
+                return $this->redirect( $this->generateUrl('crm_contact_creation'));
             }else{
                 $nbr= 0;
                 $em = $this->getDoctrine()->getManager();
@@ -155,7 +155,7 @@ class CrmWeatherController extends Controller
             $end_date = $end_date->format('d-m-Y');
 
             if($start_date > $end_date){
-                return $this->redirect($this->generateUrl('crm_retargeting_monitoring'));
+                return $this->redirect($this->generateUrl('crm_game_integration'));
             }else{
                 $nbr= 2;
                 $em = $this->getDoctrine()->getManager();
