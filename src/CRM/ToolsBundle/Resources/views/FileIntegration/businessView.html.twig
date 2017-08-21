@@ -58,7 +58,7 @@
                             {% if files_data!= NULL  %}
                                 <tbody class="borderFileTable">
                                     <tr class="greenBackground">
-                                        <th>{{ currentDate }}</th>
+                                        <th>{{ currentDate | date("d-m-Y") }}</th>
                                     </tr>
                                     <tr class="borderRighTable">
                                         <th>File Name</th>
@@ -74,7 +74,7 @@
                                         <tr class="borderRighTable">
                                             <td>{{ file["FILE_NAME"] }}</td>
                                             <td>{{ file["GAME_NAME"] }}</td>
-                                            <td>{{ file["DATE_TRAITEMENT"] }}</td>
+                                            <td>{{ file["DATE_TRAITEMENT"] | date("d-m-Y") }}</td>
                                             <td>{{ file["TOTAL"] }}</td>
                                             <td>{{ file["INSERT"] }}</td>
                                             <td>{{ file["UPDATE"] }}</td>

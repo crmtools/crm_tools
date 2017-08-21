@@ -13,8 +13,6 @@ class checkFile extends utility{
 
    private $config = array (
        'file_import_line_limit'			    => 25000,
-       'uploaded_files_tmp_directory'		=> 'C:/wamp64/www/buff_upload/',
-       'uploaded_crm_files_tmp_directory'	=> '/mnt/crm/www/buff_upload_crm/',
        'update_subscription_config'		    => array
        (
            'header'	                            => "TYPE|EMAIL|OPTIN|LANGUAGE_CODE|BRAND|SOURCE|REGISTRATION_DATE|COUNTRY_CODE",//LPN20170123
@@ -128,10 +126,7 @@ class checkFile extends utility{
        )
    );
 
-   private $check_file_array = array();
-
-
-    public function check_file_uploaded($tmp_file, $file_path, $file_name, $currentHostname, $file_import, $em, $user_id, $tmp_dir){
+    public function check_file_uploaded($tmp_file, $file_path, $file_name, $currentHostname, $file_import, $em, $user_id, $tmp_path_dir, $upload_path_dir){
 
         $critical_error_found = 0;
         $file_type = NULL;
@@ -595,14 +590,13 @@ class checkFile extends utility{
         if($critical_error_found == 0 ){
             $is_insert= $this->insert_upload_file($file_name, $file_date, $file_type, $em, $nbr_limit, $user_id);
             if($is_insert){
-                var_dump('move '.$tmp_dir.'*');die;
-                
+//                exec('move '.$tmp_path_dir.'* ' .$upload_path_dir);
                 exec('move C:\wamp64\www\buff_upload\* C:\wamp64\www\tmp_file_import\ ');
             }else{
-                unlink($this->config['uploaded_files_tmp_directory'] . $file_name);
+                unlink($file_path);
             }
         }else{
-            unlink($this->config['uploaded_files_tmp_directory'] . $file_name);
+            unlink($file_path);
         }
 
         return $this->check_file_array;

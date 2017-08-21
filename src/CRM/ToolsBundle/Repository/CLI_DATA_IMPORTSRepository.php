@@ -40,7 +40,7 @@ class CLI_DATA_IMPORTSRepository extends EntityRepository
                         (
                             select
                                 file_name,
-                                listagg(error_code || '(' || nb_error || ')','\n</br>\n') within group (order by nb_error desc) as error_list
+                                listagg(error_code || '(' || nb_error || ')',' ') within group (order by nb_error desc) as error_list
                             from
                             (
                                 select 
@@ -72,7 +72,7 @@ class CLI_DATA_IMPORTSRepository extends EntityRepository
             $result = $query->fetchAll();
             $result_array[$current_date] = $result;
         }
-//        var_dump($result_array);die;
+
         return $result_array;
 
     }

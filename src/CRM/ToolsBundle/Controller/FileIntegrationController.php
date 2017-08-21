@@ -34,15 +34,18 @@ class FileIntegrationController extends Controller
 
         if ($request->isMethod('POST')){
             $data = $form->getData();
-
             $file_name = $data->getFileName()->getClientOriginalName();
             $tmp_file = $data->getFileName()->getPathName();
-            $tmp_dir = $this->container->getParameter('CRMToolsBundle.uploaded_files_tmp_directory');
-            $tmp_dir = $_SERVER['DOCUMENT_ROOT']. $tmp_dir;
+
+            $tmp_path_dir = $this->container->getParameter('CRMToolsBundle.tmp_files_directory');
+            $tmp_path_dir = $_SERVER['DOCUMENT_ROOT']. $tmp_path_dir;
+
+            $upload_path_dir = $this->container->getParameter('CRMToolsBundle.uploaded_files_directory');
+            $upload_path_dir = $_SERVER['DOCUMENT_ROOT']. $upload_path_dir;
 
             $file_import = $em->getRepository('CRMToolsBundle:CrmImportFile')->getFileImport($file_name);
 
-            $check_file_array = $this->get('check_file_class')->check_file_uploaded($tmp_file, $tmp_dir.$file_name, $file_name, $currentHostname, $file_import, $em, $user_id, $tmp_dir);
+            $check_file_array = $this->get('check_file_class')->check_file_uploaded($tmp_file, $tmp_path_dir.$file_name, $file_name, $currentHostname, $file_import, $em, $user_id, $tmp_path_dir, $upload_path_dir);
 
             if(isset($check_file_array['error_message'])){
                 $error_message = $check_file_array['error_message'];
@@ -82,12 +85,14 @@ class FileIntegrationController extends Controller
 
     public function deleteFileAction($file_id, $file_name){
 
-        $file_tmp_dir = $this->container->getParameter('CRMToolsBundle.uploaded_crm_files_tmp_directory');
+        $upload_path_dir = $this->container->getParameter('CRMToolsBundle.uploaded_files_directory');
+        $upload_path_dir = $_SERVER['DOCUMENT_ROOT']. $upload_path_dir;
+
         $em = $this->getDoctrine()->getManager();
         $em->getRepository('CRMToolsBundle:CrmImportFile')->deleteOneFile($file_id);
 
         if($file_name){
-            unlink($file_tmp_dir . $file_name);
+            unlink($upload_path_dir.$file_name);
         }
 
         return $this->redirect($this->generateUrl('crm_file_upload'));
