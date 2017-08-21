@@ -3,9 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}CRM Tools{% endblock %}</title>
-        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/crmtools/img/favicon.ico') }}">
-        {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
-
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/crmtools/img/favicon.png') }}" />
         {% stylesheets filter='?yui_css, cssrewrite'
             '@CRMToolsBundle/Resources/public/css/style.css'
             '@CRMToolsBundle/Resources/public/css/monitoring.css'
@@ -22,11 +20,6 @@
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
         {% endstylesheets %}
-
-
-
-
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}
