@@ -620,10 +620,16 @@ class checkFile extends utility{
             $this->check_file_array['error_message'] = $error_message;
             return 0;
         }else{
-            $current_date= new \DateTime("now");
-            $import_date= $current_date->format('Ymd');
-            $insert_exec = $em->getRepository('CRMToolsBundle:CrmImportFile')->insertFileUpload($user_id, $file_name, $nb_lines, $import_date, $file_date, $file_type, $em);
-            return 1;
+            if($user_id){
+                $current_date= new \DateTime("now");
+                $import_date= $current_date->format('Ymd');
+                $insert_exec = $em->getRepository('CRMToolsBundle:CrmImportFile')->insertFileUpload($user_id, $file_name, $nb_lines, $import_date, $file_date, $file_type, $em);
+                return 1;
+            }else{
+                $error_message= "There is no username detected";
+                $this->check_file_array['error_message'] = $error_message;
+                return 0;
+            }
         }
     }
 }

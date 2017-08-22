@@ -18,7 +18,7 @@ class UcrSearchEngineController extends Controller
             $env = $_POST['env'];
             $tmp_id = null;
             if($search_type != NULL && $id_field != NULL && $env != NULL){
-                var_dump('les données sont:'.$search_type.' '.$id_field.' '.$env);
+//                var_dump('les données sont:'.$search_type.' '.$id_field.' '.$env);
                 $array = preg_split( '/[\s,]+/',trim($id_field));
 
                 foreach($array as $current_id) {

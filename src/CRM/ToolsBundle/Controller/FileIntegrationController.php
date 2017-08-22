@@ -23,11 +23,17 @@ class FileIntegrationController extends Controller
 
         $displayFilesImport = $em->getRepository('CRMToolsBundle:CrmImportFile')->getFilesImporToDisplay();
         $currentHostname = $this->get('utility_class')->getUserHostname();
-
+ 
         $user_id_array = $em->getRepository('CRMToolsBundle:CrmUsers')->getUserId($currentHostname);
-        $user_id= $user_id_array[0]['id'];
 
-        $currentUser = $em->getRepository('CRMToolsBundle:CrmUsers')->getCurrentUser($currentHostname);
+        if($user_id_array){
+            $user_id= $user_id_array[0]['id'];
+            $currentUser = $em->getRepository('CRMToolsBundle:CrmUsers')->getCurrentUser($currentHostname);
+        }else{
+            $currentUser = '';
+            $user_id = '';
+        }
+
         $crmImportFile = new crmImportFile();
         $form = $this->createForm(new CrmImportFileType(), $crmImportFile);
         $form->handleRequest($request);

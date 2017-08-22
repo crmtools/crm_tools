@@ -1,0 +1,53 @@
+/**************************************CSS FROM ERROR'S ANALYSIS PAGE*********************************************/
+.DatatableCss{
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    text-align: center;
+    font-size: 12.5px;
+    vertical-align: middle !important;
+    border: 1px solid #fff !important;
+}
+
+.DatatableCss td{
+    font-size: 14px;
+    vertical-align: middle !important;
+}
+
+.blueBackgroundTh{
+    background-color: #0073e6;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+
+.greenBackgroundTh{
+    background-color: #5bb024;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+.lineBreak{
+    border: none !important;
+    border-left: none !important;
+    background: #fff;
+
+}
+
+.lineBreak td:hover {
+    background: green !important;
+}
+
+.buttonQueryName{
+    padding: 5px !important;
+    background: #37519f !important;
+    font-size: 13.5px !important;
+    text-align: left !important;
+    font-weight: bold !important;
+}
+
+.buttonQueryName:hover, .buttonQueryName:focus{
+    background-color: #2e4385 !important;
+}
+

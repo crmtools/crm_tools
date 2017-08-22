@@ -16,7 +16,6 @@ class CrmUsersRepository extends EntityRepository
     {
         $sql = "SELECT * FROM crm_users WHERE hostName='" .$currentHostname."';";
 
-//        echo $sql;die;
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
         $query->execute();

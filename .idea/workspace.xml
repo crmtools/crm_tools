@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56d79571-531d-40ad-9fda-2cf8d75da8ca" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/img/favicon.ico" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/FileIntegrationController.php" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/FileIntegrationController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/UcrSearchEngineController.php" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/UcrSearchEngineController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmUsersRepository.php" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmUsersRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/file_integration.css" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/file_integration.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/FileIntegration/fileUpload.html.twig" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/FileIntegration/fileUpload.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CRM/ToolsBundle/Service/checkFile.php" afterPath="$PROJECT_DIR$/src/CRM/ToolsBundle/Service/checkFile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/9561eac.js" afterPath="$PROJECT_DIR$/web/js/9561eac.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +32,117 @@
     <favorites_list name="crm_tools" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="fileUpload.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/FileIntegration/fileUpload.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="17" selection-end-column="15" />
+              <folding>
+                <element signature="e#3889#3923#0#HTML" expanded="true" />
+                <element signature="e#5854#5913#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contactCreation.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/CrmWeather/contactCreation.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="394">
+              <caret line="23" column="69" lean-forward="false" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileIntegrationController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/FileIntegrationController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CLI_DATA_IMPORTSType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Form/CLI_DATA_IMPORTSType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="560">
+              <caret line="34" column="31" lean-forward="false" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+              <folding>
+                <element signature="e#40#80#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CrmImportFileType.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Form/CrmImportFileType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="7" lean-forward="false" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="businessView.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/FileIntegration/businessView.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="76" column="90" lean-forward="false" selection-start-line="76" selection-start-column="75" selection-end-line="76" selection-end-column="90" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utility.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Service/utility.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="115" column="5" lean-forward="false" selection-start-line="115" selection-start-column="5" selection-end-line="115" selection-end-column="5" />
+              <folding>
+                <marker date="1502889961339" expanded="true" signature="2834:2929" ph="select id_co... cli_refext" />
+                <marker date="1502889961339" expanded="true" signature="3568:3620" ph="SELECT * FRO... crm_users" />
+                <marker date="1502889961339" expanded="true" signature="3911:3963" ph="SELECT * FRO... crm_users" />
+                <marker date="1502889961339" expanded="true" signature="6259:6284" ph="..." />
+                <marker date="1502889961339" expanded="true" signature="7673:7684" ph="..." />
+                <marker date="1502889961339" expanded="true" signature="9179:9204" ph="..." />
+                <marker date="1502889961339" expanded="true" signature="9475:9486" ph="..." />
+                <marker date="1502889961339" expanded="true" signature="11182:11223" ph="..." />
+                <marker date="1502889961339" expanded="true" signature="11435:11460" ph="..." />
+                <marker date="1502889961339" expanded="true" signature="12581:12605" ph="..." />
+                <marker date="1502889961339" expanded="true" signature="12820:12845" ph="..." />
+                <marker date="1502889961339" expanded="true" signature="14112:14173" ph="SELECT autho... crm_users" />
+                <marker date="1502889961339" expanded="true" signature="15036:15097" ph="SELECT autho... crm_users" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="checkFile.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Service/checkFile.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="572" column="68" lean-forward="false" selection-start-line="572" selection-start-column="68" selection-end-line="572" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="file_integration.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/file_integration.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -39,23 +155,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>configureOptions</find>
-      <find>$request</find>
-      <find>ClassUcrType</find>
-      <find>$filter</find>
-      <find>va</find>
-      <find>$file_name_pattern</find>
-      <find>var_dump</find>
-      <find>getProcessedFilesData</find>
-      <find>oracle_prod</find>
-      <find>oracle_pro</find>
-      <find>oracle_p</find>
-      <find>oracle_</find>
-      <find>oracle_d</find>
-      <find>oracle_dev</find>
-      <find>getUserHostname</find>
-      <find>getQueryFromCrmWheather</find>
-      <find>c:/</find>
       <find>$file_path</find>
       <find>uploaded_files_tmp_directory</find>
       <find>$tmp_dir</find>
@@ -69,6 +168,23 @@
       <find>$check_file_array</find>
       <find>$file_import</find>
       <find>move_uploaded_file</find>
+      <find>insertFileUpload</find>
+      <find>$user_id</find>
+      <find>$error_message</find>
+      <find>getUserHostname</find>
+      <find>$file_lines</find>
+      <find>The header of the file is not correct.</find>
+      <find>header_validity</find>
+      <find>config['game_config']['header']</find>
+      <find>game_config</find>
+      <find>currentUser</find>
+      <find>getUserId</find>
+      <find>import</find>
+      <find>game_name_validity</find>
+      <find>existence_validity</find>
+      <find>update_address_config</find>
+      <find>myFunction</find>
+      <find>attr</find>
     </findStrings>
     <replaceStrings>
       <replace>$start_date_display</replace>
@@ -96,10 +212,7 @@
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Service/check_file.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Service/getEntityManager.php" />
         <option value="$PROJECT_DIR$/app/config/services.yml" />
-        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmUsersRepository.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmImportFileRepository.php" />
-        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Form/CrmImportFileType.php" />
-        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/FileIntegration/fileUpload.html.twig" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/DataQuality/errorsAnalysis.html.twig" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/data_quality.css" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Form/LogsViewType.php" />
@@ -107,7 +220,6 @@
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Validator/dateError.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Validator/dateErrorValidator.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/style.css" />
-        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/file_integration.css" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Entity/CLI_DATA_IMPORTS.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/Class_ucrRepository.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Entity/Class_ucr.php" />
@@ -124,7 +236,6 @@
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Form/ClassUcrType.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Form/CrmQueriesUcrType.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/UcrSearchEngine/contactBookingForms.html.twig" />
-        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/UcrSearchEngineController.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Service/utility.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmQueriesRepository.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/CrmWeather/contactCreation.html.twig" />
@@ -134,11 +245,16 @@
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/CrmWeatherController.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CLI_DATA_IMPORTSRepository.php" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
-        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/FileIntegrationController.php" />
         <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/FileIntegration/businessView.html.twig" />
-        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Form/CLI_DATA_IMPORTSType.php" />
-        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Service/checkFile.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/UcrSearchEngineController.php" />
+        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Form/CLI_DATA_IMPORTSType.php" />
+        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Form/CrmImportFileType.php" />
+        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/FileIntegrationController.php" />
+        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmUsersRepository.php" />
+        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/file_integration.css" />
+        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Service/checkFile.php" />
+        <option value="$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/FileIntegration/fileUpload.html.twig" />
       </list>
     </option>
   </component>
@@ -248,11 +364,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="Service" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -279,66 +391,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Default" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crm_tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crm_tools" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CRM" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ToolsBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crm_tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crm_tools" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CRM" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ToolsBundle" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Form" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -534,12 +586,12 @@
       <workItem from="1501601079668" duration="24313000" />
       <workItem from="1501833286483" duration="62874000" />
       <workItem from="1502871160532" duration="26131000" />
-      <workItem from="1503071377519" duration="7736000" />
+      <workItem from="1503071377519" duration="27773000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="870636000" />
+    <option name="totallyTimeSpent" value="890673000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -552,8 +604,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.226254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.226254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32788798" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -597,21 +650,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Validator/dateError.php" />
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmGraphsRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmJobsRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Form/LogsViewType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-20">
@@ -637,6 +675,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="43" column="57" lean-forward="false" selection-start-line="43" selection-start-column="57" selection-end-line="43" selection-end-column="57" />
+          <folding>
+            <marker date="1501251958585" expanded="true" signature="2081:2131" ph="DELETE FROM " />
+            <marker date="1501251958585" expanded="true" signature="2081:2188" ph="DELETE FROM " />
+            <marker date="1501251958585" expanded="true" signature="2377:2441" ph="SELECT query... crm_queries" />
+            <marker date="1501251958585" expanded="true" signature="2902:2955" ph="select count... CLI_CONTACT" />
+            <marker date="1501251958585" expanded="true" signature="2974:3027" ph="select count... CLI_CONTACT" />
+            <marker date="1501251958585" expanded="true" signature="3449:3527" ph="SELECT group... crm_queries" />
+            <marker date="1501251958585" expanded="true" signature="3797:3850" ph="select count... CLI_CONTACT" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -644,13 +691,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="581">
           <caret line="39" column="31" lean-forward="false" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/file_integration.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="116" />
         </state>
       </provider>
     </entry>
@@ -735,6 +775,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="13" />
+          <folding>
+            <marker date="1497451484747" expanded="true" signature="394:470" ph="SELECT L.id,... CRMToolsBundle" />
+            <marker date="1497451484747" expanded="true" signature="808:1951" ph="SELECT date_... average_graph_duration" />
+            <marker date="1497451484747" expanded="true" signature="1309:1951" ph="SELECT avera... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -749,16 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
           <caret line="29" column="51" lean-forward="false" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Form/CrmImportFileType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="47" lean-forward="false" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-          <folding>
-            <element signature="e#40#80#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -780,28 +815,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Service/utility.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="114" column="30" lean-forward="true" selection-start-line="114" selection-start-column="30" selection-end-line="114" selection-end-column="30" />
-          <folding>
-            <marker date="1502889961339" expanded="true" signature="2834:2929" ph="select id_co... cli_refext" />
-            <marker date="1502889961339" expanded="true" signature="3568:3620" ph="SELECT * FRO... crm_users" />
-            <marker date="1502889961339" expanded="true" signature="3911:3963" ph="SELECT * FRO... crm_users" />
-            <marker date="1502889961339" expanded="true" signature="6259:6284" ph="..." />
-            <marker date="1502889961339" expanded="true" signature="7673:7684" ph="..." />
-            <marker date="1502889961339" expanded="true" signature="9179:9204" ph="..." />
-            <marker date="1502889961339" expanded="true" signature="9475:9486" ph="..." />
-            <marker date="1502889961339" expanded="true" signature="11182:11223" ph="..." />
-            <marker date="1502889961339" expanded="true" signature="11435:11460" ph="..." />
-            <marker date="1502889961339" expanded="true" signature="12581:12605" ph="..." />
-            <marker date="1502889961339" expanded="true" signature="12820:12845" ph="..." />
-            <marker date="1502889961339" expanded="true" signature="14112:14173" ph="SELECT autho... crm_users" />
-            <marker date="1502889961339" expanded="true" signature="15036:15097" ph="SELECT autho... crm_users" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -809,13 +823,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
           <caret line="24" column="43" lean-forward="false" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/CrmWeather/contactCreation.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="67" lean-forward="false" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+          <folding>
+            <marker date="1502890647421" expanded="true" signature="330:406" ph="SELECT DISTI... crm_queries" />
+            <marker date="1502890647421" expanded="true" signature="719:792" ph="SELECT query... crm_queries" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -826,20 +837,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/UcrSearchEngineController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="e#46#87#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/ClassUcrRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="14" column="63" lean-forward="true" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -910,14 +912,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
           <caret line="42" column="78" lean-forward="false" selection-start-line="42" selection-start-column="78" selection-end-line="42" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/FileIntegration/fileUpload.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2485">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1502973583050" expanded="true" signature="455:3122" ph="SELECT FILE_... file_name" />
+            <marker date="1502973583050" expanded="true" signature="999:2713" ph="select disti... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -937,44 +935,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Form/CLI_DATA_IMPORTSType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="31" column="45" lean-forward="true" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
-          <folding>
-            <element signature="e#40#80#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/FileIntegration/businessView.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="38" column="26" lean-forward="false" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/Default/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="12" column="108" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="108" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="66" lean-forward="true" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Service/checkFile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="591" column="27" lean-forward="false" selection-start-line="591" selection-start-column="27" selection-end-line="591" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -987,11 +951,148 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmImportFileRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="67" column="36" lean-forward="false" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="36" />
+          <folding>
+            <marker date="1501251958577" expanded="true" signature="441:1411" ph="SELECT crm_i... crm_import_file" />
+            <marker date="1501251958577" expanded="true" signature="1003:1219" ph="SELECT fileT... crm_import_file" />
+            <marker date="1501251958577" expanded="true" signature="1667:1733" ph="SELECT 1 fro... crm_import_file" />
+            <marker date="1501251958577" expanded="true" signature="1999:2133" ph="SELECT IFNUL... crm_import_file" />
+            <marker date="1501251958577" expanded="true" signature="2464:2643" ph="INSERT INTO crm_import_file... " />
+            <marker date="1501251958577" expanded="true" signature="2796:2835" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/UcrSearchEngineController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="24" column="6" lean-forward="false" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+          <folding>
+            <marker date="1503309595316" expanded="true" signature="1078:1148" ph="select id_co... cli_email" />
+            <marker date="1503309595316" expanded="true" signature="1389:1483" ph="select id_co... cli_refext" />
+            <marker date="1503309595316" expanded="true" signature="1614:1678" ph="select id_co... cli_contact" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Service/utility.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="115" column="5" lean-forward="false" selection-start-line="115" selection-start-column="5" selection-end-line="115" selection-end-column="5" />
+          <folding>
+            <marker date="1502889961339" expanded="true" signature="2834:2929" ph="select id_co... cli_refext" />
+            <marker date="1502889961339" expanded="true" signature="3568:3620" ph="SELECT * FRO... crm_users" />
+            <marker date="1502889961339" expanded="true" signature="3911:3963" ph="SELECT * FRO... crm_users" />
+            <marker date="1502889961339" expanded="true" signature="6259:6284" ph="..." />
+            <marker date="1502889961339" expanded="true" signature="7673:7684" ph="..." />
+            <marker date="1502889961339" expanded="true" signature="9179:9204" ph="..." />
+            <marker date="1502889961339" expanded="true" signature="9475:9486" ph="..." />
+            <marker date="1502889961339" expanded="true" signature="11182:11223" ph="..." />
+            <marker date="1502889961339" expanded="true" signature="11435:11460" ph="..." />
+            <marker date="1502889961339" expanded="true" signature="12581:12605" ph="..." />
+            <marker date="1502889961339" expanded="true" signature="12820:12845" ph="..." />
+            <marker date="1502889961339" expanded="true" signature="14112:14173" ph="SELECT autho... crm_users" />
+            <marker date="1502889961339" expanded="true" signature="15036:15097" ph="SELECT autho... crm_users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Repository/CrmUsersRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+          <folding>
+            <marker date="1503329105585" expanded="true" signature="340:402" ph="SELECT * FRO... crm_users" />
+            <marker date="1503329105585" expanded="true" signature="663:726" ph="SELECT id FR... crm_users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/FileIntegration/businessView.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="76" column="90" lean-forward="false" selection-start-line="76" selection-start-column="75" selection-end-line="76" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Form/CrmImportFileType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="7" lean-forward="false" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Form/CLI_DATA_IMPORTSType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="34" column="31" lean-forward="false" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+          <folding>
+            <element signature="e#40#80#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Controller/FileIntegrationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="113" column="46" lean-forward="false" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="46" />
+        <state relative-caret-position="280">
+          <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/tables.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="49" column="16" lean-forward="false" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Service/checkFile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="572" column="68" lean-forward="false" selection-start-line="572" selection-start-column="68" selection-end-line="572" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/public/css/file_integration.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/CrmWeather/contactCreation.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="23" column="69" lean-forward="false" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CRM/ToolsBundle/Resources/views/FileIntegration/fileUpload.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="17" selection-end-column="15" />
+          <folding>
+            <element signature="e#3889#3923#0#HTML" expanded="true" />
+            <element signature="e#5854#5913#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,0 +1,12 @@
+.formContactBooking{
+    /*border: 1px solid red;*/
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 17px;
+}
+
+.searchBy{
+    padding: 0px !important;
+}
+.selectOptionForm{
+     height: 30px !important;
+}
