@@ -10,7 +10,7 @@
     <div class="container containerPage">
         <h1 class="titlePage">Contact and Booking forms</h1>
 
-        <div >
+        <div class="col-md-12">
             <form method="POST">
                 <div class="formContactBooking">
                     <div class="col-md-1 searchBy">
@@ -48,6 +48,37 @@
             </form>
         </div>
 
+        <div class="col-md-12 globalTableCss" style="position: relative;">
+            {% if queries_ucr_result is defined %}
+                {% for tableName, tableContent in queries_ucr_result %}
+                    <div class="cssFromTable">
+                        <table class="table table-striped tableSearchCss">
+                            <thead>
+                                <tr class="greenBackground">
+                                    <th>{{ tableName }}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="blueHoverLine">
+                                <tr>
+                                    {% for column_name, column_value in tableContent[0] %}
+                                             <th> {{ column_name }} </th>
+                                    {% endfor %}
+                                </tr>
+
+                                    {% for result in tableContent %}
+                                        <tr>
+                                        {% for value in result %}
+                                                <td> {{ value }} </td>
+                                        {% endfor %}
+                                        </tr>
+                                    {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+        </div>
     </div>
 
 {% endblock %}

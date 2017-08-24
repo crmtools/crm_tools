@@ -47,4 +47,23 @@ class ClassUcrRepository extends EntityRepository{
 
         return $queryResult;
     }
+
+    public function getQueryResultSearch($sql){
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $ressults_array = $query->fetchAll();
+
+        $contact_ids= '';
+        foreach ($ressults_array as $key => $result){
+            foreach($result as $column => $row) {
+                $contact_ids .= ',' . $ressults_array[$key][$column];
+            }
+        }
+        $contact_ids= substr($contact_ids, 1);
+
+        return $contact_ids;
+    }
+
+
 }

@@ -17,6 +17,26 @@
     color: #37519f;
 }
 
+.cssFromTable{
+    margin-top: 20px;
+    /*border: 1px solid red;*/
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+}
+
+.cssFromTable th{
+    background: #0073e6;
+    color: #fff;
+}
+
+.greenBackground th{
+    background: #5bb024;
+}
+
+.blueHoverLine tr:hover{
+    background-color: #37519f !important;
+    color: #fff;
+}
+
 /*********************************************CSS FROM HOME PAGE****************************************************/
 body {
     width: 90%;

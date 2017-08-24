@@ -7,6 +7,22 @@
 .searchBy{
     padding: 0px !important;
 }
+
 .selectOptionForm{
      height: 30px !important;
+}
+
+.globalTableCss{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.tableSearchCss{
+    padding: 2px;
+    border: 2px solid #ddd !important;
+    margin-bottom: 0px;
+}
+
+.tableSearchCss th, td{
+    border: 1.3px solid #B8B8B8;
 }

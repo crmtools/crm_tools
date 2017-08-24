@@ -1,15 +1,4 @@
 /**************************************CSS FROM FILE INTEGRATION PAGES*********************************************/
-.fileIntegrationTable{
-    margin-top: 20px;
-    /*border: 1px solid red;*/
-    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
-}
-
-.fileIntegrationTable th{
-    background: #0073e6;
-    color: #fff;
-}
-
 .borderBodyTable{
     border: 1.5px solid #ddd;
 }
@@ -27,10 +16,6 @@
 }
 
 /**************************************CSS FROM BUSINESS VIEW PAGE*********************************************/
-
-.greenBackground th{
-    background: #5bb024;
-}
 
 .borderFileTable{
     border: 2px solid #ddd;

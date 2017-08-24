@@ -153,10 +153,10 @@ class FileIntegrationController extends Controller
 
             if ($file_name_pattern)
             {
-                $em = $this->getDoctrine()->getManager('oracle_prod');
+                $em = $this->getDoctrine()->getManager('oracle_P1');
                 $processed_files_array= $em->getRepository('CRMToolsBundle:CLI_DATA_IMPORTS')->getProcessedFilesData($date_array, $file_name_pattern);
             }else{
-                $em = $this->getDoctrine()->getManager('oracle_prod');
+                $em = $this->getDoctrine()->getManager('oracle_P1');
                 $processed_files_array= $em->getRepository('CRMToolsBundle:CLI_DATA_IMPORTS')->getProcessedFilesData($date_array);
             }
 

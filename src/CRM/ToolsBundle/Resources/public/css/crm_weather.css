@@ -16,10 +16,6 @@
     background: #5bb024;
 }
 
-.blueHoverLine tr:hover{
-    background-color: #37519f !important;
-    color: #fff;
-}
 .blueHoverLine td{
     border: 1.3px solid #B8B8B8;
 }

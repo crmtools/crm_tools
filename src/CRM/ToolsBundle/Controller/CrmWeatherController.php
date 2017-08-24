@@ -53,7 +53,7 @@ class CrmWeatherController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
                 $queryName = $queryContent['queryName'];
-                $em = $this->getDoctrine()->getManager('oracle_prod');
+                $em = $this->getDoctrine()->getManager('oracle_P1');
                 $queryResult    =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent, $start_date, $end_date);
                 $column_names   = $queryResult[0];
                 $array_content  = $queryResult[1];
@@ -64,7 +64,7 @@ class CrmWeatherController extends Controller
             $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
             $queryName = $queryContent['queryName'];
 
-            $em = $this->getDoctrine()->getManager('oracle_prod');
+            $em = $this->getDoctrine()->getManager('oracle_P1');
             $queryResult =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent);
             $column_names   = $queryResult[0];
             $array_content  = $queryResult[1];
@@ -107,7 +107,7 @@ class CrmWeatherController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
                 $queryName = $queryContent['queryName'];
-                $em = $this->getDoctrine()->getManager('oracle_prod');
+                $em = $this->getDoctrine()->getManager('oracle_P1');
                 $queryResult    =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent, $start_date, $end_date);
                 $column_names   = $queryResult[0];
                 $array_content  = $queryResult[1];
@@ -118,7 +118,7 @@ class CrmWeatherController extends Controller
             $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
             $queryName = $queryContent['queryName'];
 
-            $em = $this->getDoctrine()->getManager('oracle_prod');
+            $em = $this->getDoctrine()->getManager('oracle_P1');
             $queryResult    =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent);
             $column_names   = $queryResult[0];
             $array_content  = $queryResult[1];
@@ -161,7 +161,7 @@ class CrmWeatherController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
                 $queryName = $queryContent['queryName'];
-                $em = $this->getDoctrine()->getManager('oracle_prod');
+                $em = $this->getDoctrine()->getManager('oracle_P1');
                 $queryResult    =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent, $start_date, $end_date);
                 $column_names   = $queryResult[0];
                 $array_content  = $queryResult[1];
@@ -172,7 +172,7 @@ class CrmWeatherController extends Controller
             $queryContent = $em->getRepository('CRMToolsBundle:CrmQueries')->getQueryFromCrmWheather($nbr);
             $queryName = $queryContent['queryName'];
 
-            $em = $this->getDoctrine()->getManager('oracle_prod');
+            $em = $this->getDoctrine()->getManager('oracle_P1');
             $queryResult    =  $em->getRepository('CRMToolsBundle:ClassUcr')->getQueryResult($queryContent);
             $column_names   = $queryResult[0];
             $array_content  = $queryResult[1];

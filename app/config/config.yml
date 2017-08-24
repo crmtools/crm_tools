@@ -98,7 +98,7 @@ doctrine:
                 user:     '%database_user%'
                 password: '%database_password%'
                 charset:  UTF8
-            oracle_prod:
+            oracle_P1:
                 driver:   pdo_oci
                 host:     eceisexpe-scan.pvcp.intra
                 port:     1521
@@ -142,8 +142,8 @@ doctrine:
                 connection: default
                 mappings:
                     CRMToolsBundle: ~
-            oracle_prod:
-                connection: oracle_prod
+            oracle_P1:
+                connection: oracle_P1
                 mappings:
                     CRMToolsBundle: ~
             oracle_Q5:
