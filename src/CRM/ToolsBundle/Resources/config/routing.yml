@@ -50,10 +50,12 @@ crm_game_integration:
     path:     /game_integration
     defaults: { _controller: CRMToolsBundle:CrmWeather:gameIntegration }
 
-crm_contact_booking:
-    path:     /contact_booking_forms
-    defaults: { _controller: CRMToolsBundle:UcrSearchEngine:contactBookingForms }
+crm_contact_form:
+    path:     /contact_form
+    defaults: { _controller: CRMToolsBundle:UcrSearchEngine:contactForm }
 
-
+crm_booking_form:
+    path:     /booking_form
+    defaults: { _controller: CRMToolsBundle:UcrSearchEngine:bookingForm }
 
 

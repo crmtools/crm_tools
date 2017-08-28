@@ -12,17 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class CrmQueriesUcrRepository extends EntityRepository
 {
-    public function getUcrQueries(){
+    public function getUcrQueriesContact(){
         $sql = "SELECT queryName, queryText FROM crm_queries_ucr where pageName = 'contact' order by Displayorder asc";
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
-        $queries_ucr = $query->fetchAll();
+        $queries_ucr_contact = $query->fetchAll();
 
-        return $queries_ucr;
+        return $queries_ucr_contact;
     }
 
     public function getResultUcrQueries($queries_ucr_modify){
+        $queries_ucr_result= null;
         foreach ($queries_ucr_modify as $row){
             $sql = $row['queryText'];
             $queryName = $row['queryName'];
@@ -38,6 +39,17 @@ class CrmQueriesUcrRepository extends EntityRepository
         }
 
         return $queries_ucr_result;
+    }
+
+    public function getUcrQueriesBooking(){
+        $sql = "SELECT queryName, queryText FROM crm_queries_ucr where pageName = 'booking' order by Displayorder asc";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $queries_ucr_booking = $query->fetchAll();
+
+        return $queries_ucr_booking;
+
     }
 }
 

@@ -1,25 +1,24 @@
 {% extends "CRMToolsBundle::layout.html.twig" %}
 
 {% block title %}
-     Contact and Booking forms - {{ parent() }}
+     Booking form - {{ parent() }}
 {% endblock %}
 
 {% block body %}
     {{ parent() }}
 
     <div class="container containerPage">
-        <h1 class="titlePage">Contact and Booking forms</h1>
+        <h1 class="titlePage">Booking form</h1>
 
         <div class="col-md-12">
-            <form method="POST">
+            <form method="POST" action="{{ path('crm_booking_form') }}">
                 <div class="formContactBooking">
                     <div class="col-md-1 searchBy">
                         <label>Search By :</label>
                     </div>
                     <div class="selectOptionForm col-md-2">
                         <select class="form-control" name="search_type">
-                            <option>ID_CONTACT</option>
-                            <option>EMAIL</option>
+                            <option>ID_HEADER</option>
                             <option>LEXO</option>
                             <option>POLO</option>
                             <option>MIDAS</option>
@@ -48,7 +47,7 @@
             </form>
         </div>
 
-        <div class="col-md-12 globalTableCss" style="position: relative;">
+        <div class="col-md-12 globalTableCss">
             {% if queries_ucr_result is defined %}
                 {% for tableName, tableContent in queries_ucr_result %}
                     <div class="cssFromTable">

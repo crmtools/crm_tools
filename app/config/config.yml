@@ -104,8 +104,8 @@ doctrine:
                 port:     1521
                 service:  true
                 dbname:   CRMRC1.PVCP.PRD
-                user:     zkissarli[CRM_TEAM]
-                password: zkissarli
+                user:     TEAM_CRM
+                password: wfUhgqjOpWVRXewC7ZJd
                 charset:  UTF8
             oracle_Q5:
                 driver:   pdo_oci
@@ -113,8 +113,8 @@ doctrine:
                 port:     1521
                 service:  true
                 dbname:   CRMRC1.PVCP.ACC
-                user:     zkissarli[CRM_TEAM]
-                password: zkissarli
+                user:     TEAM_CRM
+                password: wfUhgqjOpWVRXewC7ZJd
                 charset:  UTF8
             oracle_Q4:
                 driver:   pdo_oci

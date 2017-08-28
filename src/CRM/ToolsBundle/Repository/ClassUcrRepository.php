@@ -48,7 +48,7 @@ class ClassUcrRepository extends EntityRepository{
         return $queryResult;
     }
 
-    public function getQueryResultSearch($sql){
+    public function getIdsContact($sql){
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
