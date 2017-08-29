@@ -31,7 +31,7 @@ class CrmQueries
     /**
      * @var string
      *
-     * @ORM\Column(name="queryText", type="string", length=255)
+     * @ORM\Column(name="queryText", type="string", length=5000)
      */
     private $queryText;
 

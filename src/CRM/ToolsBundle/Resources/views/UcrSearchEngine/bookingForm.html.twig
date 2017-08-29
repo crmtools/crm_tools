@@ -63,14 +63,13 @@
                                              <th> {{ column_name }} </th>
                                     {% endfor %}
                                 </tr>
-
-                                    {% for result in tableContent %}
-                                        <tr>
-                                        {% for value in result %}
-                                                <td> {{ value }} </td>
-                                        {% endfor %}
-                                        </tr>
+                                {% for result in tableContent %}
+                                    <tr>
+                                    {% for value in result %}
+                                            <td> {{ value }} </td>
                                     {% endfor %}
+                                    </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>

@@ -6,9 +6,9 @@ crm_tools_graph:
     path:     /graphs_performance
     defaults: { _controller: CRMToolsBundle:Monitoring:graph }
 
-crm_logs_view:
-    path:     /logs_view
-    defaults: { _controller: CRMToolsBundle:Monitoring:contact }
+crm_log_errors:
+    path:     /log_errors
+    defaults: { _controller: CRMToolsBundle:Monitoring:logErrors }
 
 crm_errors_analysis:
     path:     /errors_analysis

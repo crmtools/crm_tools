@@ -1,0 +1,81 @@
+{% extends "CRMToolsBundle::layout.html.twig" %}
+
+{% block title %}
+     Log Errors - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container containerPage">
+        <h1 class="titlePage">Log Errors</h1>
+
+        <div class="bs-example bs-example-tabs">
+            <ul class="nav nav-tabs logErrorsTab" id="myTabs">
+                {% set isFirst = true %}
+                {% for date, tableContent in log_errors_result %}
+                    {% if isFirst %}
+                        <li class="active"><a href="{{ '#'~ date }}" data-toggle="tab" >{{ date | date("d-m-Y") }}</a></li>
+                        {% set isFirst = false %}
+                    {% else %}
+                        <li><a href="{{ '#'~ date }}" data-toggle="tab">{{ date | date("d-m-Y") }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <div class="tab-content" id="myTabContent">
+                {% set isFirst = true %}
+                {% for date, tableContent in log_errors_result %}
+                    {% if isFirst %}
+                         <div class="tab-pane fade in active" role="tabpanel" id={{ date }}>
+                             <div class="cssFromTable containerPage">
+                                 <div class="table-responsive">
+                                     <table class="table table-striped">
+                                         <tbody class="blueHoverLine">
+                                             <tr>
+                                                 {% for column_name, column_value in tableContent[0] %}
+                                                     <th> {{ column_name }} </th>
+                                                 {% endfor %}
+                                             </tr>
+                                         {% for result in tableContent %}
+                                             <tr>
+                                                 {% for value in result %}
+                                                     <td> {{ value }} </td>
+                                                 {% endfor %}
+                                             </tr>
+                                         {% endfor %}
+                                         </tbody>
+                                     </table>
+                                 </div>
+                             </div>
+                             {% set isFirst = false %}
+                          </div>
+                    {% else %}
+                        <div class="tab-pane fade" role="tabpanel" id={{ date }}>
+                            <div class="cssFromTable containerPage">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <tbody class="blueHoverLine">
+                                            <tr>
+                                                {% for column_name, column_value in tableContent[0] %}
+                                                    <th> {{ column_name }} </th>
+                                                {% endfor %}
+                                            </tr>
+                                            {% for result in tableContent %}
+                                                <tr>
+                                                    {% for value in result %}
+                                                        <td> {{ value }} </td>
+                                                    {% endfor %}
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                 {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

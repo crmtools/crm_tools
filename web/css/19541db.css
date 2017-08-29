@@ -17,6 +17,26 @@
     color: #37519f;
 }
 
+.cssFromTable{
+    margin-top: 20px;
+    /*border: 1px solid red;*/
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+}
+
+.cssFromTable th{
+    background: #0073e6;
+    color: #fff;
+}
+
+.greenBackground th{
+    background: #5bb024;
+}
+
+.blueHoverLine tr:hover{
+    background-color: #37519f !important;
+    color: #fff;
+}
+
 /*********************************************CSS FROM HOME PAGE****************************************************/
 body {
     width: 90%;
@@ -437,17 +457,6 @@ body {
 
 
 /**************************************CSS FROM FILE INTEGRATION PAGES*********************************************/
-.fileIntegrationTable{
-    margin-top: 20px;
-    /*border: 1px solid red;*/
-    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
-}
-
-.fileIntegrationTable th{
-    background: #0073e6;
-    color: #fff;
-}
-
 .borderBodyTable{
     border: 1.5px solid #ddd;
 }
@@ -460,11 +469,11 @@ body {
     margin: 15px 0px;
 }
 
-/**************************************CSS FROM BUSINESS VIEW PAGE*********************************************/
-
-.greenBackground th{
-    background: #5bb024;
+.uploadButtonCss{
+    margin-left: 10px;
 }
+
+/**************************************CSS FROM BUSINESS VIEW PAGE*********************************************/
 
 .borderFileTable{
     border: 2px solid #ddd;
@@ -489,10 +498,6 @@ body {
     background: #5bb024;
 }
 
-.blueHoverLine tr:hover{
-    background-color: #37519f !important;
-    color: #fff;
-}
 .blueHoverLine td{
     border: 1.3px solid #B8B8B8;
 }
@@ -526,8 +531,40 @@ body {
 .searchBy{
     padding: 0px !important;
 }
+
 .selectOptionForm{
      height: 30px !important;
+}
+
+.globalTableCss{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.tableSearchCss{
+    padding: 2px;
+    border: 2px solid #ddd !important;
+    margin-bottom: 0px;
+}
+
+.tableSearchCss th, td{
+    border: 1.3px solid #B8B8B8;
+}
+
+.logErrorsTab li{
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    /*font-size: 17px;*/
+    /*border: 1px solid red;*/
+}
+
+.logErrorsTab > li > a{
+    background: #5bb024;
+    color: #fff;
+}
+
+.logErrorsTab > li > a:hover{
+    color: #37519f;
 }
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)

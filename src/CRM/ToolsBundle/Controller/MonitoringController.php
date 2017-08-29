@@ -91,15 +91,9 @@ class MonitoringController extends Controller
         ));
     }
 
-    public function getDataPerformance($start_date, $end_date, $start_date_display, $end_date_display)
-    {
+    public function getDataPerformance($start_date, $end_date, $start_date_display, $end_date_display){
         $data_array_perf = array();
-        $date_array = array();
-        
-        while ($start_date <= $end_date) {
-            array_push($date_array, $start_date->format('Y-m-d'));
-            $start_date->modify('+1 day');
-        }
+        $date_array = $this->generate_days($start_date, $end_date);
         
         $data_array_perf['date_array'] = $date_array;
         
@@ -202,5 +196,33 @@ class MonitoringController extends Controller
         $data_array_perf['result_nb_booking_bboss_min'] = $result_nb_booking_bboss_min;
 
         return $data_array_perf;
+    }
+
+    public function generate_days($start_date, $end_date){
+        $date_array = array();
+
+        while ($start_date <= $end_date) {
+            array_push($date_array, $start_date->format('Y-m-d'));
+            $start_date->modify('+1 day');
+        }
+
+       return $date_array;
+    }
+
+    public function logErrorsAction(){
+
+        $end_date = new \DateTime();
+
+        $start_date = new \DateTime();
+        $start_date->modify('-7 day');
+
+        $dates_array = $this->generate_days($start_date, $end_date);
+
+        $em = $this->getDoctrine()->getManager();
+        $log_errors_result = $em->getRepository('CRMToolsBundle:CrmLogErrors')->getLogErrorsWithDates($dates_array);
+//        var_dump($log_errors_result);die;
+        return $this->render('CRMToolsBundle:Monitoring:logErrors.html.twig', array(
+            'log_errors_result' => $log_errors_result
+        ));
     }
 }
