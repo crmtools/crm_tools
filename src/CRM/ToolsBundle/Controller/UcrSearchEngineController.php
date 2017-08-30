@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UcrSearchEngineController extends Controller
 {
     public function contactFormAction(Request $request){
+
         if($request->isMethod('POST')){
             if(isset($_POST['search_type'])){
                 $search_type = $_POST['search_type'];
