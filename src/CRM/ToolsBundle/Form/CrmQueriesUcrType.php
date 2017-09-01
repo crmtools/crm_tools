@@ -14,10 +14,10 @@ class CrmQueriesUcrType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder ->add('SearchBy', 'choice', array(
+        $builder ->add('searchBy', 'choice', array(
                     'mapped'    => false,
-                    'label'   => 'Search By :',
-                    'choices' => array(
+                    'label'     => 'Search By :',
+                    'choices'   => array(
                             'ID_CONTACT' => 'ID_CONTACT',
                             'EMAIL'      => 'EMAIL',
                             'LEXO'       => 'LEXO',
@@ -26,21 +26,37 @@ class CrmQueriesUcrType extends AbstractType
                             'BBOSS'      => 'BBOSS'
                             )
                  ))
-                 ->add('search', 'text', array(
-                            'mapped'      => false,
-                            'required'    => true
-                 ))
-//                ->add('Please choose the environment:')
+                ->add('searchText', 'text', array(
+                    'mapped'      => false,
+                    'required'    => false,
+                ))
 
-
-
+//                ->add('Please choose the environment', 'text', array(
+//                    'mapped'    => false,
+//                ))
+//                ->add('Q3', 'radio',array(
+//                    'mapped'  => false,
+//                    'required'  => false,
+//                ))
+//                ->add('Q4', 'radio',array(
+//                    'mapped'  => false,
+//                    'required'  => false,
+//                ))
+//                ->add('Q5', 'radio',array(
+//                    'mapped'  => false,
+//                    'required'  => false,
+//                ))
+//                ->add('P1', 'radio',array(
+//                    'mapped'  => false,
+//                    'required'  => false,
+//                ))
         ;
 
 
 
 
     }
-    
+
     /**
      * {@inheritdoc}
      */

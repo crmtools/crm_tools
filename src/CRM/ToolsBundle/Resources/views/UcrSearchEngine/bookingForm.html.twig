@@ -11,40 +11,34 @@
         <h1 class="titlePage">Booking form</h1>
 
         <div class="col-md-12">
-            <form method="POST" action="{{ path('crm_booking_form') }}">
-                <div class="formContactBooking">
-                    <div class="col-md-1 searchBy">
-                        <label>Search By :</label>
-                    </div>
-                    <div class="selectOptionForm col-md-2">
-                        <select class="form-control" name="search_type">
-                            <option>ID_HEADER</option>
-                            <option>LEXO</option>
-                            <option>POLO</option>
-                            <option>MIDAS</option>
-                            <option>BBOSS</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <input  type="text" class="form-control" name="id_field">
-                    </div>
-                    <div class="col-md-5">
-                        <label>Please choose the environment:</label>
-                        <label class="radio-inline">
-                            <input type="radio" name="env" id="Q3" value="Q3" onclick="this.form.submit()"> Q3
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="env" id="Q4" value="Q4" onclick="this.form.submit()"> Q4
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="env" id="Q5" value="Q5" onclick="this.form.submit()"> Q5
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="env" id="P1" value="P1" onclick="this.form.submit()"> P1
-                        </label>
-                    </div>
+            {{ form_start(form) }}
+            <div class="formContactBooking">
+                <div class="col-md-1 searchBy">
+                    {{ form_label(form.searchBy) }}
                 </div>
-            </form>
+                <div class="selectOptionForm col-md-2">
+                    {{ form_widget(form.searchBy, {'attr': {'class': 'form-control' }})  }}
+                </div>
+                <div class="col-md-3">
+                    {{ form_widget(form.searchText, {'attr': {'class': 'form-control' }})  }}
+                </div>
+                <div class="col-md-5">
+                    <label>Please choose the environment:</label>
+                    <label class="radio-inline">
+                        <input type="radio" name="env" id="Q3" value="Q3" onclick="this.form.submit()"> Q3
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="env" id="Q4" value="Q4" onclick="this.form.submit()"> Q4
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="env" id="Q5" value="Q5" onclick="this.form.submit()"> Q5
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="env" id="P1" value="P1" onclick="this.form.submit()"> P1
+                    </label>
+                </div>
+            </div>
+            {{ form_end(form) }}
         </div>
 
         <div class="col-md-12 globalTableCss">

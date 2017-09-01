@@ -12,12 +12,18 @@ class UcrSearchEngineController extends Controller
 {
     public function contactFormAction(Request $request){
 
-        if($request->isMethod('POST')){
-            if(isset($_POST['search_type'])){
-                $search_type = $_POST['search_type'];
+        /*Creat the form*/
+        $crmQueriesUcr = new CrmQueriesUcr();
+        $form = $this->createForm (new CrmQueriesUcrType(), $crmQueriesUcr);
+
+        if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
+
+            if($form->get("searchBy")->getData()){
+                $searchBy = $form->get("searchBy")->getData();
             }
-            if(isset($_POST['id_field']) && $_POST['id_field'] != ''){
-                $id_field = $_POST['id_field'];
+
+            if($form->get("searchText")->getData()){
+                $searchText = $form->get("searchText")->getData();
             }
             if(isset($_POST['env'])){
                 $env = $_POST['env'];
@@ -25,8 +31,8 @@ class UcrSearchEngineController extends Controller
 
             $tmp_id = null;
             $search_values_array= array();
-            if(isset($search_type)  && isset($id_field)  && isset($env)){
-                $array = preg_split( '/[\s,]+/',trim($id_field));
+            if(isset($searchBy)  && isset($searchText)  && isset($env)){
+                $array = preg_split( '/[\s,]+/',trim($searchText));
 
                 foreach ($array as $value){
                     if (intval($value) != 0) {
@@ -40,9 +46,9 @@ class UcrSearchEngineController extends Controller
 
                 foreach($search_values_array as $current_value) {
                     if($current_value != null){
-                        if ($search_type == 'EMAIL' || strpos($id_field, '@')) {
+                        if ($searchBy == 'EMAIL' || strpos($searchText, '@')) {
                             $tmp_id .= ",lower(trim('" . trim($current_value) . "'))";
-                        } else if ($search_type == 'POLO' || $search_type == 'LEXO' || $search_type == 'MIDAS' || $search_type == 'BBOSS') {
+                        } else if ($searchBy == 'POLO' || $searchBy == 'LEXO' || $searchBy == 'MIDAS' || $searchBy == 'BBOSS') {
                             $tmp_id .= ",'" . trim($current_value) . "'";
                         } else {
                             $tmp_id .= "," . trim($current_value) . "";
@@ -53,13 +59,13 @@ class UcrSearchEngineController extends Controller
                 if($tmp_id){
                     $tmp_id = substr($tmp_id,1); // remove initial ","
 
-                    if($search_type == 'EMAIL' || strpos( $id_field , '@'))
+                    if($searchBy == 'EMAIL' || strpos( $searchText , '@'))
                     {
                         $query = "select id_contact from cli_email where lower(trim(email)) in ($tmp_id)";
                     }
-                    else if ($search_type == 'POLO' || $search_type == 'LEXO' || $search_type == 'MIDAS' || $search_type == 'BBOSS')
+                    else if ($searchBy == 'POLO' || $searchBy == 'LEXO' || $searchBy == 'MIDAS' || $searchBy == 'BBOSS')
                     {
-                        $query = "select id_contact from cli_refext where code_appli = '$search_type' and id_refext in ($tmp_id)";
+                        $query = "select id_contact from cli_refext where code_appli = '$searchBy' and id_refext in ($tmp_id)";
                     }
                     else
                     {
@@ -84,39 +90,47 @@ class UcrSearchEngineController extends Controller
                             $em = $this->getDoctrine()->getManager('oracle_'.$env);
                             $queries_ucr_result = $em->getRepository('CRMToolsBundle:CrmQueriesUcr')->getResultUcrQueries($queries_contact_modify);
                         }else{
-                            return $this->render('CRMToolsBundle:UcrSearchEngine:contactForm.html.twig');
+                            return $this->render('CRMToolsBundle:UcrSearchEngine:contactForm.html.twig', array(
+                                'form' => $form->createView()
+                            ));
                         }
                     }
-
                     return $this->render('CRMToolsBundle:UcrSearchEngine:contactForm.html.twig', array(
-                        'queries_ucr_result' => $queries_ucr_result
+                        'queries_ucr_result' => $queries_ucr_result,
+                        'form' => $form->createView()
                     ));
                 }
             }
         }
 
-        return $this->render('CRMToolsBundle:UcrSearchEngine:contactForm.html.twig');
+        return $this->render('CRMToolsBundle:UcrSearchEngine:contactForm.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     public function bookingFormAction(Request $request){
 
-        if($request->isMethod('POST')) {
+        /*Creat the form without a formType*/
+        $crmQueriesUcr = new CrmQueriesUcr();
+        $form = $this->creatFormWithoutFormtype($crmQueriesUcr);
 
-            if (isset($_POST['search_type'])) {
-                $search_type = $_POST['search_type'];
-            }
-            if (isset($_POST['id_field']) && $_POST['id_field'] != '') {
-                $id_field = $_POST['id_field'];
+        if($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
+            if($form->get("searchBy")->getData()){
+                $searchBy = $form->get("searchBy")->getData();
             }
-            if (isset($_POST['env'])) {
+
+            if($form->get("searchText")->getData()){
+                $searchText = $form->get("searchText")->getData();
+            }
+            if(isset($_POST['env'])){
                 $env = $_POST['env'];
             }
 
             $tmp_id = null;
-            if (isset($search_type) && isset($id_field) && isset($env)) {
+            if (isset($searchBy) && isset($searchText) && isset($env)) {
 
-                $array_ids = preg_split('/[\s,]+/', trim($id_field));
+                $array_ids = preg_split('/[\s,]+/', trim($searchText));
 
                 foreach ($array_ids as $current_id) {
                     $current_id = intval($current_id);
@@ -129,10 +143,10 @@ class UcrSearchEngineController extends Controller
 
                 if($tmp_id != null){
                     $tmp_id = substr($tmp_id, 1); // remove initial ","
-                    if($search_type == 'ID_HEADER') {
+                    if($searchBy == 'ID_HEADER') {
                         $booking_ids = $tmp_id;
                     }else{
-                        $query = "select id_header from sta_header where code_appli = '$search_type' and id_source in ($tmp_id)";
+                        $query = "select id_header from sta_header where code_appli = '$searchBy' and id_source in ($tmp_id)";
                         $em = $this->getDoctrine()->getManager('oracle_'.$env);
                         $booking_ids = $em->getRepository('CRMToolsBundle:ClassUcr')->getIdsContact($query);
                     }
@@ -147,18 +161,43 @@ class UcrSearchEngineController extends Controller
                             $queries_contact_modify[$key]['queryText'] = str_replace('= 1', 'in (' . $booking_ids . ')', $result['queryText']);
                         }
 
-                    $em = $this->getDoctrine()->getManager('oracle_' . $env);
-                    $queries_ucr_result = $em->getRepository('CRMToolsBundle:CrmQueriesUcr')->getResultUcrQueries($queries_contact_modify);
+                        $em = $this->getDoctrine()->getManager('oracle_' . $env);
+                        $queries_ucr_result = $em->getRepository('CRMToolsBundle:CrmQueriesUcr')->getResultUcrQueries($queries_contact_modify);
                     }
                     if (isset($queries_ucr_result)){
                         return $this->render('CRMToolsBundle:UcrSearchEngine:bookingForm.html.twig', array(
-                            'queries_ucr_result' => $queries_ucr_result
+                            'queries_ucr_result' => $queries_ucr_result,
+                            'form'               => $form->createView(),
                         ));
                     }
                 }
             }
         }
 
-        return $this->render('CRMToolsBundle:UcrSearchEngine:bookingForm.html.twig');
+        return $this->render('CRMToolsBundle:UcrSearchEngine:bookingForm.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    public function creatFormWithoutFormtype($crmQueriesUcr){
+        $form = $this->createFormBuilder($crmQueriesUcr)
+            ->add('searchBy', 'choice', array(
+                'mapped'    => false,
+                'label'     => 'Search By :',
+                'choices'   => array(
+                    'ID_HEADER' => 'ID_HEADER',
+                    'LEXO'       => 'LEXO',
+                    'POLO'       => 'POLO',
+                    'MIDAS'      => 'MIDAS',
+                    'BBOSS'      => 'BBOSS'
+                )
+            ))
+            ->add('searchText', 'text', array(
+                'mapped'      => false,
+                'required'    => false,
+            ))
+            ->getForm();
+
+        return $form;
     }
 }
