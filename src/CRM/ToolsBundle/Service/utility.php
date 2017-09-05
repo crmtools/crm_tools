@@ -179,7 +179,7 @@ class utility{
         return $d && $d->format($format) == $date;
     }
 
-    function generate_days($start_date, $end_date)
+    function generateDays($start_date, $end_date)
     {
         $date_array = array();
 

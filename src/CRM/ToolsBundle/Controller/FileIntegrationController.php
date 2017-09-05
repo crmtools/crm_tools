@@ -113,7 +113,7 @@ class FileIntegrationController extends Controller
         $start_date_display = $start_date->format('d-m-Y');
         $end_date_display = $end_date->format('d-m-Y');
 
-        $date_array = $this->get('check_file_class')->generate_days($start_date, $end_date);
+        $date_array = $this->get('check_file_class')->generateDays($start_date, $end_date);
         $file_name_pattern = NULL;
 
         /*Creat the form*/
@@ -145,7 +145,7 @@ class FileIntegrationController extends Controller
                 $file_name_pattern = " and upper(FILE_NAME) LIKE upper('%$file_name_pattern%')";
             }
 
-            $date_array = $this->get('check_file_class')->generate_days($start_date, $end_date);
+            $date_array = $this->get('check_file_class')->generateDays($start_date, $end_date);
         }
 
         try{
