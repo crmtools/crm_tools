@@ -35,7 +35,7 @@ class CLI_DATA_IMPORTSRepository extends EntityRepository
                             decode(action,'REJET','REJECT', action) as action,
                             nbr_ligne,
                             error_list
-                        from P1RCPV.CLI_DATA_IMPORTS imp
+                        from CLI_DATA_IMPORTS imp
                         left join 
                         (
                             select
@@ -49,11 +49,11 @@ class CLI_DATA_IMPORTSRepository extends EntityRepository
                                     count(*) as nb_error
                                 from
                                 (
-                                    select file_name, error_code from p1rcpv.ERR_UPDATE_SUBSCRIPTION 
+                                    select file_name, error_code from ERR_UPDATE_SUBSCRIPTION 
                                     union all
-                                    select FILE_NAME, code_rejet from p1rcpv.ERR_JEUX
+                                    select FILE_NAME, code_rejet from ERR_JEUX
                                     union all 
-                                    select FILE_NAME, REJECT_CODE from p1rcpv.ERR_APPENDING
+                                    select FILE_NAME, REJECT_CODE from ERR_APPENDING
                                 )
                                 group by file_name, error_code
                             )

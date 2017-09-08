@@ -43,33 +43,15 @@ class MonitoringController extends Controller
             $date_picker = $form->getData();
 
             $start_date = $date_picker->getStartDate();
-            $start_date_picker = $start_date->format('Y-m-d');
+            $start_date_display = $start_date->format('Y-m-d');
 
             $end_date = $date_picker->getEndDate();
-            $end_date_picker = $end_date->format('Y-m-d');
-            if($start_date_picker > $end_date_picker){
+            $end_date_display = $end_date->format('Y-m-d');
+            if($start_date_display > $end_date_display){
                 throw new NotFoundHttpException('La "date début" doit être supèrieur à la "date fin"');
             }
 
-            $data_array_perf = $this->getDataPerformance($start_date, $end_date, $start_date_picker, $end_date_picker);
-
-             return $this->render('CRMToolsBundle:Monitoring:graphPerformance.html.twig', array(
-                 'startDate'                    => $start_date_picker,
-                 'endDate'                      => $end_date_picker,
-                 'date_array'                   => $data_array_perf['date_array'],
-                 'week_array'                   => $data_array_perf['week_array'],
-                 'result_graph_avg'             => $data_array_perf['result_graph_avg'],
-                 'result_nb_contacts'           => $data_array_perf['result_nb_contacts'],
-                 'result_nb_contacts_min'       => $data_array_perf['result_nb_contacts_min'],
-                 'result_nb_events'             => $data_array_perf['result_nb_events'],
-                 'result_nb_booking_midas'      => $data_array_perf['result_nb_booking_midas'],
-                 'result_nb_booking_midas_min'  => $data_array_perf['result_nb_booking_midas_min'],
-                 'result_nb_booking_ap'         => $data_array_perf['result_nb_booking_ap'],
-                 'result_nb_booking_ap_min'     => $data_array_perf['result_nb_booking_ap_min'] ,
-                 'result_nb_booking_bboss'      => $data_array_perf['result_nb_booking_bboss'] ,
-                 'result_nb_booking_bboss_min'  => $data_array_perf['result_nb_booking_bboss_min'] ,
-                 'form'                         => $form->createView(),
-             ));
+            $data_array_perf = $this->getDataPerformance($start_date, $end_date, $start_date_display, $end_date_display);
         }
         
         return $this->render('CRMToolsBundle:Monitoring:graphPerformance.html.twig', array(
@@ -93,7 +75,7 @@ class MonitoringController extends Controller
 
     public function getDataPerformance($start_date, $end_date, $start_date_display, $end_date_display){
         $data_array_perf = array();
-        $date_array = $this->generate_days($start_date, $end_date);
+        $date_array = $this->generateDays($start_date, $end_date);
         
         $data_array_perf['date_array'] = $date_array;
         
@@ -198,7 +180,7 @@ class MonitoringController extends Controller
         return $data_array_perf;
     }
 
-    public function generate_days($start_date, $end_date){
+    public function generateDays($start_date, $end_date){
         $date_array = array();
 
         while ($start_date <= $end_date) {
@@ -216,7 +198,7 @@ class MonitoringController extends Controller
         $start_date = new \DateTime();
         $start_date->modify('-7 day');
 
-        $dates_array = $this->generate_days($start_date, $end_date);
+        $dates_array = $this->generateDays($start_date, $end_date);
 
         $em = $this->getDoctrine()->getManager();
         $log_errors_result = $em->getRepository('CRMToolsBundle:CrmLogErrors')->getLogErrorsWithDates($dates_array);

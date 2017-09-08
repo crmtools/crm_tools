@@ -15,9 +15,6 @@ class CrmQueriesResultRepository extends EntityRepository
 {
     public function getDataQualityTable($groupsName, $date_array){
 
-//        $sql= "SELECT * FROM P1RCST.ERR_BOOKING_CP  WHERE ID_CONTACT = 675039";
-//        $sql= "select count(*) AS NB_Queries from P1RCST.CLI_CONTACT";
-
         $dataQualities= array();
         foreach ($groupsName as $group) {
             $sql = "SELECT crm_queries.id, crm_queries_result.queryName, \n";
@@ -50,14 +47,6 @@ class CrmQueriesResultRepository extends EntityRepository
 
     public function getOneQueryWithId($query_id, $current_date){
 
-        if($query_id){
-            $sql = "DELETE FROM crm_queries_result WHERE queryDate = '" . $current_date . "' AND query_id = '" . $query_id . "'";
-//            echo $sql;die;
-            $em = $this->getEntityManager();
-            $query = $em->getConnection()->prepare($sql);
-            $query->execute();
-        }
-
         $sql = "SELECT * FROM crm_queries WHERE id = '" . $query_id . "'";
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
@@ -65,6 +54,17 @@ class CrmQueriesResultRepository extends EntityRepository
         $currentQuery = $query->fetchAll();
 
         return $currentQuery;
+    }
+
+    public function deleteInResultWithQueryId($query_id, $current_date){
+        $sql = "SELECT * FROM crm_queries_result WHERE queryDate = '" . $current_date . "' AND query_id = '" . $query_id . "'";
+        echo $sql;
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+
+        return $result;
     }
 
     public function executeQueryWithId($currentQuery){
@@ -89,7 +89,6 @@ class CrmQueriesResultRepository extends EntityRepository
 
         $currentQuery= $currentQuery[0];
         $sql = "INSERT INTO crm_queries_result (queryName, QueryResult, queryDate, query_id) VALUES ('".$currentQuery['queryName']."', $result, '$current_date', ".$currentQuery['id'].")";
-//        echo $sql;die;
 
         $em = $this->getEntityManager('default');
         $query = $em->getConnection()->prepare($sql);

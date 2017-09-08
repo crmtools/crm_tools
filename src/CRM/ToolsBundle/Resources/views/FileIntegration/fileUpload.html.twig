@@ -42,8 +42,8 @@
 
                                 <td>{{ config['game_config']['errors'][error_name]['label'] }}</td>
                                 <td>{{ error_count }}</td>
-                                {% if error_count == 0 %}
-                                    <td> 0 </td>
+                                {% if (error_count == 0) or ((nb_lines -1) == 0) %}
+                                        <td> 0 </td>
                                 {% else %}
                                     {% set percentage = '%.2f'|format(100 * error_count /(nb_lines -1)) %}
                                     <td>{{ percentage }}</td>
@@ -67,7 +67,7 @@
 
                                 <td>{{ config['update_subscription_config']['errors'][error_name]['label'] }}</td>
                                 <td>{{ error_count }}</td>
-                                {% if error_count == 0 %}
+                                {% if (error_count == 0) or ((nb_lines -1) == 0) %}
                                     <td> 0 </td>
                                 {% else %}
                                     {% set percentage = '%.2f'|format(100 * error_count /(nb_lines -1)) %}
@@ -92,7 +92,7 @@
 
                                 <td>{{ config['update_address_config']['errors'][error_name]['label'] }}</td>
                                 <td>{{ error_count }}</td>
-                                {% if error_count == 0 %}
+                                {% if (error_count == 0) or ((nb_lines -1) == 0) %}
                                     <td> 0 </td>
                                 {% else %}
                                     {% set percentage = '%.2f'|format(100 * error_count /(nb_lines -1)) %}

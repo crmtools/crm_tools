@@ -12,3 +12,7 @@ services:
         class: CRM\ToolsBundle\Service\utility
     check_file_class:
         class: CRM\ToolsBundle\Service\checkFile
+    refresh_button_analysis:
+        class: CRM\ToolsBundle\Service\refreshAnalysis
+        arguments: ['@doctrine']
+
