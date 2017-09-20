@@ -54,8 +54,4 @@ crm_booking_form:
     path:     /booking_form
     defaults: { _controller: CRMToolsBundle:UcrSearchEngine:bookingForm }
 
-crm_login:
-    path:     /login
-    defaults: { _controller: CRMToolsBundle:Security:login }
-
 
