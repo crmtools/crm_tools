@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use CRM\ToolsBundle\Entity\GraphName;
+use Symfony\Component\Security\Core\User;
+use Symfony\Component\Ldap\LdapClient;
+
 
 class DefaultController extends Controller
 {
@@ -17,34 +20,35 @@ class DefaultController extends Controller
         return $this->render('CRMToolsBundle:Default:index.html.twig');
     }
 
-    public function logsViewAction()
-    {
 
-//        $em = $this->getDoctrine()->getManager();
-//        $test= $em->getRepository("CRMToolsBundle:LogsView")->findAll();
-//        var_dump($test);die;
 
-        $end_date_array = new \DateTime();
+    public function ldapConnectAction(){
+        
+        $ldaprdn  = 'PVCP\zkissarli';     // DN ou RDN LDAP
+        $ldappass = '123Soleil';  // Mot de passe associé
 
-        $start_date_array = new \DateTime();
-        $start_date_array->modify('-7 day');
+// Connexion au serveur LDAP
+        $ldapconn = ldap_connect("172.18.0.50")
+        or die("Impossible de se connecter au serveur LDAP.");
 
-        $start_date= $start_date_array->format('Y-m-d');
-        $end_date= $end_date_array->format('Y-m-d');
+        if ($ldapconn) {
 
-        $date_array= array();
-        while($start_date_array<=$end_date_array){
-            array_push($date_array,$start_date_array->format('Y-m-d'));
-            $start_date_array->modify('+1 day');
+            // Connexion au serveur LDAP
+            $ldapbind = ldap_bind($ldapconn, $ldaprdn, $ldappass);
+
+            // Vérification de l'authentification
+            if ($ldapbind) {
+                echo "Connexion LDAP réussie...";
+            } else {
+                echo "Connexion LDAP échouée...";
+            }
+            die;
+
         }
 
-        $em = $this->getDoctrine()->getManager();
-        $result = $em->getRepository('CRMToolsBundle:LogsView')
-            ->displayGraphTable($start_date, $end_date, $date_array);
-        var_dump($result);die;
 
 
-        return new Response('test');
+
     }
 }
 

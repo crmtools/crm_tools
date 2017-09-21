@@ -54,4 +54,8 @@ crm_booking_form:
     path:     /booking_form
     defaults: { _controller: CRMToolsBundle:UcrSearchEngine:bookingForm }
 
+crm_ldap_connect:
+    path:     /ldap_connect
+    defaults: { _controller: CRMToolsBundle:Default:ldapConnect }
+
 

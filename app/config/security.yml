@@ -4,8 +4,14 @@ security:
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
+        my_ldap:
+            ldap:
+                service: ldap
+                base_dn: dc=example,dc=com
+                search_dn: "cn=read-only-admin,dc=example,dc=com"
+                search_password: password
+                default_roles: ROLE_USER
+                uid_key: uid
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
