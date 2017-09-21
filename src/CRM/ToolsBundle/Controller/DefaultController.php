@@ -42,7 +42,8 @@ class DefaultController extends Controller
             } else {
                 echo "Connexion LDAP échouée...";
             }
-            die;
+
+            return $this->render('CRMToolsBundle:Default:login.html.twig');
 
         }
 
