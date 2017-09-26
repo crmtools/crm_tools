@@ -1,30 +1,35 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
 security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        CRM\UserBundle\Entity\User: plaintext
 
-    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    role_hierarchy:
+            ROLE_ADMIN:       ROLE_USER
+            ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
     providers:
-        my_ldap:
-            ldap:
-                service: ldap
-                base_dn: dc=example,dc=com
-                search_dn: "cn=read-only-admin,dc=example,dc=com"
-                search_password: password
-                default_roles: ROLE_USER
-                uid_key: uid
+        in_memory:
+            memory:
+                 users:
+                     user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
         main:
-            anonymous: ~
-            # activate different ways to authenticate
+             pattern:   ^/
+             anonymous: true
+             provider:  in_memory
+             form_login:
+                 login_path: login
+                 check_path: login_check
+             logout:
+                 path:   logout
+                 target: /platform
 
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
 
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
-            #form_login: ~

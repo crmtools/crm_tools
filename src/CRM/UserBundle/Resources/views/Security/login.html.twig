@@ -8,6 +8,11 @@
 {% block body %}
     {{ parent() }}
 
+    {# S'il y a une erreur, on l'affiche dans un joli cadre #}
+    {% if error %}
+        <div class="alert alert-danger">{{ error.message }}</div>
+    {% endif %}
+
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         {%include "CRMToolsBundle:Default:index.html.twig"%}
      {% else %}
@@ -16,21 +21,15 @@
                 <div class="account-wall">
                     <img class="profile-img" src="{{ asset('bundles/crmtools/img/Logo_PVCP.png') }}" alt="Logo PVCP" />
 
-                    <form action="{{ path('crm_ldap_connect') }}" method="post"class="form-signin">
-                        {{ form_start(form) }}
-                        {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder':  'Username'  }})  }}
-                        {{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder':  'Password'  }})  }}
-                        {#<input type="text" id="username" name="_username"  required="required" class="form-control" placeholder="Username">#}
-                        {#<input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password">#}
-                        {% if error_msg!=NULL %}
-                            <p class="errorMessageSignIn">{{ error_msg }}</p>
-                       {% endif %}
+                    <form action="{{ path('login_check') }}" method="post" class="form-signin">
+                        <input type="text" id="username" name="_username"  required="required" class="form-control" placeholder="Username">
+                        <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password">
                         <button type="submit" id="_submit" name="_submit"  class="btn btn-lg btn-primary btn-block buttonSignIn" >Sign in</button>
                         {#<label class="checkbox pull-left pull-right need-help">#}
                         {#<input type="checkbox"id="remember_me" name="_remember_me" value="on">Remember me#}
                         {#</label>#}
-                        {{ form_end(form) }}
                     </form>
+
                 </div>
             </div>
         </div>

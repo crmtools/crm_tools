@@ -84,3 +84,7 @@
     font-weight: bold !important;
     background: #37519f !important;
 }
+
+.errorMessageSignIn{
+    color: red;
+}
