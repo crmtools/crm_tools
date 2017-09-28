@@ -1,4 +1,0 @@
-services:
-#    crm_user.example:
-#        class: CRM\UserBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]

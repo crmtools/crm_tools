@@ -1,6 +1,6 @@
 <?php
 
-namespace UserBundle\Entity;
+namespace CRM\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -11,32 +11,26 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 abstract class BaseUser implements UserInterface, \Serializable {
 
-    /**
-     * @ORM\Column(name="user_id",type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
 
     /**
-     * @ORM\Column(name="user_login", type="string", length=25, unique=true)
+     * @ORM\Column(name="username", type="string", length=25, unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(min=3)
      */
     protected $username;
 
     /**
-     * @ORM\Column(name="user_password", type="string", length=64)
+     * @ORM\Column(name="password", type="string", length=64)
      */
     protected $password = "";
 
     /**
-     * @ORM\Column(name="user_email", type="string", length=60, unique=true)
+     * @ORM\Column(name="email", type="string", length=60, unique=true)
      */
     protected $email = "";
 
     /**
-     * @ORM\Column(name="user_roles", type="simple_array")
+     * @ORM\Column(name="roles", type="simple_array")
      * @Assert\Count(
      *      min = "1",
      *      minMessage = "You must specify at least one role",
@@ -44,7 +38,11 @@ abstract class BaseUser implements UserInterface, \Serializable {
      */
     protected $roles = array();
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255)
+     */
     protected $salt = "";
 
     const USER = 'ROLE_USER';
@@ -59,10 +57,6 @@ abstract class BaseUser implements UserInterface, \Serializable {
 
     public function __toString() {
         return $this->getUsername();
-    }
-
-    public function getId() {
-        return $this->id;
     }
 
     public function getUsername() {
@@ -130,6 +124,19 @@ abstract class BaseUser implements UserInterface, \Serializable {
      */
     public function setRoles(array $roles) {
         $this->roles = $roles;
+        return $this;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return User
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
         return $this;
     }
 

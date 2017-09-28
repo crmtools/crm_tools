@@ -1,5 +1,9 @@
-crm_tools_homepage:
+crm_tools_authenticate:
     path:     /
+    defaults:  { _controller: CRMUserBundle:Security:login }
+
+crm_tools_homepage:
+    path:      /home_page
     defaults: { _controller: CRMToolsBundle:Default:index }
 
 crm_tools_graph:

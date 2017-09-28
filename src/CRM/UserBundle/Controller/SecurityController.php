@@ -14,22 +14,9 @@ class SecurityController extends Controller
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
 
-//            $user = $this->getUser();
-//            var_dump($user);die;
-//
-//            if (null === $user) {
-//                // Ici, l'utilisateur est anonyme ou l'URL n'est pas derrière un pare-feu
-//            } else {
-//                // Ici, $user est une instance de notre classe User
-//            }
-
-            return $this->redirectToRoute('oc_platform_accueil');
+            return $this->redirectToRoute('crm_tools_homepage');
         }
 
-
-        // Le service authentication_utils permet de récupérer le nom d'utilisateur
-        // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
-        // (mauvais mot de passe par exemple)
         $authenticationUtils = $this->get('security.authentication_utils');
 
         return $this->render('CRMUserBundle:Security:login.html.twig', array(

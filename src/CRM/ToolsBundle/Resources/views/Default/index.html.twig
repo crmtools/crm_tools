@@ -11,7 +11,16 @@
     <div class=" container containerHomePage">
         <div class="col-md-12">
             <img class="logoPvCp" src="{{ asset('bundles/crmtools/img/Logo_PVCP.png') }}" alt="Logo PVCP" />
+            <div class="pull-right UserNavBar">
+                <p><span class="glyphicon glyphicon-user"></span>  Bienvenue
+                    <strong>{{ app.user.firstname }} {{ app.user.lastname }}</strong>
+                </p>
+                <p class="pull-right logoutCss">
+                <a href="{{ path('logout') }}" ><span class="glyphicon glyphiconNavCss">&#xe163;</span>Logout</a>
+                </p>
+            </div>
         </div>
+
         <h1 class="titleHomePage">CRM Tool</h1>
         <div class="col-md-12">
             <div class="col-md-2 sidebar-offcanvas colonneTheme" id="sidebar">
@@ -64,4 +73,5 @@
             </div>
         </div>
     </div>
+
 {% endblock %}

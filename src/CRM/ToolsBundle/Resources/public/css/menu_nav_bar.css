@@ -69,6 +69,7 @@ body {
     /*border: 1px solid red !important;*/
     background: #37519f !important;
     border-radius: 0px !important;
+    margin-bottom: 10px !important;
 }
 
 .menuNavBar .firsTitleMenu li a{
@@ -93,72 +94,15 @@ body {
 }
 
 
-
-/*.menuNavBar .firsTitleMenuNav a:hover{*/
-    /*background-color: #ddd !important;*/
-    /*border-radius: 0px;*/
-    /*color: #0099FF;*/
-    /*margin:  0px -15px!important;*/
-/*}*/
-
-/*.menuNavBar .firsTitleMenuNav ul li a:hover{*/
-    /*background-color: #ddd !important;*/
-    /*border-radius: 0px;*/
-    /*font-weight: bold;*/
-    /*color: #0099FF;*/
-    /*border: 1px solid #e7e7e7;*/
-    /*margin:  0px 0px!important;*/
-    /*padding:  5px 15px!important;*/
-
-/*}*/
-
-
-.firsTitleMenuNav{
-    /*border: 1px solid blue;*/
+.crmToolsLayout{
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    color: #37519f;
+    margin-left: 10px;
+    text-decoration: underline;
 }
 
-/*.firsTitleMenuNav a{*/
-    /*color: #fff;*/
-    /*text-align: center;*/
-    /*!*font-weight: bold;*!*/
-    /*font-size: 14px;*/
-    /*padding-left: 0px !important;*/
-    /*padding-right: 0px !important;*/
-/*}*/
-
-/*.firsTitleMenuNav ul li a{*/
-    /*color: #00008B;*/
-    /*text-align: left;*/
-    /*!*font-weight: bold;*!*/
-    /*font-size: 15px;*/
-    /*!*margin-bottom: 5px;*!*/
-    /*!*border: 1px solid green;*!*/
-    /*margin: 0px 20px;*/
-    /*margin-bottom: 5px;*/
-/*}*/
-
-/*.titleMenuNav a{*/
-    /*font-family: 'Terminal Dosis', Arial, sans-serif !important;*/
-    /*!*color: #00008B !important;*!*/
-    /*font-size: 16px;*/
-    /*font-weight: bold;*/
-/*}*/
-
-
-
-/************************************************ CSS FROM THE SECOND MENU ***********************************************************/
-/*.titleMenuNav a:hover{*/
-    /*font-family: 'Terminal Dosis', Arial, sans-serif !important;*/
-    /*color: #37519f !important;*/
-/*}*/
-
-/*.colorHomeIcon a{*/
-    /*color: #00008B !important;*/
-
-/*}*/
-
-/*.colorHomeIcon a:hover{*/
-    /*color: #37519f !important;*/
-    /*opacity: 3 !important;*/
-    /**/
-/*}*/
+.logoPvCpLayout{
+    float: right;
+    margin: -15px 5px 10px 0px;
+    width: 30%;
+}

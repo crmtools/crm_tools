@@ -2,7 +2,7 @@
 
 // src/AppBundle/Security/User/WebserviceUserProvider.php
 
-namespace UserBundle\Entity;
+namespace CRM\UserBundle\Entity;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -24,7 +24,7 @@ class UserProvider implements UserProviderInterface {
     public function loadUserByUsername($username) {
         $user = $this->em->createQueryBuilder()
             ->select('u')
-            ->from('UserBundle:User', 'u')
+            ->from('CRMUserBundle:User', 'u')
             ->where('u.username = :username OR u.email = :email')
             ->setParameter('username', $username)
             ->setParameter('email', $username)
@@ -32,15 +32,6 @@ class UserProvider implements UserProviderInterface {
             ->getOneOrNullResult();
 
         if ($user) {
-            $conn = $this->em->getConnection();
-            $rows = $conn->fetchAll('SELECT proj_code FROM link_user_project WHERE user_id = ?', array($user->getId()));
-            $projects = array();
-            foreach ($rows as $row) {
-                $projects[] = current($row);
-            }
-
-            $user->setProjects($projects);
-
             return $user;
         }
 

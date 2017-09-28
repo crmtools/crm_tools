@@ -8,30 +8,26 @@
 {% block body %}
     {{ parent() }}
 
-    {# S'il y a une erreur, on l'affiche dans un joli cadre #}
-    {% if error %}
-        <div class="alert alert-danger">{{ error.message }}</div>
-    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="account-wall">
+                <img class="profile-img" src="{{ asset('bundles/crmtools/img/Logo_PVCP.png') }}" alt="Logo PVCP" />
 
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        {%include "CRMToolsBundle:Default:index.html.twig"%}
-     {% else %}
-        <div class="container">
-            <div class="row">
-                <div class="account-wall">
-                    <img class="profile-img" src="{{ asset('bundles/crmtools/img/Logo_PVCP.png') }}" alt="Logo PVCP" />
+                <form action="{{ path('login_check') }}" method="post" class="form-signin">
+                    <input type="text" id="username" name="_username" value="{{ last_username }}"  required="required" class="form-control" placeholder="Username">
+                    <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.message }}</div>
+                    {% endif %}
+                    <button type="submit" id="_submit" name="_submit"  class="btn btn-lg btn-primary btn-block buttonSignIn" >Sign in</button>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    {#<label class="checkbox pull-left pull-right need-help">#}
+                    {#<input type="checkbox"id="remember_me" name="_remember_me" value="on">Remember me#}
+                    {#</label>#}
+                </form>
 
-                    <form action="{{ path('login_check') }}" method="post" class="form-signin">
-                        <input type="text" id="username" name="_username"  required="required" class="form-control" placeholder="Username">
-                        <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password">
-                        <button type="submit" id="_submit" name="_submit"  class="btn btn-lg btn-primary btn-block buttonSignIn" >Sign in</button>
-                        {#<label class="checkbox pull-left pull-right need-help">#}
-                        {#<input type="checkbox"id="remember_me" name="_remember_me" value="on">Remember me#}
-                        {#</label>#}
-                    </form>
-
-                </div>
             </div>
         </div>
-    {% endif %}
+    </div>
+
 {% endblock %}

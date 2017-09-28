@@ -15,7 +15,9 @@
                     <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav firsTitleMenu">
                             {#<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>#}
-                            <li class="colorHomeIcon"><a href="{{ path('crm_tools_homepage') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+                            <li class="colorHomeIcon">
+                                <a href="{{ path('crm_tools_homepage') }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+                            </li>
                             <li class="dropdown secondTitleMenu">
                                 {#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Monitoring <span class="caret"></span></a>#}
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">MONITORING<span class="caret"></span></a>
@@ -58,22 +60,32 @@
                                     <li><a href="{{ path('crm_game_integration') }}">Game integration</a></li>
                                 </ul>
                             </li>
+
+
                         </ul>
 
-                        {#<ul class="nav navbar-nav navbar-right">#}
-                        {#<li class="dropdown titleMenuNav ">#}
-                        {#<a href="#" class="dropdown-toggle" data-toggle="dropdown">Intégration Fichiers<span class="caret"></span></a>#}
-                        {#<ul class="dropdown-menu">#}
-                        {#<li><a href="#">File Upload</a></li>#}
-                        {#<li><a href="#">Business View</a></li>#}
-                        {#</ul>#}
-                        {#</li>#}
-                        {#</ul>#}
-
-
+                        <ul class="nav navbar-nav navbar-right firsTitleMenu">
+                            <li class="dropdown titleMenuNav ">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-user glyphiconNavCss" ></span>
+                                    <strong>{{ app.user.firstname }} {{ app.user.lastname }}</strong><span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu secondTitleMenu">
+                                    <li>
+                                        <a href="{{ path('logout') }}" class="btn btn-block"><span class="glyphicon">&#xe163;</span>  Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>
+            <div class="crmToolsLayout">
+               <p>CRMTools</p>
+            </div>
+            <div class="logoPvCpLayout">
+                <img class="logoPvCpLayout" src="{{ asset('bundles/crmtools/img/Logo_PVCP.png') }}" alt="Logo PVCP" />
+            </div>
         </div><!-- end of menu nav -->
     {% endblock %}
 
