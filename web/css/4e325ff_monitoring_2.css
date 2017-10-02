@@ -1,0 +1,78 @@
+/**************************************CSS FROM GRAPH PERFORMANCE PAGE*********************************************/
+.thLarger{
+    /*    border: 1px solid red !important;*/
+    width: 250px !important;
+}
+
+.greenCase{
+        background-color: #5bb024;
+    color: #fff;
+    text-align: center;
+}
+
+.orangeCase{
+    background-color: #ff9c15;
+    color: #fff;
+    text-align: center;
+}
+
+.redCase{
+    background-color: #F00000;
+    color: #fff;
+    text-align: center;
+}
+
+.greyColorTh th{
+    background-color: #edf1f0;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    /*    text-align: center;*/
+    font-size: 13.4px;
+    vertical-align: middle !important;
+
+    /*    border: 1px solid red !important;*/
+}
+
+.blueHover td:hover{
+    background-color: #37519f;
+    color: #fff;
+}
+
+.middleText{
+    text-align: center;
+}
+
+.buttonDatePicker{
+    margin-top: 23px;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    background: #37519f !important;
+}
+
+.datepicker .datepicker-dropdown .dropdown-menu .datepicker-orient-left .datepicker-orient-bottom{
+    top: 62px !important;
+    left: 47px !important;
+    display: block !important;
+}
+.LineBreak{
+    border: none !important;
+
+}
+
+
+/**************************************CSS FROM LOG ERRORS PAGE*********************************************/
+.logErrorsTab li{
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    /*font-size: 17px;*/
+    /*border: 1px solid red;*/
+}
+
+.logErrorsTab > li > a{
+    background: #5bb024;
+    color: #fff;
+}
+
+.logErrorsTab > li > a:hover{
+    color: #37519f;
+}

@@ -13,6 +13,7 @@
     font-weight: bolder;
     /*border: 1px solid red;*/
     font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    margin-bottom: 50px;
     color: #37519f;
 }
 
@@ -161,12 +162,6 @@ body {
 
 .glyphiconNavCss{
     margin-right: 5px;
-}
-
-.paraphDescript{
-    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
-    color: #555;
-    margin-bottom: 40px !important;
 }
 
 

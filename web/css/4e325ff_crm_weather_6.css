@@ -1,0 +1,41 @@
+/**************************************CSS FROM CRM WEATHER PAGES*********************************************/
+.crmWeatherTable{
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    border: 1.3px solid #B8B8B8;
+    margin: auto !important;
+    width: 70% !important;
+    padding: 2px !important;
+}
+
+.crmWeatherTable th{
+    background: #0073e6;
+    color: #fff;
+}
+
+.greenBackground th{
+    background: #5bb024;
+}
+
+.blueHoverLine td{
+    border: 1.3px solid #B8B8B8;
+}
+
+/***********************************CSS FROM CONTACT CREATION PAGE*******************************************/
+.tableHeadCss{
+    border: 1.3px solid #B8B8B8;
+    padding: 2px !important;
+}
+.tableHeadCss th{
+    background: #5bb024;
+    color: #fff;
+}
+.contactCreationTable{
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    margin-top: -19px !important;
+}
+
+.contactCreationTable th{
+    background: #0073e6;
+    color: #fff;
+}
+

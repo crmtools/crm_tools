@@ -19,11 +19,11 @@ services:
     ldap:
            class: 'Symfony\Component\Ldap\LdapClient'
            arguments:
-               - 172.18.0.50   # host
-               - 389						# port
-               - 3							# version
-               - false					# SSL
-               - false					# TLS
+               - 172.18.0.50    # host
+               - 389			# port
+               - 3				# version
+               - false			# SSL
+               - false			# TLS
     user.form.user_role:
        class: CRM\UserBundle\Form\UserType
        arguments: ['%security.role_hierarchy.roles%']
