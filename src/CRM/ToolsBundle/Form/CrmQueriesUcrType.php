@@ -5,7 +5,6 @@ namespace CRM\ToolsBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class CrmQueriesUcrType extends AbstractType
 {
@@ -14,49 +13,45 @@ class CrmQueriesUcrType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder ->add('searchBy', 'choice', array(
-                    'mapped'    => false,
-                    'label'     => 'Search By :',
-                    'choices'   => array(
-                            'ID_CONTACT' => 'ID_CONTACT',
-                            'EMAIL'      => 'EMAIL',
-                            'LEXO'       => 'LEXO',
-                            'POLO'       => 'POLO',
-                            'MIDAS'      => 'MIDAS',
-                            'BBOSS'      => 'BBOSS'
-                            )
-                 ))
-                ->add('searchText', 'text', array(
+        $builder->add('queryName', 'text', array(
+                            'required'    => true,
+                        ))
+                ->add('queryText', 'textarea')
+//                ->add('enable', 'choice', array(
+//                    'choices' => array(
+//                            'YES' => true,
+//                            'NO'  => false,
+//                    )
+//                ))
+                ->add('enable', 'choices', array(
                     'mapped'      => false,
-                    'required'    => false,
+                    'required'    => true,
+                    'multiple'    => true,
+                    'choices'     => array(
+                        'Yes' => '1',
+                        'No'  => '0',
+                    )
                 ))
-
-//                ->add('Please choose the environment', 'text', array(
-//                    'mapped'    => false,
-//                ))
-//                ->add('Q3', 'radio',array(
-//                    'mapped'  => false,
-//                    'required'  => false,
-//                ))
-//                ->add('Q4', 'radio',array(
-//                    'mapped'  => false,
-//                    'required'  => false,
-//                ))
-//                ->add('Q5', 'radio',array(
-//                    'mapped'  => false,
-//                    'required'  => false,
-//                ))
-//                ->add('P1', 'radio',array(
-//                    'mapped'  => false,
-//                    'required'  => false,
-//                ))
-        ;
-
-
-
-
+                ->add('database', 'choice', array(
+                    'mapped'    => false,
+                    'required'  => true,
+                    'choices'   => array(
+                        'UCR'      => 'UCR',
+                        'PICK'     => 'PICK',
+                        'NEOLANE'  => 'NEOLANE',
+                    )
+                ))
+                ->add('displayOrder')
+                ->add('pageName', 'choice', array(
+                            'required' => true,
+                            'choices'  => array(
+                                'UCR'      => 'UCR',
+                                'PICK'     => 'PICK',
+                                'NEOLANE'  => 'NEOLANE',
+                            )
+                      ));
     }
-
+    
     /**
      * {@inheritdoc}
      */

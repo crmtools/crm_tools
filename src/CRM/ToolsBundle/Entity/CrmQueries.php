@@ -45,7 +45,7 @@ class CrmQueries
     /**
      * @var int
      *
-     * @ORM\Column(name="enableDisplay", type="integer")
+     * @ORM\Column(name="enableDisplay", type="integer", nullable=true)
      */
     private $enableDisplay;
 
@@ -70,6 +70,38 @@ class CrmQueries
      */
     private $connexion;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCreate", type="date")
+     */
+    private $dateCreate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateModify", type="date")
+     */
+    private $dateModify;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CRM\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_created", referencedColumnName="id",  nullable=false)
+     */
+    private $createdBy;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CRM\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_modified", referencedColumnName="id",  nullable=true)
+     */
+    private $modifiedBy;
 
     /**
      * Get id
@@ -240,5 +272,120 @@ class CrmQueries
     public function getGroupName()
     {
         return $this->groupName;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return CrmQueries
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set dateCreate
+     *
+     * @param \DateTime $dateCreate
+     * @return CrmQueries
+     */
+    public function setDateCreate($dateCreate)
+    {
+        $this->dateCreate = $dateCreate;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreate
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreate()
+    {
+        return $this->dateCreate;
+    }
+
+    /**
+     * Set dateModify
+     *
+     * @param \DateTime $dateModify
+     * @return CrmQueries
+     */
+    public function setDateModify($dateModify)
+    {
+        $this->dateModify = $dateModify;
+
+        return $this;
+    }
+
+    /**
+     * Get dateModify
+     *
+     * @return \DateTime 
+     */
+    public function getDateModify()
+    {
+        return $this->dateModify;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \CRM\UserBundle\Entity\User $createdBy
+     * @return CrmQueries
+     */
+    public function setCreatedBy(\CRM\UserBundle\Entity\User $createdBy)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \CRM\UserBundle\Entity\User 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set modifiedBy
+     *
+     * @param \CRM\UserBundle\Entity\User $modifiedBy
+     * @return CrmQueries
+     */
+    public function setModifiedBy(\CRM\UserBundle\Entity\User $modifiedBy)
+    {
+        $this->modifiedBy = $modifiedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiedBy
+     *
+     * @return \CRM\UserBundle\Entity\User 
+     */
+    public function getModifiedBy()
+    {
+        return $this->modifiedBy;
     }
 }

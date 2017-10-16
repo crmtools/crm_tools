@@ -94,4 +94,31 @@ class CrmQueriesResultRepository extends EntityRepository
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
     }
+
+    public function insertResultInCrmQueriesResult($newQuery, $result_query){
+
+        $queryId= $newQuery[0]['id'];
+        $queryName= $newQuery[0]['queryName'];
+
+        foreach($result_query as $array_result){
+            foreach($array_result as $numCount){
+                $result= (int)$numCount;
+                var_dump($result);
+            }
+        }
+
+        if($result == 0){
+            return false;
+        }else {
+            $date = new \DateTime();
+            $date = $date->format('Y-m-d');
+            $sql = "INSERT INTO crm_queries_result(queryName,queryResult,queryDate,query_id) VALUES ('" . $queryName . "', " . $result . ", '" . $date . "', " . $queryId . ");";
+
+            $em = $this->getEntityManager();
+            $query = $em->getConnection()->prepare($sql);
+            $query->execute();
+
+            return true;
+        }
+    }
 }

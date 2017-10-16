@@ -58,7 +58,7 @@ class checkFile extends utility{
                'column_count_validity' 		    => array( 'critical' => 1, 'label' => "The number of column must be 19 ( column separator : pipe  '|')"),
                'type_validity'					=> array( 'critical' => 1, 'label' => "The first field of the file must be 'JEU'"),
                'game_name_validity'			    => array( 'critical' => 1, 'label' => "The game name in the file must be the same as the game name in the file name"),
-               'registration_date_validity_1'	=> array( 'critical' => 0, 'label' => "The format of the field REGISTRATION_DATE must be 'DD/MM/YYYY'"),
+               'registration_date_validity_1'	=> array( 'critical' => 1, 'label' => "The format of the field REGISTRATION_DATE must be 'DD/MM/YYYY'"),
                'registration_date_validity_2'	=> array( 'critical' => 1, 'label' => "The field REGISTRATION_DATE cannot be in the future (Must be the day the contact participated in the game)"),
                'last_name_validity'			    => array( 'critical' => 0, 'label' => "The field LAST_NAME cannot be empty."),
                'first_name_validity'			=> array( 'critical' => 0, 'label' => "The field FIRST_NAME cannot be empty."),
@@ -80,7 +80,7 @@ class checkFile extends utility{
        ),
        'update_address_config'					=> array //mmbengue ajout update_adress
        (
-           'header'                         	=> "ID_CONTACT|EMAIL|ID_SYSTEM|CODE_SYSTEM|CIVILITY_CODE|FIRST_NAME|LAST_NAME|LINE_ADRESSE1|LINE_ADRESSE2|LINE_ADRESSE3|LINE_ADRESSE4|ZIP_CODE|CITY|COUNTRY_CODE|MOVED|DECEASED|PARTNER_NAME|REGISTRATION_DATE|EXTRACTION_DATE",
+           'header'                         	=> "ID_CONTACT|EMAIL|ID_SYSTEM|CODE_SYSTEM|CIVILITY_CODE|INITIALS|FIRST_NAME|LAST_NAME|LINE_ADRESSE1|LINE_ADRESSE2|LINE_ADRESSE3|LINE_ADRESSE4|ZIP_CODE|CITY|COUNTRY_CODE|MOVED|DECEASED|PARTNER_NAME|REGISTRATION_DATE|EXTRACTION_DATE",
            'errors'	                            => array
            (
                'existence_validity'			    => array( 'critical' => 1, 'label' => "The file is already awaiting integration (or has already been integrated)"),
@@ -92,7 +92,7 @@ class checkFile extends utility{
                'header_validity'				=> array( 'critical' => 1, 'label' => "The header of the file is not correct."),
                'column_count_validity' 		    => array( 'critical' => 1, 'label' => "The number of column must be 19 ( column separator : pipe  '|')"),
                'type_validity'					=> array( 'critical' => 1, 'label' => "The first field of the file must be 'ID_CONTACT'"),
-               'registration_date_validity_1'	=> array( 'critical' => 0, 'label' => "The format of the field REGISTRATION_DATE must be 'DD/MM/YYYY'"),
+               'registration_date_validity_1'	=> array( 'critical' => 1, 'label' => "The format of the field REGISTRATION_DATE must be 'DD/MM/YYYY'"),
                'registration_date_validity_2'	=> array( 'critical' => 1, 'label' => "The field REGISTRATION_DATE cannot be in the future (Must be the day the contact participated in the game)"),
                'moved_validity_1'			    => array( 'critical' => 1, 'label' => "The field MOVED cannot be empty."),
                'moved_validity_2'			    => array( 'critical' => 1, 'label' => "The field MOVED can only contain '0' or '1'."),
@@ -317,7 +317,8 @@ class checkFile extends utility{
                 }
             }
 
-        }else if($this->startsWith($file_name,'UPDATE_SUBSCRIPTION') && sizeof(explode('_',$file_name)) >= 5 ){
+        }
+        else if($this->startsWith($file_name,'UPDATE_SUBSCRIPTION') && sizeof(explode('_',$file_name)) >= 5 ){
             $file_type = "UPDATE_SUBSCRIPTION";
             $file_date = explode('_',$file_name)[sizeof(explode('_',$file_name)) - 2];
 
@@ -446,7 +447,8 @@ class checkFile extends utility{
                 }
             }
 
-        }else if($this->startsWith($file_name,'UPDATE_ADDRESS') && sizeof(explode('_',$file_name)) >= 5 ){
+        }
+        else if($this->startsWith($file_name,'UPDATE_ADDRESS') && sizeof(explode('_',$file_name)) >= 5 ){
             $file_type = "UPDATE_ADDRESS";
             $file_date = explode('_',$file_name)[sizeof(explode('_',$file_name)) - 2];
 
@@ -531,30 +533,30 @@ class checkFile extends utility{
                         $errors_array['key_validity'] += 1;
                         $row_invalid = true;
                     }
-                    if($columns[14] == null || trim($columns[14]) == ""){
+                    if($columns[15] == null || trim($columns[15]) == ""){
                         $errors_array['moved_validity_1'] += 1;
                         $row_invalid = true;
                     }
-                    if($columns[14] != '0' && $columns[14] != '1'){
+                    if($columns[15] != '0' && $columns[15] != '1'){
                         $errors_array['moved_validity_2'] += 1;
                         $row_invalid = true;
                     }
-                    if($columns[16] == null || trim($columns[16]) == ''){
+                    if($columns[18] == null || trim($columns[18]) == ''){
                         $errors_array['partner_name_validity'] += 1;
                         $row_invalid = true;
                     }
-                    if(!$this->isValiDate($columns[17],'d/m/Y')){
+                    if(!$this->isValiDate($columns[18],'d/m/Y')){
                         $errors_array['registration_date_validity_1']	+= 1;
                         $row_invalid = true;
-                    }else if(\DateTime::createFromFormat('d/m/Y', $columns[17])> new \DateTime("now")){
+                    }else if(\DateTime::createFromFormat('d/m/Y', $columns[19])> new \DateTime("now")){
                         $errors_array['registration_date_validity_2']	+= 1;
                         $row_invalid = true;
                     }
-                    if($columns[13] != null && strlen(trim($columns[13])) != 2){
+                    if($columns[14] != null && strlen(trim($columns[14])) != 2){
                         $errors_array['country_validity_1'] += 1;
                         $row_invalid = true;
                     }
-                    if($columns[13] != null && !in_array($columns[13],$this->config['countries'])) {
+                    if($columns[14] != null && !in_array($columns[14],$this->config['countries'])) {
                         $errors_array['country_validity_2'] += 1;
                         $row_invalid = true;
                     }
@@ -579,7 +581,8 @@ class checkFile extends utility{
                 }
             }
 
-        }else{
+        }
+        else{
             $error_message= 'The filemask must be \'JEU_*_YYYYMMDD_HHMISS.csv\' or \'UPDATE_SUBSCRIPTION_*_YYYYMMDD_HHMISS.csv\' or \'UPDATE_ADDRESS_*_YYYY-MM-DD_HH-MI-SS.csv\'';
             $this->check_file_array['error_message'] = $error_message;
             $critical_error_found = 1;
@@ -590,7 +593,9 @@ class checkFile extends utility{
         if($critical_error_found == 0 ){
             $is_insert= $this->insert_upload_file($file_name, $file_date, $file_type, $em, $nbr_limit, $user_id);
             if($is_insert){
+//                var_dump('move '.$tmp_path_dir.'* ' .$upload_path_dir);die;
 //                exec('move '.$tmp_path_dir.'* ' .$upload_path_dir);
+//                exec('move C:/wamp64/www/buff_upload/* C:/wamp64/www/tmp_file_import/ ');
                 exec('move C:\wamp64\www\buff_upload\* C:\wamp64\www\tmp_file_import\ ');
             }else{
                 unlink($file_path);

@@ -38,4 +38,66 @@ class CrmQueriesRepository extends EntityRepository
         return $queryTotalCompaigns;
     }
 
+    public function insertTheNewQueryIntoCrmQueries($queryText, $data, $database, $user, $env)
+    {
+
+        $queryName = $data->getQueryName();
+        $sql = "SELECT * FROM crm_queries WHERE queryName='" . $queryName . "';";
+
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+
+        if($result) {
+            return false;
+        } else {
+            $groupName = $data->getGroupName();
+            $enableHistory = $data->getEnableHistory();
+            $description = $data->getDescription();
+
+            if ($enableHistory == 'Yes') {
+                $enableHistory = 1;
+            } else {
+                $enableHistory = 0;
+            }
+
+            if ($database == 'UCR') {
+                $pageName = 'error_analysis';
+            }
+
+            $date = new \DateTime();
+            $date = $date->format('Y-m-d');
+
+            $userId = $user->getId();
+
+            $sql = "INSERT INTO crm_queries (queryName, queryText, groupName, pageName, enableHistory, connexion, description, dateCreate, dateModify, user_created, user_modified)
+               VALUES ('$queryName', '$queryText', '$groupName', '$pageName',$enableHistory, '$env', '$description', '$date', '$date', $userId,$userId)";
+
+//            $sql = "INSERT INTO crm_queries (queryName, queryText, groupName, pageName, enableHistory, connexion, description, dateCreate, dateModify, user_created, user_modified)
+//               VALUES ('" . $queryName . "', '" . $queryText . "', '" . $groupName . "', '" . $pageName . "', " . $enableHistory . ", '" . $env . "', '" . $description . "', '" . $date . "', '"
+//                . $date . "', " . $userId . ", " . $userId . ")";
+
+            $em = $this->getEntityManager();
+            $query = $em->getConnection()->prepare($sql);
+            $query->execute();
+
+            return true;
+        }
+    }
+
+    public function getNewQuery($queryName){
+
+        $sql= "SELECT id, queryName  FROM crm_queries WHERE queryName='".$queryName."';";
+
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+
+        return $result;
+    }
+
+
+
 }

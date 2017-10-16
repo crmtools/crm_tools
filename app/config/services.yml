@@ -15,6 +15,9 @@ services:
     refresh_button_analysis:
         class: CRM\ToolsBundle\Service\refreshAnalysis
         arguments: ['@doctrine']
+    check_query_time:
+        class: CRM\ToolsBundle\Service\checkQueryTime
+        arguments: ['@doctrine']
 
     ldap:
            class: 'Symfony\Component\Ldap\LdapClient'

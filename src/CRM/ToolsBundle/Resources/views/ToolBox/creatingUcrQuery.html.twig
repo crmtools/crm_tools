@@ -1,0 +1,84 @@
+{% extends "CRMToolsBundle::layout.html.twig" %}
+
+{% block title %}
+    Booking form - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container containerPage">
+        <h1 class="titlePage">Tool Box</h1>
+        <div>
+            <p>Display into a table the result of a new SQL query created by an IT CRM team member. It’s an easy way to create a new Production indicator on
+                CRM UCR database (only reading access). Then IT CRM RUN team will monitor this new indicator each day. </p>
+        </div>
+
+        <div class="formCreatingQuery">
+            <div class="col-md-12 creatingForm">
+                <h2 class=" col-md-offset-1 creationTitle">Creation</h2>
+                <div class="col-md-12 container">
+                    <form action="{{ path('crm_creating_ucrquery') }}" class="form-horizontal" method="POST">
+                        {{ form_start(form) }}
+                        <div class="form-group">
+                            {{ form_label(form.queryName, "SQL query name", {'label_attr': {'class': 'col-md-2 col-md-offset-1 withoutPadding'}}) }}
+                            <div class="col-md-3 withoutPadding">
+                                {{ form_widget(form.queryName, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="col-md-4 col-md-offset-1">
+                                {{ form_label(form.enableHistory, "Active query", {'label_attr': {'class': 'col-md-3 withoutPadding marginWidgetLeft'}}) }}
+                                <div class="col-md-4 ">
+                                    {{ form_widget(form.enableHistory, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.groupName, "Table name", {'label_attr': {'class': 'col-md-2 col-md-offset-1 withoutPadding'}}) }}
+                            <div class="col-md-3 withoutPadding">
+                                {{ form_widget(form.groupName, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="col-md-4 col-md-offset-1">
+                                {{ form_label(form.database, "Database", {'label_attr': {'class': 'col-md-3 withoutPadding marginWidgetLeft'}}) }}
+                                <div class="col-md-4 ">
+                                    {{ form_widget(form.database, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.description, "Functional description", {'label_attr': {'class': 'col-md-2 col-md-offset-1 withoutPadding'}}) }}
+                            <div class="col-md-6 withoutPadding">
+                                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.queryText, "SQL Code", {'label_attr': {'class': 'col-md-2 col-md-offset-1 withoutPadding'}}) }}
+                            <div class="col-md-6 withoutPadding">
+                                {{ form_widget(form.queryText, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+
+                        {% if success_message is defined  %}
+                            <div class="form-group">
+                                <p class="col-md-9 col-md-offset-3 successQueryMsg">{{ success_message }}</p>
+                            </div>
+                        {% endif %}
+
+                        {% if error_message is defined  %}
+                            <div class="form-group">
+                                <p class="col-md-6 col-md-offset-3 errorQueryMsg">{{ error_message }}</p>
+                            </div>
+                        {% endif %}
+
+                        <div class="form-group col-md-12"> <!-- Submit button -->
+                            <button class="btn btn-primary buttonCreate" name="submit" type="submit">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

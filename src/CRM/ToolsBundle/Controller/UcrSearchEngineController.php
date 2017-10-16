@@ -2,19 +2,18 @@
 
 namespace CRM\ToolsBundle\Controller;
 
-use CRM\ToolsBundle\Entity\CrmQueriesUcr;
-use CRM\ToolsBundle\Form\CrmQueriesUcrType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use CRM\ToolsBundle\Entity\CrmQueriesUcr;
 use Symfony\Component\HttpFoundation\Request;
 
 class UcrSearchEngineController extends Controller
 {
     public function contactFormAction(Request $request){
 
-        /*Creat the form*/
+        /*Creat the form without a formType*/
         $crmQueriesUcr = new CrmQueriesUcr();
-        $form = $this->createForm (new CrmQueriesUcrType(), $crmQueriesUcr);
+        $form = $this->creatFormContactForm($crmQueriesUcr);
 
         if($request->isMethod('POST') && $form->handleRequest($request)->isValid()){
 
@@ -112,7 +111,7 @@ class UcrSearchEngineController extends Controller
 
         /*Creat the form without a formType*/
         $crmQueriesUcr = new CrmQueriesUcr();
-        $form = $this->creatFormWithoutFormtype($crmQueriesUcr);
+        $form = $this->creatFormBookingForm($crmQueriesUcr);
 
         if($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
@@ -179,7 +178,30 @@ class UcrSearchEngineController extends Controller
         ));
     }
 
-    public function creatFormWithoutFormtype($crmQueriesUcr){
+    public function creatFormContactForm($crmQueriesUcr){
+        $form = $this->createFormBuilder($crmQueriesUcr)
+            ->add('searchBy', 'choice', array(
+                'mapped'    => false,
+                'label'     => 'Search By :',
+                'choices'   => array(
+                    'ID_CONTACT' => 'ID_CONTACT',
+                    'EMAIL'      => 'EMAIL',
+                    'LEXO'       => 'LEXO',
+                    'POLO'       => 'POLO',
+                    'MIDAS'      => 'MIDAS',
+                    'BBOSS'      => 'BBOSS'
+                )
+            ))
+            ->add('searchText', 'text', array(
+                'mapped'      => false,
+                'required'    => false,
+            ))
+            ->getForm();
+
+        return $form;
+    }
+
+    public function creatFormBookingForm($crmQueriesUcr){
         $form = $this->createFormBuilder($crmQueriesUcr)
             ->add('searchBy', 'choice', array(
                 'mapped'    => false,

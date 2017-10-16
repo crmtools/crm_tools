@@ -10,9 +10,11 @@
     <div class="container containerPage">
         <h1 class="titlePage">File Import</h1>
         <div class="paraphDescript">
-            <p>Allow the members of PVCP Group Marketing Direct team to load into CRM UCR database their files such as UPDATE_SUBSCRIPTION, JEU, or UPDATE_ADDRESS
-                without asking IT CRM RUN team intervention. Specific validation rules are setup to only allow the loading of relevant and complete files.</p>
+           <p>Allow the members of PVCP Group Marketing Direct team to load into CRM UCR database their files such as UPDATE_SUBSCRIPTION, JEU, or UPDATE_ADDRESS
+                without asking IT CRM RUN team intervention. Specific validation rules are setup to only allow the loading of relevant and complete files.
+           </p>
         </div>
+
         <!-- Begin of Upload form -->
         <form action="{{ path('crm_file_upload') }}" method="POST" {{ form_enctype(form) }}>
             <div class="form-group"> <!-- Date input -->
@@ -74,7 +76,7 @@
                                 {% if (error_count == 0) or ((nb_lines -1) == 0) %}
                                     <td> 0 </td>
                                 {% else %}
-                                    {% set percentage = '%.2f'|format(100 * error_count /(nb_lines -1)) %}
+                                    {% set percentage = '%.2f'|format(100 * error_count /(nb_lines)) %}
                                     <td>{{ percentage }}</td>
                                 {% endif %}
                                 {% if error_count > 0 %}
