@@ -24,8 +24,9 @@ class UcrSearchEngineController extends Controller
             if($form->get("searchText")->getData()){
                 $searchText = $form->get("searchText")->getData();
             }
-            if(isset($_POST['env'])){
-                $env = $_POST['env'];
+
+            if($form->get("environment")->getData()){
+                $env = $form->get("environment")->getData();
             }
 
             $tmp_id = null;
@@ -72,8 +73,16 @@ class UcrSearchEngineController extends Controller
                     }
 
                     if($query){
-                        $em = $this->getDoctrine()->getManager('oracle_'.$env);
-                        $contact_ids = $em->getRepository('CRMToolsBundle:ClassUcr')->getIdsContact($query);
+                        try{
+                            $em = $this->getDoctrine()->getManager('oracle_'.$env);
+                            $contact_ids = $em->getRepository('CRMToolsBundle:ClassUcr')->getIdsContact($query);
+                        }catch(\Exception $e){
+                            $error_message= $e->getMessage();
+                            return $this->render('CRMToolsBundle:UcrSearchEngine:contactForm.html.twig', array(
+                                'form' => $form->createView(),
+                                'error_message'    => $error_message
+                            ));
+                        }
 
                         if($contact_ids){
                             $em = $this->getDoctrine()->getManager();
@@ -122,8 +131,8 @@ class UcrSearchEngineController extends Controller
             if($form->get("searchText")->getData()){
                 $searchText = $form->get("searchText")->getData();
             }
-            if(isset($_POST['env'])){
-                $env = $_POST['env'];
+            if($form->get("environment")->getData()){
+                $env = $form->get("environment")->getData();
             }
 
             $tmp_id = null;
@@ -160,8 +169,17 @@ class UcrSearchEngineController extends Controller
                             $queries_contact_modify[$key]['queryText'] = str_replace('= 1', 'in (' . $booking_ids . ')', $result['queryText']);
                         }
 
-                        $em = $this->getDoctrine()->getManager('oracle_' . $env);
-                        $queries_ucr_result = $em->getRepository('CRMToolsBundle:CrmQueriesUcr')->getResultUcrQueries($queries_contact_modify);
+                        try{
+                            $em = $this->getDoctrine()->getManager('oracle_' . $env);
+                            $queries_ucr_result = $em->getRepository('CRMToolsBundle:CrmQueriesUcr')->getResultUcrQueries($queries_contact_modify);
+                        }catch(\Exception $e){
+                            $error_message= $e->getMessage();
+                            return $this->render('CRMToolsBundle:UcrSearchEngine:bookingForm.html.twig', array(
+                                'form' => $form->createView(),
+                                'error_message'    => $error_message
+                            ));
+                        }
+
                     }
                     if (isset($queries_ucr_result)){
                         return $this->render('CRMToolsBundle:UcrSearchEngine:bookingForm.html.twig', array(
@@ -196,6 +214,17 @@ class UcrSearchEngineController extends Controller
                 'mapped'      => false,
                 'required'    => false,
             ))
+            ->add('environment', 'choice', array(
+                'mapped'    => false,
+                'expanded'  => true,
+                'multiple'  => false,
+                'choices'   => array(
+                    'Q3' => 'Q3',
+                    'Q4' => 'Q4',
+                    'Q5' => 'Q5',
+                    'P1' => 'P1',
+                )
+            ))
             ->getForm();
 
         return $form;
@@ -217,6 +246,17 @@ class UcrSearchEngineController extends Controller
             ->add('searchText', 'text', array(
                 'mapped'      => false,
                 'required'    => false,
+            ))
+            ->add('environment', 'choice', array(
+                'mapped'    => false,
+                'expanded'  => true,
+                'multiple'  => false,
+                'choices'   => array(
+                    'Q3' => 'Q3',
+                    'Q4' => 'Q4',
+                    'Q5' => 'Q5',
+                    'P1' => 'P1',
+                )
             ))
             ->getForm();
 

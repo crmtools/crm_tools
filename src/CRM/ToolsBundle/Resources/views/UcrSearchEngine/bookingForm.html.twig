@@ -26,24 +26,19 @@
                 <div class="col-md-3">
                     {{ form_widget(form.searchText, {'attr': {'class': 'form-control' }})  }}
                 </div>
-                <div class="col-md-5">
-                    <label>Please choose the environment:</label>
-                    <label class="radio-inline">
-                        <input type="radio" name="env" id="Q3" value="Q3" onclick="this.form.submit()"> Q3
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="env" id="Q4" value="Q4" onclick="this.form.submit()"> Q4
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="env" id="Q5" value="Q5" onclick="this.form.submit()"> Q5
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="env" id="P1" value="P1" onclick="this.form.submit()"> P1
-                    </label>
+                <div class="col-md-5" style>
+                    {{ form_label(form.environment, "Please choose the environment:", {'label_attr': {'class': 'col-md-6 withoutPadding envLabel'}}) }}
+                    {{ form_widget(form.environment, {'attr': {'class': 'col-md-5 withoutPadding envButtonSearch' }})  }}
                 </div>
             </div>
             {{ form_end(form) }}
         </div>
+
+        {% if error_message is defined %}
+            <div class="col-md-10">
+                <p class="errorMessageSearch">{{ error_message }}</p>
+            </div>
+        {% endif %}
 
         <div class="col-md-12 globalTableCss">
             {% if queries_ucr_result is defined %}

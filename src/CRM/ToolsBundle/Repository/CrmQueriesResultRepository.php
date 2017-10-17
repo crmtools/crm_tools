@@ -58,7 +58,6 @@ class CrmQueriesResultRepository extends EntityRepository
 
     public function deleteInResultWithQueryId($query_id, $current_date){
         $sql = "SELECT * FROM crm_queries_result WHERE queryDate = '" . $current_date . "' AND query_id = '" . $query_id . "'";
-        echo $sql;
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sql);
         $query->execute();
@@ -103,7 +102,6 @@ class CrmQueriesResultRepository extends EntityRepository
         foreach($result_query as $array_result){
             foreach($array_result as $numCount){
                 $result= (int)$numCount;
-                var_dump($result);
             }
         }
 

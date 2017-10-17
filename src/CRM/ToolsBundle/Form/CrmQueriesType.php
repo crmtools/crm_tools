@@ -34,6 +34,8 @@ class CrmQueriesType extends AbstractType
                             'required'    => true,
                 ))
                 ->add('enableHistory','choice', array(
+                            'expanded'  => true,
+                            'multiple'  => false,
                             'required'    => true,
                             'choices'     => array(
                                 'Yes' => 'Yes',
@@ -45,7 +47,6 @@ class CrmQueriesType extends AbstractType
                             'choices' => array(
                                 'UCR'      => 'UCR',
                                 'PICK'     => 'PICK',
-                                'NEOLANE'  => 'NEOLANE',
                             )
                     ));
 //                ->add('pageName')

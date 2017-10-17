@@ -21,6 +21,7 @@ class ToolBoxController extends Controller
 
             $form->handleRequest($request);
             $data = $form->getData();
+
             $database = $form->get("database")->getData();
 
             $queryText = $data->getQueryText();
