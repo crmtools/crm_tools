@@ -20,8 +20,15 @@
                 </p>
             </div>
         </div>
+        <div class="col-md-12"  >
+            <h1 class="titleHomePage" class="col-md-3">CRM Tool</h1>
+            <div class="iconeInfos">
+                <a href="http://localhost/dokuwiki/doku.php">
+                    <span class="glyphicon glyphicon-info-sign infosCircle" aria-hidden="true"></span>nfos
+                </a>
+            </div>
 
-        <h1 class="titleHomePage">CRM Tool</h1>
+        </div>
         <div class="col-md-12">
             <div class="col-md-2 sidebar-offcanvas colonneTheme" id="sidebar">
                 <div class="list-group linkColonne">
@@ -40,15 +47,15 @@
             <div class="col-md-2 sidebar-offcanvas colonneTheme" id="sidebar">
                 <div class="list-group linkColonne">
                     <a href="#" class="list-group-item active linkLine">DATA QUALITY</a>
-                    <a href="{{ path('crm_errors_analysis') }}" class="list-group-item">Errors' analysis</a>
-                    <a href="{{'#'}}"  class="list-group-item">Metrics</a>
+                    <a href="{{ path('crm_ucr_errors_analysis') }}" class="list-group-item">UCR Errors' analysis</a>
+                    <a href="{{ path('crm_pick_errors_analysis')}}"  class="list-group-item">PICK Errors' analysis</a>
                 </div>
             </div>
             <div class="col-md-2 sidebar-offcanvas colonneTheme" id="sidebar">
                 <div class="list-group linkColonne">
                     <a href="#" class="list-group-item linkLine bkColorBlue">TOOL BOX</a>
-                    <a href="{{ path('crm_creating_ucrquery') }}" class="list-group-item">UCR Errors' analysis</a>
-                    <a href="{{'#'}}" class="list-group-item">PICK Errors' analysis</a>
+                    <a href="{{ path('crm_indicators_creation') }}" class="list-group-item">Indicators Creation</a>
+                    <a href="{{'#'}}" class="list-group-item">Indicators Modification & Suppression</a>
                 </div>
             </div>
             <div class="col-md-2 sidebar-offcanvas colonneTheme" id="sidebar">

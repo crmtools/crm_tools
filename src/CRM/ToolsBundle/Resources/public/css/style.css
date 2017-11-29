@@ -18,7 +18,6 @@
 
 .cssFromTable{
     margin-top: 20px;
-    /*border: 1px solid red;*/
     font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
 }
 
@@ -32,8 +31,8 @@
 }
 
 .blueHoverLine tr:hover{
-    background-color: #37519f !important;
-    color: #fff;
+    background-color: #E0E0E0 !important;
+    /*color: #fff;*/
 }
 
 /*********************************************CSS FROM HOME PAGE****************************************************/
@@ -58,62 +57,16 @@ body {
     text-align: center;
     font-weight: bolder;
     font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
-    margin-bottom: 40px;
     font-size: 45px;
     color: #37519f;
 }
 
-.colonneMenu{
-    box-shadow: 3px 3px 5px #888888;
-    /*border: 1px solid red;*/
-    padding-right: 0px !important;
-    padding-left: 0px !important;
-    margin-right: 15px;
-}
-
-.menuHomePage .headMenu{
-    background-color: #37519f;
-    border: 1px solid #37519f;
-
-}
-
-.menuHomePage .headMenu p{
-    text-align: center;
-    font-weight: bold;
-    margin-top: 10px;
-    font-size: 15px;
-    color: #fff;
-}
-
-.menuHomePage .bodyMenu{
-    background-color: #E8E8E8;
-    border: 1.5px solid #37519f;
-    height: 370px;
-}
-
-.menuHomePage .bodyMenu ul li, .menuHomePage .bodyMenu ul li a{
-    color: #37519f;
-    margin: 20px 0px;
-    font-size: 18px;
-    margin-right: 3px !important;
-    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
-    margin-right: 2px;
-    /*border: 1px solid red;*/
-}
-
-.menuHomePage .bodyMenu ul li a:hover, .menuHomePage .bodyMenu ul li a:focus{
-    color: #0099FF;
-}
-
 .colonneTheme{
-    color: #37519f !important;
     padding-right: 7px !important;
     padding-left: 7px !important;
-    font-size: 13px;
-    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12.5px;
 }
 .colonneTheme .linkColonne{
-    color: #37519f !important;
     border: 1px solid #B8B8B8;
     font-weight: bold;
     text-align: left;
@@ -168,6 +121,65 @@ body {
     color: #555;
     margin-bottom: 40px !important;
 }
+
+.iconeInfos{
+    color: #37519f;
+    /*border: 1px solid red;*/
+    text-align: center;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-bottom: 40px;
+}
+.infosCircle{
+    /*border: 1px solid blue;*/
+}
+
+.iconeInfos:hover a{
+    text-decoration: none;
+    color: #002266;
+}
+
+/*.infosCircle:hover{*/
+    /*text-decoration: none;*/
+    /*color: red;*/
+/*}*/
+
+/*.colonneMenu{*/
+/*box-shadow: 3px 3px 5px #888888;*/
+/*!*border: 1px solid red;*!*/
+/*padding-right: 0px !important;*/
+/*padding-left: 0px !important;*/
+/*margin-right: 15px;*/
+/*}*/
+
+/*.menuHomePage .headMenu p{*/
+/*text-align: center;*/
+/*font-weight: bold;*/
+/*margin-top: 10px;*/
+/*font-size: 15px;*/
+/*color: #fff;*/
+/*}*/
+
+/*.menuHomePage .bodyMenu{*/
+/*background-color: #E8E8E8;*/
+/*border: 1.5px solid #37519f;*/
+/*height: 370px;*/
+/*}*/
+
+/*.menuHomePage .bodyMenu ul li, .menuHomePage .bodyMenu ul li a{*/
+/*color: #37519f;*/
+/*margin: 20px 0px;*/
+/*font-size: 18px;*/
+/*margin-right: 3px !important;*/
+/*font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;*/
+/*margin-right: 2px;*/
+/*!*border: 1px solid red;*!*/
+/*}*/
+
+/*.menuHomePage .bodyMenu ul li a:hover, .menuHomePage .bodyMenu ul li a:focus{*/
+/*color: #0099FF;*/
+/*}*/
 
 
 /***********************************************END HOME PAGE*****************************************************/

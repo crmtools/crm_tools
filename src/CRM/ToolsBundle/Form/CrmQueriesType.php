@@ -19,7 +19,9 @@ class CrmQueriesType extends AbstractType
                 ->add('queryText', 'textarea', array(
                     'required'    => true,
                 ))
-                ->add('groupName', 'choice', array(
+//                ->add('groupName','text')
+                ->add('groupNameUcr', 'choice', array(
+                        'mapped'   => false,
                         'required' => true,
                         'choices' => array(
                             'Qualite Reference'      => 'Qualite Reference',
@@ -30,6 +32,19 @@ class CrmQueriesType extends AbstractType
                             'Qualite MIDAS'          => 'Qualite MIDAS',
                         )
                      ))
+                ->add('groupNamePick', 'choice', array(
+                    'mapped'   => false,
+                    'required' => true,
+                    'attr'     => ['class' => 'hide'],
+                    'choices'  => array(
+                        'group Name PICK 1'      => 'group Name PICK 1',
+                        'group Name PICK 2'      => 'group Name PICK 2',
+                        'group Name PICK 3'      => 'group Name PICK 3',
+                        'group Name PICK 4'      => 'group Name PICK 4',
+                        'group Name PICK 5'      => 'group Name PICK 5',
+                        'group Name PICK 6'      => 'group Name PICK 6',
+                    )
+                ))
                 ->add('description','text', array(
                             'required'    => true,
                 ))

@@ -12,11 +12,6 @@
      height: 30px !important;
 }
 
-.globalTableCss{
-    padding-right: 0px;
-    padding-left: 0px;
-}
-
 .tableSearchCss{
     padding: 2px;
     border: 2px solid #ddd !important;
@@ -43,4 +38,15 @@
 .errorMessageSearch{
     margin-top: 15px;
     color: #F00000;
+}
+
+.scrollAutoHor{
+    width: 106%;
+    /*height: 380px;*/
+    overflow-y: scroll;
+    white-space: nowrap;
+}
+
+.searchMenu{
+    margin-bottom: 60px;
 }

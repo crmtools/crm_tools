@@ -1,0 +1,113 @@
+{# src/OC/PlatformBundle/Resources/views/Monitoring/graphPerformance.html.twig #}
+
+{% extends "CRMToolsBundle::layout.html.twig" %}
+
+{% block title %}
+    PICK Errors' analysis - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container containerPage">
+        <h1 class="titlePage">Errors' analysis</h1>
+        <div class="paraphDescript">
+            <p>Daily monitoring of the CRM PICK database’s indicators where there are missing elements (contact form and booking not properly filled, etc…).
+                The objective is to have into PICK a decreasing number of missing essential information.</p>
+        </div>
+
+        {#<div class="bs-example bs-example-tabs">#}
+            {#<ul class="nav nav-tabs logErrorsTab" id="myTabs">#}
+                {#{% set isFirst = true %}#}
+                {#{% for groupName, dataQuality in dataQualities %}#}
+                {#{% set idGroupName = groupName  %}#}
+                {#{% set idGroupName = idGroupName|replace({' ': '_'}) %}#}
+                {#{% for date, tableContent in log_errors_result %}#}
+                    {#{% if isFirst %}#}
+                        {#<li class="active"><a href="{{ '#'~ idGroupName }}" data-toggle="tab" >{{ groupName }}</a></li>#}
+                        {#{% set isFirst = false %}#}
+                    {#{% else %}#}
+                        {#<li><a href="{{ '#'~ idGroupName }}" data-toggle="tab">{{ groupName }}</a></li>#}
+                    {#{% endif %}#}
+                {#{% endfor %}#}
+            {#</ul>#}
+
+            {#<div class="tab-content" id="myTabContent">#}
+                {#{% set isFirst = true %}#}
+                {#{% for groupName, dataQuality in dataQualities %}#}
+                    {#{% set idGroupName = groupName  %}#}
+                    {#{% set idGroupName = idGroupName|replace({' ': '_'}) %}#}
+                    {#{% if isFirst %}#}
+                        {#<div class="tab-pane fade in active" role="tabpanel" id={{ idGroupName }}>#}
+                            {#<div class="cssFromTable containerPage">#}
+                                {#<div class="table-responsive">#}
+                                    {#<table class="table table-striped">#}
+                                        {#<tbody class="blueHoverLine">#}
+                                        {#<tr>#}
+                                            {#{% for column_name, column_value in dataQuality[0] %}#}
+                                                {#{% if column_name != 'id' %}#}
+                                                    {#<th> {{ column_name }} </th>#}
+                                                {#{% endif %}#}
+                                            {#{% endfor %}#}
+                                        {#</tr>#}
+                                        {#{% for result in dataQuality %}#}
+                                            {#<tr>#}
+                                                {#{% for header, value in result %}#}
+                                                    {#{% if header == 'queryName'%}#}
+                                                        {#<td>#}
+                                                            {#<a class="btn btn-primary btn-block buttonQueryName" href="#">{{ result['queryName'] }}</a>#}
+                                                        {#</td>#}
+
+                                                    {#{% elseif header != 'id'%}#}
+                                                        {#<td> {{ value }} </td>#}
+
+                                                    {#{% endif %}#}
+                                                {#{% endfor %}#}
+                                            {#</tr>#}
+                                        {#{% endfor %}#}
+                                        {#</tbody>#}
+                                    {#</table>#}
+                                {#</div>#}
+                            {#</div>#}
+                            {#{% set isFirst = false %}#}
+                        {#</div>#}
+                    {#{% else %}#}
+                        {#<div class="tab-pane fade" role="tabpanel" id={{ idGroupName }}>#}
+                            {#<div class="cssFromTable containerPage">#}
+                                {#<div class="table-responsive">#}
+                                    {#<table class="table table-striped">#}
+                                        {#<tbody class="blueHoverLine">#}
+                                            {#{% if dataQuality[0] is defined %}#}
+                                                {#<tr>#}
+                                                    {#{% for column_name, column_value in dataQuality[0] %}#}
+                                                        {#{% if column_name != 'id' %}#}
+                                                            {#<th> {{ column_name }} </th>#}
+                                                        {#{% endif %}#}
+                                                    {#{% endfor %}#}
+                                                {#</tr>#}
+                                                {#{% for result in dataQuality %}#}
+                                                    {#<tr>#}
+                                                        {#{% for header, value in result %}#}
+                                                            {#{% if header == 'queryName'%}#}
+                                                                {#<td>#}
+                                                                    {#<a class="btn btn-primary btn-block buttonQueryName" href="#">{{ result['queryName'] }}</a>#}
+                                                                {#</td>#}
+
+                                                            {#{% elseif header != 'id'%}#}
+                                                                {#<td> {{ value }} </td>#}
+
+                                                            {#{% endif %}#}
+                                                        {#{% endfor %}#}
+                                                    {#</tr>#}
+                                                {#{% endfor %}#}
+                                            {#{% endif %}#}
+                                        {#</tbody>#}
+                                    {#</table>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#{% endif %}#}
+                {#{% endfor %}#}
+            {#</div>#}
+        {#</div>#}
+    </div>
+{% endblock %}

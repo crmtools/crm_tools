@@ -110,7 +110,6 @@ class UcrSearchEngineController extends Controller
                 }
             }
         }
-
         return $this->render('CRMToolsBundle:UcrSearchEngine:contactForm.html.twig', array(
             'form' => $form->createView(),
         ));

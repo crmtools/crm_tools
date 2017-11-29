@@ -202,7 +202,7 @@ class MonitoringController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $log_errors_result = $em->getRepository('CRMToolsBundle:CrmLogErrors')->getLogErrorsWithDates($dates_array);
-//        var_dump($log_errors_result);die;
+
         return $this->render('CRMToolsBundle:Monitoring:logErrors.html.twig', array(
             'log_errors_result' => $log_errors_result
         ));

@@ -13,8 +13,17 @@ use Doctrine\ORM\EntityRepository;
 class CrmQueriesRepository extends EntityRepository
 {
 
-    public function getGroupsName(){
-        $sqlGrpName = "SELECT DISTINCT groupName from crm_queries WHERE pageName = 'error_analysis'";
+    public function getGroupsNameUcr(){
+        $sqlGrpName = "SELECT DISTINCT groupName from crm_queries WHERE pageName = 'ucr_error_analysis'";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sqlGrpName);
+        $query->execute();
+        $groupsName = $query->fetchAll();
+        return $groupsName;
+    }
+
+    public function getGroupsNamePick(){
+        $sqlGrpName = "SELECT DISTINCT groupName from crm_queries WHERE pageName = 'pick_error_analysis'";
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($sqlGrpName);
         $query->execute();
@@ -38,7 +47,7 @@ class CrmQueriesRepository extends EntityRepository
         return $queryTotalCompaigns;
     }
 
-    public function insertTheNewQueryIntoCrmQueries($queryText, $data, $database, $user, $env)
+    public function insertTheNewQueryIntoCrmQueries($queryText, $data, $groupName, $database, $user, $env)
     {
 
         $queryName = $data->getQueryName();
@@ -52,7 +61,6 @@ class CrmQueriesRepository extends EntityRepository
         if($result) {
             return false;
         } else {
-            $groupName = $data->getGroupName();
             $enableHistory = $data->getEnableHistory();
             $description = $data->getDescription();
 
@@ -63,7 +71,9 @@ class CrmQueriesRepository extends EntityRepository
             }
 
             if ($database == 'UCR') {
-                $pageName = 'error_analysis';
+                $pageName = 'ucr_error_analysis';
+            }else{
+                $pageName = 'pick_error_analysis';
             }
 
             $date = new \DateTime();
@@ -73,10 +83,6 @@ class CrmQueriesRepository extends EntityRepository
 
             $sql = "INSERT INTO crm_queries (queryName, queryText, groupName, pageName, enableHistory, connexion, description, dateCreate, dateModify, user_created, user_modified)
                VALUES ('$queryName', '$queryText', '$groupName', '$pageName',$enableHistory, '$env', '$description', '$date', '$date', $userId,$userId)";
-
-//            $sql = "INSERT INTO crm_queries (queryName, queryText, groupName, pageName, enableHistory, connexion, description, dateCreate, dateModify, user_created, user_modified)
-//               VALUES ('" . $queryName . "', '" . $queryText . "', '" . $groupName . "', '" . $pageName . "', " . $enableHistory . ", '" . $env . "', '" . $description . "', '" . $date . "', '"
-//                . $date . "', " . $userId . ", " . $userId . ")";
 
             $em = $this->getEntityManager();
             $query = $em->getConnection()->prepare($sql);
@@ -97,7 +103,4 @@ class CrmQueriesRepository extends EntityRepository
 
         return $result;
     }
-
-
-
 }

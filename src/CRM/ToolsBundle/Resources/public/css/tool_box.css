@@ -47,3 +47,7 @@
     padding-left: 0px !important;
     color: #5bb024;
 }
+
+.radioButtonCss >label{
+    margin-right: 10px;
+}

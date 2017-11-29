@@ -70,18 +70,15 @@ class ClassUcrRepository extends EntityRepository{
         $em = $this->getEntityManager();
         $query = $em->getConnection()->prepare($queryText);
         $query->execute();
-        $result = $query->fetchAll();
+        $arrayResult = $query->fetchAll();
 
-        foreach($result as $array_result){
-          $arraySize= count($array_result);
-        }
+        $arrayResultSize= count($arrayResult);
 
-        if($arraySize> 1){
+        if($arrayResultSize > 1){
             return false;
         }else{
-            return $result;
+            return $arrayResult;
         }
     }
-
 
 }

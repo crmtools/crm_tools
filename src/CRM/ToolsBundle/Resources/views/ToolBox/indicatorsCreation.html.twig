@@ -18,7 +18,7 @@
             <div class="col-md-12 creatingForm">
                 <h2 class=" col-md-offset-1 creationTitle">Creation</h2>
                 <div class="col-md-12 container">
-                    <form action="{{ path('crm_creating_ucrquery') }}" class="form-horizontal" method="POST">
+                    <form action="{{ path('crm_indicators_creation') }}" class="form-horizontal" method="POST">
                         {{ form_start(form) }}
                         <div class="form-group">
                             {{ form_label(form.queryName, "SQL query name", {'label_attr': {'class': 'col-md-2 col-md-offset-1 withoutPadding'}}) }}
@@ -34,14 +34,17 @@
                         </div>
 
                         <div class="form-group">
-                            {{ form_label(form.groupName, "Table name", {'label_attr': {'class': 'col-md-2 col-md-offset-1 withoutPadding'}}) }}
+                            {{ form_label(form.groupNameUcr, "Table name", {'label_attr': {'class': 'col-md-2 col-md-offset-1 withoutPadding'}}) }}
+                            <div class="col-md-3 withoutPadding" id="ucrClassDisplay">
+                                {{ form_widget(form.groupNameUcr, {'attr': {'class': 'form-control'}}) }}
+                            </div>
                             <div class="col-md-3 withoutPadding">
-                                {{ form_widget(form.groupName, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_widget(form.groupNamePick, {'attr': {'class': 'hide form-control'}}) }}
                             </div>
                             <div class="col-md-4 col-md-offset-1">
                                 {{ form_label(form.database, "Database", {'label_attr': {'class': 'col-md-3 withoutPadding marginWidgetLeft'}}) }}
                                 <div class="col-md-4 ">
-                                    {{ form_widget(form.database, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_widget(form.database, {'attr': {'class': 'form-control', 'id': 'databaseChoice'}}) }}
                                 </div>
                             </div>
                         </div>
@@ -71,6 +74,13 @@
                                 <p class="col-md-6 col-md-offset-3 errorQueryMsg">{{ error_message }}</p>
                             </div>
                         {% endif %}
+
+                        {#<div class="form-group">#}
+                            {#{{ form_label(form.groupName, "SQL Code", {'label_attr': {'class': 'col-md-2 col-md-offset-1 withoutPadding'}}) }}#}
+                            {#<div class="col-md-6 withoutPadding">#}
+                                {#{{ form_widget(form.groupName, {'attr': {'class': 'hide'}}) }}#}
+                            {#</div>#}
+                        {#</div>#}
 
                         <div class="form-group col-md-12"> <!-- Submit button -->
                             <button class="btn btn-primary buttonCreate" name="submit" type="submit">Create</button>

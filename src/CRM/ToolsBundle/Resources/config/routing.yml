@@ -14,9 +14,13 @@ crm_log_errors:
     path:     /log_errors
     defaults: { _controller: CRMToolsBundle:Monitoring:logErrors }
 
-crm_errors_analysis:
-    path:     /errors_analysis
-    defaults: { _controller: CRMToolsBundle:DataQuality:errorsAnalysis}
+crm_ucr_errors_analysis:
+    path:     /ucr_errors_analysis
+    defaults: { _controller: CRMToolsBundle:DataQuality:ucrErrorsAnalysis}
+
+crm_pick_errors_analysis:
+    path:     /pick_errors_analysis
+    defaults: { _controller: CRMToolsBundle:DataQuality:pickErrorsAnalysis }
 
 crm_reload_request:
     path:     /reload_request/{query_id}
@@ -59,8 +63,8 @@ crm_booking_form:
     defaults: { _controller: CRMToolsBundle:UcrSearchEngine:bookingForm }
 
 
-crm_creating_ucrquery:
-    path:     /UCR_errors_analysis
-    defaults: { _controller: CRMToolsBundle:ToolBox:creatingUcrQuery }
+crm_indicators_creation:
+    path:     /indicators_creation
+    defaults: { _controller: CRMToolsBundle:ToolBox:indicatorsCreation }
 
 

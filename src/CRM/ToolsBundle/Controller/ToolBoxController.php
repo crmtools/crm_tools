@@ -10,19 +10,24 @@ use CRM\ToolsBundle\Form\CrmQueriesType;
 
 class ToolBoxController extends Controller
 {
-    public function creatingUcrQueryAction(Request $request){
+    public function indicatorsCreationAction(Request $request){
 
         /*Creat the form*/
         $crmQueries = new CrmQueries();
         $form = $this->createForm (new CrmQueriesType(), $crmQueries);
         $error_message= null;
 
-        if($request->isMethod('POST')) {
+        if($request->isMethod('POST')){
 
             $form->handleRequest($request);
             $data = $form->getData();
-
             $database = $form->get("database")->getData();
+
+            if($database == 'UCR') {
+                $groupName= $form->get("groupNameUcr")->getData();
+            }else{
+                $groupName= $form->get("groupNamePick")->getData();
+            }
 
             $queryText = $data->getQueryText();
             $database_user = $this->container->getParameter('database_user');
@@ -33,12 +38,15 @@ class ToolBoxController extends Controller
                 $env = 'P1';
             }
 
-//            $checkQueryTime = $this->get('check_query_time')->run($env, $queryText);
-//
-//            var_dump($checkQueryTime);die;
+            if($database=='UCR'){
+                $current_bdd= 'oracle_';
+            }else{
+                $current_bdd= 'pick_';
+            }
+//            $checkQueryTime = $this->get('check_query_time')->test($env, $queryText);
 
             try{
-                $em = $this->getDoctrine()->getManager('oracle_'.$env);
+                $em = $this->getDoctrine()->getManager($current_bdd.$env);
                 $query = $em->getConnection()->prepare($queryText);
 //                $query->setTimeout(3600);
                 $query->execute();
@@ -49,17 +57,15 @@ class ToolBoxController extends Controller
             }
 
             if(!isset($error_message)){
-                $em = $this->getDoctrine()->getManager('oracle_' . $env);
+                $em = $this->getDoctrine()->getManager($current_bdd. $env);
                 $result_query = $em->getRepository('CRMToolsBundle:ClassUcr')->getResultForTheNewQuery($queryText);
-
-                $queryText= str_replace("'","\"", $queryText);
-
+                $queryText= str_replace("'","\'", $queryText);
                 if($result_query == false){
                     $error_message= 'The query should be return a number with: COUNT, MAX and MIN';
                 }else{
                     $user= $this->getUser();
                     $em = $this->getDoctrine()->getManager();
-                    $is_insert = $em->getRepository('CRMToolsBundle:CrmQueries')->insertTheNewQueryIntoCrmQueries($queryText, $data, $database, $user, $env);
+                    $is_insert = $em->getRepository('CRMToolsBundle:CrmQueries')->insertTheNewQueryIntoCrmQueries($queryText, $data, $groupName, $database, $user, $env);
 
                     if($is_insert){
                         $queryName = $data->getQueryName();
@@ -69,14 +75,16 @@ class ToolBoxController extends Controller
                         $is_insert_result = $em->getRepository('CRMToolsBundle:CrmQueriesResult')->insertResultInCrmQueriesResult($newQuery, $result_query);
 
                         if($is_insert_result){
-                            $success_message= "Query successfully created. Results are visible in Dataquality Errors' analysis module";
+                            if($database== 'UCR'){
+                                $success_message= "Query successfully created. Results are visible in Dataquality / UCR Errors' analysis module";
+                            }else{
+                                $success_message= "Query successfully created. Results are visible in Dataquality / PICK Errors' analysis module";
+                            }
 
-                            return $this->render('CRMToolsBundle:ToolBox:creatingUcrQuery.html.twig',array(
+                            return $this->render('CRMToolsBundle:ToolBox:indicatorsCreation.html.twig',array(
                                 'form'          => $form->createView(),
                                 'success_message' => $success_message
                             ));
-                        }else{
-                            $error_message= 'the result must be a number ';
                         }
 
                     }else{
@@ -86,7 +94,7 @@ class ToolBoxController extends Controller
             }
         }
 
-        return $this->render('CRMToolsBundle:ToolBox:creatingUcrQuery.html.twig',array(
+        return $this->render('CRMToolsBundle:ToolBox:indicatorsCreation.html.twig',array(
             'form'          => $form->createView(),
             'error_message' => $error_message
         ));

@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Tests\EventListener\ValidateRequestListenerTest
  */
 class CrmQueriesResultRepository extends EntityRepository
 {
-    public function getDataQualityTable($groupsName, $date_array){
+    public function getDataQualityTable($groupsName, $database, $date_array){
 
         $dataQualities= array();
         foreach ($groupsName as $group) {
@@ -32,8 +32,13 @@ class CrmQueriesResultRepository extends EntityRepository
 
             $sql = substr($sql,0,strlen($sql) - 2);
             $sql .= " \n";
-            $sql .= "FROM crm_queries_result INNER JOIN crm_queries ON crm_queries_result.queryName = crm_queries.queryName 
-		    WHERE crm_queries.pageName = 'error_analysis' AND crm_queries.GroupName = '".$group['groupName']."' group by queryName order by enableDisplay";
+            if($database =='UCR'){
+                $sql .= "FROM crm_queries_result INNER JOIN crm_queries ON crm_queries_result.queryName = crm_queries.queryName 
+		    WHERE crm_queries.pageName = 'ucr_error_analysis' AND crm_queries.GroupName = '".$group['groupName']."' group by queryName order by enableDisplay";
+            }else{
+                $sql .= "FROM crm_queries_result INNER JOIN crm_queries ON crm_queries_result.queryName = crm_queries.queryName 
+		    WHERE crm_queries.pageName = 'pick_error_analysis' AND crm_queries.GroupName = '".$group['groupName']."' group by queryName order by enableDisplay";
+            }
             $em = $this->getEntityManager();
             $query = $em->getConnection()->prepare($sql);
             $query->execute();
@@ -101,22 +106,19 @@ class CrmQueriesResultRepository extends EntityRepository
 
         foreach($result_query as $array_result){
             foreach($array_result as $numCount){
-                $result= (int)$numCount;
+                $result= $numCount;
             }
         }
 
-        if($result == 0){
-            return false;
-        }else {
-            $date = new \DateTime();
-            $date = $date->format('Y-m-d');
-            $sql = "INSERT INTO crm_queries_result(queryName,queryResult,queryDate,query_id) VALUES ('" . $queryName . "', " . $result . ", '" . $date . "', " . $queryId . ");";
+        $date = new \DateTime();
+        $date = $date->format('Y-m-d');
+        $sql = "INSERT INTO crm_queries_result(queryName,queryResult,queryDate,query_id) VALUES ('" . $queryName . "', " . $result . ", '" . $date . "', " . $queryId . ");";
 
-            $em = $this->getEntityManager();
-            $query = $em->getConnection()->prepare($sql);
-            $query->execute();
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
 
-            return true;
-        }
+        return true;
+
     }
 }

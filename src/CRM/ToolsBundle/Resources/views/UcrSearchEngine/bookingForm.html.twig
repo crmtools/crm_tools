@@ -14,7 +14,7 @@
                 (reading access only). The content comes from CRM UCR database’s test and Production environments.</p>
         </div>
 
-        <div class="col-md-12">
+        <div class="">
             {{ form_start(form) }}
             <div class="formContactBooking">
                 <div class="col-md-1 searchBy">
@@ -40,33 +40,32 @@
             </div>
         {% endif %}
 
-        <div class="col-md-12 globalTableCss">
+        <div class="col_md-12">
             {% if queries_ucr_result is defined %}
                 {% for tableName, tableContent in queries_ucr_result %}
-                    <div class="cssFromTable">
-                        <table class="table table-striped tableSearchCss">
+                    <div class="col_md-12 cssFromTable">
+                        <table class="table table-bordered tableSearchCss">
                             <thead>
-                                <tr class="greenBackground">
-                                    <th>{{ tableName }}</th>
-                                </tr>
+                            <tr  class="greenBackground">
+                                <th>{{ tableName }}</th>
+                            </tr>
                             </thead>
                             <tbody class="blueHoverLine">
+                            <tr>
+                                {% for column_name, column_value in tableContent[0] %}
+                                    <th>{{ column_name }}</th>
+                                {% endfor %}
+                            </tr>
+                            {% for result in  tableContent %}
                                 <tr>
-                                    {% for column_name, column_value in tableContent[0] %}
-                                             <th> {{ column_name }} </th>
+                                    {% for value in  result%}
+                                        <td>{{ value }}</td>
                                     {% endfor %}
                                 </tr>
-                                {% for result in tableContent %}
-                                    <tr>
-                                    {% for value in result %}
-                                            <td> {{ value }} </td>
-                                    {% endfor %}
-                                    </tr>
-                                {% endfor %}
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
-
                 {% endfor %}
             {% endif %}
         </div>

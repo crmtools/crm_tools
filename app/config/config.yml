@@ -135,6 +135,24 @@ doctrine:
                 user:     TEAM_CRM
                 password: wfUhgqjOpWVRXewC7ZJd
                 charset:  UTF8
+            pick_Q5:
+                driver:   pdo_oci
+                host:     eceisexam-scan.pvcp.intra
+                port:     1521
+                service:  true
+                dbname:   CRSPS1.PVCP.ACC
+                user:     Q5GAPLEC
+                password: Q5GAPLEC
+                charset:  UTF8
+            pick_P1:
+                driver:   pdo_oci
+                host:     eceisexam-scan.pvcp.intra
+                port:     1521
+                service:  true
+                dbname:   CRMRC1.PVCP.PRD
+                user:     TEAM_CRM
+                password: wfUhgqjOpWVRXewC7ZJd
+                charset:  UTF8
 
     orm:
         default_entity_manager: default
@@ -160,3 +178,12 @@ doctrine:
                 connection: oracle_Q3
                 mappings:
                     CRMToolsBundle: ~
+            pick_Q5:
+                connection: pick_Q5
+                mappings:
+                    CRMToolsBundle: ~
+            pick_P1:
+                connection: pick_P1
+                mappings:
+                    CRMToolsBundle: ~
+

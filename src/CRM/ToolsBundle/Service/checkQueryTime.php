@@ -11,10 +11,7 @@ namespace CRM\ToolsBundle\Service;
 //use Thread;
 
 //class checkQueryTime extends \Thread implements Countable , Traversable , ArrayAccess
-
-
-
-class checkQueryTime
+class checkQueryTime extends \Thread
 {
     protected $connOracleQ5;
     protected $connOracleP1;
@@ -29,8 +26,11 @@ class checkQueryTime
         if($env=='Q5'){
             $query = $this->connOracleQ5->prepare($queryText);
             $query->execute();
+            $result = $query->fetchAll();
+
+            return $result;
         }else{
-            $query = $this->connOracleQ5->prepare($queryText);
+            $query = $this->connOracleP1->prepare($queryText);
             $query->execute();
         }
     }

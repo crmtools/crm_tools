@@ -73,7 +73,7 @@ class CrmQueries
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=500)
      */
     private $description;
 
@@ -99,7 +99,7 @@ class CrmQueries
 
     /**
      * @ORM\ManyToOne(targetEntity="CRM\UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="user_modified", referencedColumnName="id",  nullable=true)
+     * @ORM\JoinColumn(name="user_modified", referencedColumnName="id",  nullable=false)
      */
     private $modifiedBy;
 
