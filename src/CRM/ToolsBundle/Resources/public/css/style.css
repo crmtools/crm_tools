@@ -104,8 +104,9 @@ body {
     color: #37519f;
 }
 
-.logoutCss{
+.logoutCss a{
     text-decoration: underline;
+    color: #37519f;
 }
 
 .logoutCss a:hover{
@@ -123,13 +124,16 @@ body {
 }
 
 .iconeInfos{
-    color: #37519f;
+
     /*border: 1px solid red;*/
     text-align: center;
     font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
     font-size: 20px;
     font-weight: bolder;
     margin-bottom: 40px;
+}
+.iconeInfos a{
+    color: #37519f;
 }
 .infosCircle{
     /*border: 1px solid blue;*/

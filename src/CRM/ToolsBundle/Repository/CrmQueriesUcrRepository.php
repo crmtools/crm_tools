@@ -22,13 +22,17 @@ class CrmQueriesUcrRepository extends EntityRepository
         return $queries_ucr_contact;
     }
 
-    public function getResultUcrQueries($queries_ucr_modify){
-        $queries_ucr_result= null;
-        foreach ($queries_ucr_modify as $row){
+    public function getResultUcrQueries($queries_ucr_modify)
+    {
+        $queries_ucr_result = null;
+        foreach ($queries_ucr_modify as $row) {
             $sql = $row['queryText'];
             $queryName = $row['queryName'];
 
             $em = $this->getEntityManager();
+            $query = $em->getConnection()->prepare("ALTER SESSION SET NLS_DATE_FORMAT = 'DD/MM/YYYY HH24:MI:SS'");
+            $query->execute();
+
             $query = $em->getConnection()->prepare($sql);
             $query->execute();
             $queryResult = $query->fetchAll();

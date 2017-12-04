@@ -30,6 +30,7 @@ class CrmQueriesType extends AbstractType
                             'Qualite proprietaire'   => 'Qualite proprietaire',
                             'Qualité PV'             => 'Qualité PV',
                             'Qualite MIDAS'          => 'Qualite MIDAS',
+                            'Contactability'          => 'Contactability',
                         )
                      ))
                 ->add('groupNamePick', 'choice', array(

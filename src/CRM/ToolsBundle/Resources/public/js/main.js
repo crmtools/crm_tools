@@ -25,8 +25,18 @@ $(document).ready(function() {
         {
             $("#crm_toolsbundle_crmqueries_groupNamePick").addClass('hide');
             $("#ucrClassDisplay").css('display', '');
+            $("#crm_toolsbundle_crmqueries_groupNameUcr").removeClass('hide');
         }
     });
+
+     var bddVal = $("#crm_toolsbundle_crmqueries_database").val();
+     if(bddVal == 'UCR'){
+         $("#crm_toolsbundle_crmqueries_groupNameUcr").removeClass('hide');
+     }else if(bddVal == 'PICK'){
+         $("#ucrClassDisplay").hide();
+         $("#crm_toolsbundle_crmqueries_groupNamePick").removeClass('hide');
+     }
+
 });
 
 //--------------------------- ADD HEIGHT CONTACT/BOOKING FORM ---------------------------//
