@@ -33,10 +33,10 @@ class CrmQueriesResultRepository extends EntityRepository
             $sql = substr($sql,0,strlen($sql) - 2);
             $sql .= " \n";
             if($database =='UCR'){
-                $sql .= "FROM crm_queries_result INNER JOIN crm_queries ON crm_queries_result.queryName = crm_queries.queryName 
+                $sql .= "FROM crm_queries_result INNER JOIN crm_queries ON crm_queries.id = crm_queries_result.query_id 
 		    WHERE crm_queries.pageName = 'ucr_error_analysis' AND crm_queries.GroupName = '".$group['groupName']."' group by queryName order by enableDisplay";
             }else{
-                $sql .= "FROM crm_queries_result INNER JOIN crm_queries ON crm_queries_result.queryName = crm_queries.queryName 
+                $sql .= "FROM crm_queries_result INNER JOIN crm_queries ON crm_queries.id = crm_queries_result.query_id
 		    WHERE crm_queries.pageName = 'pick_error_analysis' AND crm_queries.GroupName = '".$group['groupName']."' group by queryName order by enableDisplay";
             }
             $em = $this->getEntityManager();

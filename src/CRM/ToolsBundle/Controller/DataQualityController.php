@@ -56,13 +56,11 @@ class DataQualityController extends Controller
         $dataQualities = $em->getRepository('CRMToolsBundle:CrmQueriesResult')->getDataQualityTable($groupsName, $database, $date_array);
         }
 
-        return $this->render('CRMToolsBundle:DataQuality:ucrErrorsAnalysis.html.twig',array(
+        return $this->render('CRMToolsBundle:DataQuality:pickErrorsAnalysis.html.twig',array(
             'dataQualities' => $dataQualities,
             'groupsName'   => $groupsName,
             'date_array'    => $date_array
         ));
-
-        return $this->render('CRMToolsBundle:DataQuality:pickErrorsAnalysis.html.twig');
     }
 
     public function reloadRequestAction($query_id){
