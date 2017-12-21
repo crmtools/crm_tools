@@ -85,6 +85,10 @@ assetic:
 #        tags:
 #            - { name: doctrine.event_listener, event: postConnect }
 
+# add with aerialship/SamlSPBundle
+aerial_ship_saml_sp:
+    driver: orm
+    sso_state_entity_class: CRM\ToolsBundle\Entity\SSOState
 
 # Doctrine Configuration
 doctrine:

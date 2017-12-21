@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<md:EntityDescriptor entityID="https://frccesvapd01/crm_tools/web/app.php" xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata">
+    <md:SPSSODescriptor WantAssertionsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+        <md:SingleLogoutService Location="https://frccesvapd01/crm_tools/web/app.php/saml/sp/logout" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"/>
+        <md:SingleLogoutService Location="https://frccesvapd01/crm_tools/web/app.php/saml/sp/logout" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+        <md:AssertionConsumerService Location="https://frccesvapd01/crm_tools/web/app.php/saml/sp/acs" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" index="0"/>
+        <md:AssertionConsumerService Location="https://frccesvapd01/crm_tools/web/app.php/saml/sp/acs" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" index="1"/>
+    </md:SPSSODescriptor>
+</md:EntityDescriptor>

@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new CRM\ToolsBundle\CRMToolsBundle(),
             new CRM\UserBundle\CRMUserBundle(),
+            new AerialShip\SamlSPBundle\AerialShipSamlSPBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

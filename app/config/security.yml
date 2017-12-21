@@ -39,5 +39,20 @@ security:
              logout:
                  path:   logout
                  target: /
+             aerial_ship_saml_sp:
+                 login_path: /saml/sp/login
+                 local_logout_path: /logout
+                 metadata_path: /saml/sp/FederationMetadata.xml
+                 default_target_path: /
+                 provider: in_memory
+                 services:
+                     somename:
+                         idp:
+                             file: "@CRMToolsBundle/Resources/idp-FederationMetadata.xml"
+                         sp:
+                             config:
+                                 entity_id: https://frccesvapd01.pvcp.intra/crm_tools/web/app.php/saml/sp/login
+             logout:
+                 path: /logout
 
 

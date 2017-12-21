@@ -67,4 +67,8 @@ crm_indicators_creation:
     path:     /indicators_creation
     defaults: { _controller: CRMToolsBundle:ToolBox:indicatorsCreation }
 
+crm_indicators_modificatio_suppresion:
+    path:     /indicators_modification_suppresion
+    defaults: { _controller: CRMToolsBundle:ToolBox:indicatorsModificationSuppresion }
+
 

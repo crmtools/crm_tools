@@ -100,4 +100,34 @@ class ToolBoxController extends Controller
         ));
     }
 
+    public function indicatorsModificationSuppresionAction(Request $request){
+
+        /*Creat the form without a formType*/
+        $crmQueries = new CrmQueries();
+        $form = $this->createFormIndicators($crmQueries);
+
+        if($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            $data = $form->getData();
+            $searchText = $form->get("searchText")->getData();
+            var_dump($searchText);die;
+        }
+
+        return $this->render('CRMToolsBundle:ToolBox:indicatorsModificationSuppresion.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    public function createFormIndicators($crmQueriesUcr){
+        $form = $this->createFormBuilder($crmQueriesUcr)
+            ->add('searchText', 'text', array(
+                'mapped'    => false,
+                'label'     => 'Query name search :',
+                'required'    => true,
+            ))
+            ->getForm();
+
+        return $form;
+    }
+
 }

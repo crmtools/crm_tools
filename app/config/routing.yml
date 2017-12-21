@@ -5,3 +5,6 @@ crm_user:
 crm_tools:
     resource: "@CRMToolsBundle/Resources/config/routing.yml"
     prefix:   /
+
+aerialship_saml_sp_bundle:
+    resource: "@AerialShipSamlSPBundle/Resources/config/routing.yml"
