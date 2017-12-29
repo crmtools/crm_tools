@@ -61,3 +61,51 @@
 .searchBarModif{
     margin-top: 20px;
 }
+
+.searchResultForm{
+    margin-top: 90px;
+}
+
+.textDelete{
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif !important;
+}
+
+.queryNameSupp{
+    color: #37519f;
+    text-decoration: underline;
+}
+
+.modalButton{
+    padding: 5px 15px !important;
+}
+
+.marginRightModal{
+    margin-right: 230px;
+}
+
+
+/*********************************************** MODAL FROM SUPPRESSION QUERY *****************************************************/
+.modal {
+    text-align: center;
+    padding: 0!important;
+}
+
+.modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.successTextModal{
+    text-align: center;
+    color: #5bb024;
+    margin: 15px !important;
+}

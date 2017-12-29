@@ -1,0 +1,99 @@
+{% extends "CRMToolsBundle::layout.html.twig" %}
+
+{% block title %}
+    Indicators modification suppression - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container containerPage">
+        <h1 class="titlePage">Indicators Modification Suppresion</h1>
+        <div>
+            <p>Display into a table the result of a SQL query search  created by an IT CRM team member. It’s an easy way to modify/delete Production indicator on CRM UCR database (only reading access). </p>
+        </div>
+
+        <div class="formCreatingQuery">
+            <div class="col-md-12 container">
+                <form action="{{ path('crm_indicators_modification_suppression') }}" method="POST">
+                    {{ form_start(form) }}
+                    <div class="col-md-offset-1 searchBarModif">
+                        <div class="col-md-2">
+                            {{ form_label(form.searchText) }}
+                        </div>
+                        <div class="selectOptionForm col-md-5">
+                            {{ form_widget(form.searchText, {'attr': {'class': 'form-control' }})  }}
+                        </div>
+                        <button class="btn btn-primary searchButon" name="submit" type="submit">Search</button>
+                    </div>
+                    {{ form_end(form) }}
+                </form>
+            </div>
+        </div>
+
+        {% if results_query is defined %}
+            <!-- query results form  -->
+            <div class="cssFromTable searchResultForm">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Query Name</th>
+                        <th class="col-md-1">Group Name</th>
+                        <th>SQL Code</th>
+                        <th>Modify</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody class="borderBodyTable">
+                    {% for result in results_query %}
+                        <tr>
+                            <td>{{ result["queryName"] }}</td>
+                            <td>{{ result["groupName"] }}</td>
+                            <td>{{ result["queryText"] }}</td>
+                            {% if result["user_created"] == current_user_id %}
+                                <td><a class="btn btn-primary btn-sm buttonQueryName modalButton" href="{{ path('crm_indicator_modification', {'result_id': result["id"] }) }}">Modify</a></td>
+                                <td><button class="btn btn-primary btn-sm buttonQueryName modalButton" data-toggle="modal" data-target="#modalSuppr">Delete</button></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div> <!-- end of query results form -->
+
+           <!-- /.modal-content -->
+            <div class="modal fade" id="modalSuppr" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="overflow: hidden;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body" style="max-height: 517px; overflow-y: auto;">
+                            <h4 class="modal-title textDelete" id="myModalLabel">Are you sure you want to delete the <span class="queryNameSupp">"{{ results_query[0]["queryName"] }}"</span> from Data quality / {{ results_query[0]["pageName"] }} ? </h4>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-primary btn-sm buttonQueryName modalButton"  href="{{ path('crm_indicator_suppression', {'query_id': results_query[0]["id"] }) }}">Yes</a>
+                            <button type="button" class="btn btn-primary btn-sm buttonQueryName modalButton marginRightModal" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end of modal -->
+
+        {% endif %}
+
+        {% if success_message is defined  %}
+            <div class="modal fade" id="modalSuccessMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="overflow: hidden;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body" style="max-height: 517px; overflow-y: auto;">
+                            <h4 class="modal-title successTextModal" id="myModalLabel">{{ success_message }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end of modal -->
+        {% endif %}
+    </div>
+
+{% endblock %}

@@ -23,9 +23,9 @@ class CLI_DATA_IMPORTSRepository extends EntityRepository
                         DATE_TRAITEMENT,
                         ERROR_LIST,
                         TOTAL,
-                        \"INSERT\" || ' (' || trunc(100 * \"INSERT\" / TOTAL,2) || '%)' as \"INSERT\",
-                        \"UPDATE\" || ' (' || trunc(100 * \"UPDATE\" / TOTAL,2) || '%)' as \"UPDATE\",
-                        \"REJECT\" || ' (' || trunc(100 * \"REJECT\" / TOTAL,2) || '%)' as \"REJECT\"
+                        case when nvl(\"INSERT\",0) = 0 then '0 (0%)' else \"INSERT\" || ' (' || trunc(100 * \"INSERT\" / case when TOTAL = '0' then '1' else total end,2) || '%)' end as \"INSERT\", 
+	                    case when nvl(\"UPDATE\",0) = 0 then '0 (0%)' else \"UPDATE\" || ' (' || trunc(100 * \"UPDATE\" / case when TOTAL = '0' then '1' else total end,2) || '%)' end as \"UPDATE\", 
+	                    case when nvl(\"REJECT\",0) = 0 then '0 (0%)' else \"REJECT\" || ' (' || trunc(100 * \"REJECT\" / case when TOTAL = '0' then '1' else total end,2) || '%)' end as \"REJECT\" 
                     FROM(
                         select
                             distinct  
@@ -65,11 +65,12 @@ class CLI_DATA_IMPORTSRepository extends EntityRepository
                         max(nbr_ligne) for action in ('TOTAL' as \"TOTAL\",'INSERT' as \"INSERT\",'UPDATE' as \"UPDATE\",'REJECT' as \"REJECT\")
                     )
                     where  trunc(date_traitement) = TO_DATE('$current_date', 'YYYY-MM-DD') and file_name not like '%NEO_RC_REF_CONTACT_B2B%' $filter order by FILE_NAME";
-
+//            echo $sql;
             $em = $this->getEntityManager();
             $query = $em->getConnection()->prepare($sql);
             $query->execute();
             $result = $query->fetchAll();
+//            var_dump($result);
             $result_array[$current_date] = $result;
         }
 

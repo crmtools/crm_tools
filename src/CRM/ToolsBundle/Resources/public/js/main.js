@@ -57,3 +57,40 @@ $(document).ready(function() {
         $('.scrollAutoHor').height(pageHeight);
     });
 
+//--------------------------- DISPLAY THE GOOD GROUP NAME IND. MODIFF. ---------------------------//
+    var current_value = $('#crm_toolsbundle_crmqueries_groupNameUcr').attr('value');
+    $('#crm_toolsbundle_crmqueries_groupNameUcr').find('option').each(function(){
+        var value= $(this).attr('value');
+        if(current_value == value){
+            $(this).attr("selected","selected");
+        }
+    });
+
+//--------------------------- DISPLAY THE SQL CODE IND. MODIFF. ---------------------------//
+    var query_text = $('#crm_toolsbundle_crmqueries_queryText').attr('value');
+    $('.withoutPadding').find('textarea').append(query_text);
+
+//--------------------------- DISPLAY ACTIVE QUERY IND. MODIFF. ---------------------------//
+    var active_query = $('#crm_toolsbundle_crmqueries_enableHistory').attr('value');
+    console.log(active_query);
+
+    if(active_query == 1){
+        $('#crm_toolsbundle_crmqueries_enableHistory_0').attr("checked", "checked");
+    }else {
+        $('#crm_toolsbundle_crmqueries_enableHistory_1').attr("checked", "checked");
+    }
+
+    $("#modalSuccessMessage").modal('show');
+
+
+
+
+
+
+
+
+
+
+
+
+

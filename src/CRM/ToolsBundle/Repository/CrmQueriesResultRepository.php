@@ -33,12 +33,13 @@ class CrmQueriesResultRepository extends EntityRepository
             $sql = substr($sql,0,strlen($sql) - 2);
             $sql .= " \n";
             if($database =='UCR'){
-                $sql .= "FROM crm_queries_result INNER JOIN crm_queries ON crm_queries.id = crm_queries_result.query_id 
+                $sql .= "FROM crm_queries_result INNER JOIN crm_queries ON crm_queries.id = crm_queries_result.query_id AND enableHistory is true
 		    WHERE crm_queries.pageName = 'ucr_error_analysis' AND crm_queries.GroupName = '".$group['groupName']."' group by queryName order by enableDisplay";
             }else{
                 $sql .= "FROM crm_queries_result INNER JOIN crm_queries ON crm_queries.id = crm_queries_result.query_id
 		    WHERE crm_queries.pageName = 'pick_error_analysis' AND crm_queries.GroupName = '".$group['groupName']."' group by queryName order by enableDisplay";
             }
+
             $em = $this->getEntityManager();
             $query = $em->getConnection()->prepare($sql);
             $query->execute();
@@ -120,5 +121,44 @@ class CrmQueriesResultRepository extends EntityRepository
 
         return true;
 
+    }
+
+    public function insertResultFromModifiedQuery($newQuery, $result_query, $result_id){
+
+        $date = new \DateTime();
+        $date = $date->format('Y-m-d');
+
+        $sql= "DELETE FROM crm_queries_result where queryDate= '$date' and query_id= $result_id";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+
+        $queryId= $newQuery[0]['id'];
+        $queryName= $newQuery[0]['queryName'];
+
+        foreach($result_query as $array_result){
+            foreach($array_result as $numCount){
+                $result= $numCount;
+            }
+        }
+
+        $sql = "INSERT INTO crm_queries_result(queryName,queryResult,queryDate,query_id) VALUES ('" . $queryName . "', " . $result . ", '" . $date . "', " . $queryId . ");";
+
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+
+        return true;
+    }
+
+    public function supprResultInCrmQueriesResult($query_id){
+
+       $sql= "DELETE FROM crm_queries_result WHERE query_id = $query_id";
+
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+
+        return;
     }
 }

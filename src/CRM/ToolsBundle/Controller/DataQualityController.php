@@ -27,7 +27,6 @@ class DataQualityController extends Controller
         $em = $this->getDoctrine()->getManager();
         $groupsName = $em->getRepository('CRMToolsBundle:CrmQueries')->getGroupsNameUcr();
         $dataQualities = $em->getRepository('CRMToolsBundle:CrmQueriesResult')->getDataQualityTable($groupsName, $database, $date_array);
-//        var_dump($dataQualities);die;
 
         return $this->render('CRMToolsBundle:DataQuality:ucrErrorsAnalysis.html.twig',array(
             'dataQualities' => $dataQualities,
@@ -70,29 +69,7 @@ class DataQualityController extends Controller
 
         $this->get('refresh_button_analysis')->refreshButtonWithId($query_id, $current_date);
 
-
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $results= $em->getRepository('CRMToolsBundle:CrmQueriesResult')->deleteInResultWithQueryId($query_id, $current_date);
-//        foreach($results as $result){
-//            $em->remove($result);
-//            $em->flush();
-//        }
-//
-//        $currentQuery = $em->getRepository('CRMToolsBundle:CrmQueriesResult')->getOneQueryWithId($query_id, $current_date);
-//
-//        if(isset($currentQuery[0]['queryText'])){
-//            $em = $this->getDoctrine()->getManager('oracle_Q5');
-//            $queryResult = $em->getRepository('CRMToolsBundle:CrmQueriesResult')->executeQueryWithId($currentQuery);
-//        }
-//
-//        if(isset($queryResult)) {
-//            $em = $this->getDoctrine()->getManager();
-//            $em->getRepository('CRMToolsBundle:CrmQueriesResult')->insertResultQuery($currentQuery, $queryResult, $current_date);
-//        }
-
         return $this->redirect( $this->generateUrl('crm_errors_analysis'));
-
     }
 
 

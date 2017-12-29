@@ -103,4 +103,77 @@ class CrmQueriesRepository extends EntityRepository
 
         return $result;
     }
+
+    public function getResultWithSearchText($array_search_text){
+
+        $array_result= null;
+        foreach($array_search_text as $serche_text){
+            $serche_text=trim($serche_text);
+
+            $sql= "SELECT * FROM crm_queries WHERE queryName='$serche_text'";
+            $em = $this->getEntityManager();
+            $query = $em->getConnection()->prepare($sql);
+            $query->execute();
+            $result = $query->fetchAll();
+
+            if(isset($result[0])){
+                $array_result[]= $result[0];
+            }
+        }
+
+        return $array_result;
+    }
+
+    public function modifyQueryIntoCrmQueries($queryText, $data, $groupName, $database, $user, $env, $result_id){
+
+        $queryName = $data->getQueryName();
+
+        $enableHistory = $data->getEnableHistory();
+        $description = $data->getDescription();
+        $description= str_replace("'","\'", $description);
+        $userId = $user->getId();
+
+        if ($enableHistory == 'Yes') {
+            $enableHistory = 1;
+        } else {
+            $enableHistory = 0;
+        }
+
+        $date = new \DateTime();
+        $date = $date->format('Y-m-d');
+
+        $sql = "UPDATE crm_queries SET queryName= '$queryName', queryText = '$queryText', groupName= '$groupName', enableHistory ='$enableHistory', connexion ='$env', description= '$description', dateModify='$date',  user_modified= '$userId' WHERE id= $result_id";
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+
+        $sql= "SELECT queryName FROM crm_queries_result WHERE query_id = $result_id ";
+
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll();
+
+        if($result){
+            if($queryName != $result[0]["queryName"]){
+                $sql= "UPDATE crm_queries_result SET queryName = '$queryName' WHERE query_id= $result_id ";
+
+                $query = $em->getConnection()->prepare($sql);
+                $query->execute();
+            }
+        }
+
+        return true;
+    }
+
+    public function supprQueryInCrmQueries($query_id){
+
+        $sql= "DELETE FROM crm_queries WHERE id = $query_id";
+
+        $em = $this->getEntityManager();
+        $query = $em->getConnection()->prepare($sql);
+        $query->execute();
+
+        return;
+    }
 }
